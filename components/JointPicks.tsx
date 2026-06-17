@@ -26,7 +26,7 @@ export default function JointPicks() {
           </h2>
           <p className="text-[#9ca3af] font-sans text-sm max-w-2xl leading-relaxed">
             Alexandra and Kitrina program this together. The picks are shared, not separate lanes.
-            Some nights are stranger, some are louder, and some are just what sounded good from a mattress in a strip-mall showroom.
+            Some nights are stranger, some are louder, and some are just what sounded good from a mattress in the showroom on San Pablo Ave.
           </p>
         </div>
 

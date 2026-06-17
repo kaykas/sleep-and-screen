@@ -1,7 +1,7 @@
 // VenueGallery — CSS/SVG placeholder compositions for exterior + interior shots.
-// Visual direction: suburban strip-mall / retail plaza on Willow Pass Road.
-// Exterior: single-story commercial bay, plate-glass windows, stucco sign band, asphalt lot,
-//           neighboring generic stores implied. Mattress Warehouse / Mattress Firm adjacency.
+// Visual direction: full-width retail storefront on San Pablo Ave, Berkeley.
+// Exterior: multi-story commercial building, plate-glass showroom windows, stucco sign band,
+//           street parking on San Pablo Ave and side streets.
 // Interior: mattress showroom with beds on low risers, price cards, fluorescent retail
 //           lighting by day; warmer conversion for evening screenings.
 // No external images, no CDN, no Google Street View.

@@ -36,7 +36,7 @@ export default function Home() {
         <Concessions />
       </div>
 
-      {/* ── STRIP-MALL LOCATION VISUALS ── */}
+      {/* ── STOREFRONT LOCATION VISUALS ── */}
       <VenueGallery />
 
       {/* ── STORE INFO ── */}

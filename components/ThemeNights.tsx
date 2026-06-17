@@ -9,6 +9,13 @@ const icons: Record<string, string> = {
   hometown: "◎",
   "bad-decisions": "⚡",
   "divorce-dad": "🚗",
+  "horror-for-people": "■",
+  "friday-night-machines": "⚙",
+  "looks-good-on-a-mattress": "△",
+  "double-features": "∙",
+  "john-waters-night": "✻",
+  "worth-your-attention": "○",
+  "late-and-harder": "◑",
 };
 
 const accentColors: Record<string, { border: string; text: string; tag: string; tagBg: string }> = {
@@ -47,6 +54,48 @@ const accentColors: Record<string, { border: string; text: string; tag: string; 
     text: "text-[#38bdf8]",
     tag: "text-[#38bdf8]",
     tagBg: "bg-[#0ea5e9]/10 border-[#0ea5e9]/20",
+  },
+  "horror-for-people": {
+    border: "border-[#f87171]/25",
+    text: "text-[#f87171]",
+    tag: "text-[#f87171]",
+    tagBg: "bg-[#ef4444]/10 border-[#ef4444]/20",
+  },
+  "friday-night-machines": {
+    border: "border-[#60a5fa]/25",
+    text: "text-[#60a5fa]",
+    tag: "text-[#60a5fa]",
+    tagBg: "bg-[#3b82f6]/10 border-[#3b82f6]/20",
+  },
+  "looks-good-on-a-mattress": {
+    border: "border-[#c084fc]/25",
+    text: "text-[#c084fc]",
+    tag: "text-[#c084fc]",
+    tagBg: "bg-[#7c3aed]/10 border-[#7c3aed]/20",
+  },
+  "double-features": {
+    border: "border-[#fbbf24]/25",
+    text: "text-[#fbbf24]",
+    tag: "text-[#fbbf24]",
+    tagBg: "bg-[#d97706]/10 border-[#d97706]/20",
+  },
+  "john-waters-night": {
+    border: "border-[#f9a8d4]/25",
+    text: "text-[#f9a8d4]",
+    tag: "text-[#f9a8d4]",
+    tagBg: "bg-[#db2777]/10 border-[#db2777]/20",
+  },
+  "worth-your-attention": {
+    border: "border-[#34d399]/25",
+    text: "text-[#34d399]",
+    tag: "text-[#34d399]",
+    tagBg: "bg-[#059669]/10 border-[#059669]/20",
+  },
+  "late-and-harder": {
+    border: "border-[#f87171]/25",
+    text: "text-[#f87171]",
+    tag: "text-[#f87171]",
+    tagBg: "bg-[#7f1d1d]/10 border-[#7f1d1d]/20",
   },
 };
 

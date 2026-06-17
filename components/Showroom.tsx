@@ -3,7 +3,7 @@
 
 const mattresses = [
   {
-    name: "Willow Pass Classic",
+    name: "San Pablo Classic",
     type: "Innerspring",
     firmness: "Medium",
     price: "$649",
@@ -67,7 +67,7 @@ const mattresses = [
     theater: "Floor 2, Center",
   },
   {
-    name: "Concord Nights",
+    name: "Berkeley Nights",
     type: "Foam",
     firmness: "Medium-Soft",
     price: "$599",
