@@ -88,6 +88,21 @@ export const THEME_NIGHTS = [
     concessionNote: "Energy drinks available. We regret nothing.",
   },
   {
+    slug: "horror-for-people",
+    name: "Horror for People Who Say They Don't Like Horror",
+    tagline: "You've seen these. That's the point.",
+    description:
+      "Four films. All canonical. All scary. None of them are niche. If you've been avoiding horror because you don't want gore or cheap jumps, these are the ones people mean when they say horror can be good. The Shining is about a family falling apart in a hotel. The Silence of the Lambs is a procedural. Get Out is a social thriller. The Texas Chain Saw Massacre is thirty years older than you think it should be and still works. We're not being ironic about any of them.",
+    films: [
+      "The Texas Chain Saw Massacre",
+      "The Silence of the Lambs",
+      "The Shining",
+      "Get Out",
+    ],
+    scheduledNote: "Annual, October. One film per night, Thursday through Sunday.",
+    concessionNote: "Normal menu. The mattresses are more comfortable than whatever you watched this on before.",
+  },
+  {
     slug: "divorce-dad",
     name: "Divorce Dad Week",
     tagline: "All eight Fast and the Furious movies. Yes, all eight.",

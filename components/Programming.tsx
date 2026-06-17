@@ -98,6 +98,19 @@ const series: Series[] = [
     ],
   },
   {
+    name: "Horror for People Who Say They Don't Like Horror",
+    slug: "horror-for-people",
+    description:
+      "Four films. All canonical, all legible, all genuinely scary. Not niche. Not gorehound. The ones people actually mean.",
+    color: "text-[#f87171] border-[#991b1b]/40",
+    films: [
+      { title: "The Texas Chain Saw Massacre", year: 1974, director: "Tobe Hooper", runtime: "83 min", rating: "R", note: "Still works. More than you expect." },
+      { title: "The Silence of the Lambs", year: 1991, director: "Jonathan Demme", runtime: "118 min", rating: "R" },
+      { title: "The Shining", year: 1980, director: "Stanley Kubrick", runtime: "146 min", rating: "R" },
+      { title: "Get Out", year: 2017, director: "Jordan Peele", runtime: "104 min", rating: "R" },
+    ],
+  },
+  {
     name: "Late & Harder",
     slug: "late-harder",
     description:
