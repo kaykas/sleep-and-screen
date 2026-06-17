@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 // TonightScreenings — Current week screenings. Cinema showtimes module.
@@ -9,6 +10,7 @@ const screenings = [
     date: "Tonight",
     dayLabel: "TUE",
     film: "Spring Breakers",
+    posterImg: "/images/movies/spring-breakers.jpg",
     year: 2012,
     director: "Harmony Korine",
     runtime: "94 min",
@@ -28,6 +30,7 @@ const screenings = [
     date: "Wed Jun 18",
     dayLabel: "WED",
     film: "RoboCop",
+    posterImg: "/images/movies/robocop.jpg",
     year: 1987,
     director: "Paul Verhoeven",
     runtime: "102 min",
@@ -47,6 +50,7 @@ const screenings = [
     date: "Thu Jun 19",
     dayLabel: "THU",
     film: "Serial Mom",
+    posterImg: "/images/movies/serial-mom-poster.jpg",
     year: 1994,
     director: "John Waters",
     runtime: "95 min",
@@ -66,6 +70,7 @@ const screenings = [
     date: "Fri Jun 20",
     dayLabel: "FRI",
     film: "The Terminator + T2",
+    posterImg: "/images/movies/terminator.jpg",
     year: 1984,
     director: "James Cameron",
     runtime: "107 + 137 min",
@@ -85,6 +90,7 @@ const screenings = [
     date: "Sat Jun 21",
     dayLabel: "SAT",
     film: "Wayne's World + Wayne's World 2",
+    posterImg: "/images/movies/waynes-world.jpg",
     year: 1992,
     director: "Penelope Spheeris / Stephen Surjik",
     runtime: "95 + 95 min",
@@ -102,50 +108,6 @@ const screenings = [
   },
 ];
 
-// Minimal poster graphic — abstract cinema card
-function MiniPoster({ film, year, isTonight }: { film: string; year: number; isTonight: boolean }) {
-  const label = film.split(" ").slice(0, 2).join(" ");
-  const accentColor = isTonight ? "#6366f1" : "#4b5563";
-  const glowColor = isTonight ? "#6366f1" : "#374151";
-  const uid = `${year}-${film.replace(/\s+/g, "")}`;
-
-  return (
-    <svg viewBox="0 0 52 78" className="w-full h-full block" aria-hidden="true">
-      <defs>
-        <linearGradient id={`mp-bg-${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1e1a14" />
-          <stop offset="100%" stopColor="#0d0b08" />
-        </linearGradient>
-        <linearGradient id={`mp-sh-${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#000" stopOpacity="0" />
-          <stop offset="100%" stopColor="#000" stopOpacity="0.65" />
-        </linearGradient>
-      </defs>
-      <rect width="52" height="78" fill={`url(#mp-bg-${uid})`} />
-      <rect x="0" y="0" width="52" height="30" fill={glowColor} opacity="0.07" />
-      <ellipse cx="26" cy="28" rx="7" ry="8" fill={accentColor} opacity="0.12" />
-      <rect x="20" y="35" width="12" height="14" rx="1.5" fill={accentColor} opacity="0.09" />
-      <line x1="5" y1="52" x2="47" y2="52" stroke="#3a3020" strokeWidth="0.4" opacity="0.6" />
-      <rect x="0" y="50" width="52" height="28" fill={`url(#mp-sh-${uid})`} />
-      <text x="26" y="63" textAnchor="middle" fill="#e8e0cc" fontSize="5.5" fontFamily="Georgia, serif" fontWeight="bold">
-        {label}
-      </text>
-      <text x="26" y="71" textAnchor="middle" fill="#5a4e30" fontSize="4.5" fontFamily="monospace" letterSpacing="0.8">
-        {year}
-      </text>
-      {isTonight && (
-        <>
-          <rect x="0" y="0" width="52" height="10" fill={accentColor} opacity="0.25" />
-          <text x="26" y="7.5" textAnchor="middle" fill="#a5b4fc" fontSize="4.5" fontFamily="monospace" fontWeight="bold" letterSpacing="1.5">
-            NOW
-          </text>
-        </>
-      )}
-    </svg>
-  );
-}
-
-// Seat availability bar
 function SeatBar({ seats, max }: { seats: number; max: number }) {
   const pct = Math.round((seats / max) * 100);
   const barColor = seats <= 3 ? "bg-red-500" : seats <= 6 ? "bg-amber-400" : "bg-green-500";
@@ -237,8 +199,14 @@ export default function TonightScreenings() {
 
                   {/* Poster — left strip */}
                   <div className="sm:flex-shrink-0 sm:w-[68px] w-full flex sm:flex-col items-center justify-center sm:py-5 sm:border-r border-b sm:border-b-0 border-gray-100 bg-gray-50 py-4 px-4 sm:px-0">
-                    <div className="w-[52px] h-[78px] rounded overflow-hidden border border-gray-200 flex-shrink-0">
-                      <MiniPoster film={s.film} year={s.year} isTonight={isTonight} />
+                    <div className="w-[52px] h-[78px] rounded overflow-hidden border border-gray-200 flex-shrink-0 relative">
+                      <Image
+                        src={s.posterImg}
+                        alt={`${s.film} poster`}
+                        fill
+                        sizes="52px"
+                        className="object-cover"
+                      />
                     </div>
                   </div>
 
