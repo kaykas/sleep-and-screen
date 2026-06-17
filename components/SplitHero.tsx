@@ -30,10 +30,10 @@ export default function SplitHero() {
   return (
     <section className="bg-gray-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] min-h-[500px]">
+        <div className="grid md:grid-cols-[minmax(0,1fr)_380px] xl:grid-cols-[minmax(0,1fr)_440px] min-h-[500px]">
 
           {/* ── LEFT: Mattress Sale Billboard ── */}
-          <div className="px-6 md:px-10 lg:px-12 py-10 md:py-14 flex flex-col justify-center border-r border-gray-200 relative overflow-hidden">
+          <div className="px-6 md:px-8 lg:px-12 py-9 md:py-12 flex flex-col justify-center md:border-r border-gray-200 relative overflow-hidden">
             {/* Subtle background pattern */}
             <div
               className="absolute inset-0 opacity-[0.018] pointer-events-none"
@@ -47,7 +47,7 @@ export default function SplitHero() {
             {/* Warm wash behind promo card */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50/40 pointer-events-none" aria-hidden="true" />
 
-            <div className="relative max-w-xl">
+            <div className="relative max-w-[560px]">
               {/* Event badge row */}
               <div className="mb-4 flex items-center gap-2.5 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 bg-[#dc2626] text-white text-[10px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full">
@@ -58,15 +58,15 @@ export default function SplitHero() {
               </div>
 
               {/* Headline — controlled size, deliberate composition */}
-              <h1 className="text-3xl md:text-[38px] lg:text-[42px] font-black tracking-tight text-gray-900 leading-[1.05] mb-4">
+              <h1 className="text-3xl md:text-[34px] lg:text-[42px] font-black tracking-tight text-gray-900 leading-[1.05] mb-4">
                 Up to{" "}
                 <span className="text-[#dc2626]">40% Off</span>
                 {" "}Every Mattress
                 <br />
-                <span className="text-[#1d4ed8] text-2xl md:text-3xl lg:text-[34px] font-bold">on the Showroom Floor</span>
+                <span className="text-[#1d4ed8] text-2xl md:text-[27px] lg:text-[34px] font-bold">on the Showroom Floor</span>
               </h1>
 
-              <p className="text-[15px] text-gray-600 max-w-sm leading-relaxed mb-6">
+              <p className="text-[15px] text-gray-600 max-w-[420px] leading-relaxed mb-6">
                 Innerspring, memory foam, and hybrid — all on the floor at{" "}
                 <strong className="text-gray-800">{SITE.address.street}</strong>. Walk in, no
                 appointment. No pressure, no commission.
@@ -140,9 +140,9 @@ export default function SplitHero() {
             </div>
 
             {/* ── POSTER + METADATA ── */}
-            <div className="flex gap-5 px-6 py-5">
+            <div className="flex gap-5 px-6 py-5 md:flex-col xl:flex-row">
               {/* Poster */}
-              <div className="flex-shrink-0 w-[108px] sm:w-[118px] aspect-[2/3] rounded-lg overflow-hidden border border-white/15 shadow-xl bg-black/30 relative">
+              <div className="flex-shrink-0 w-[108px] sm:w-[118px] md:w-[132px] xl:w-[118px] aspect-[2/3] rounded-lg overflow-hidden border border-white/15 shadow-xl bg-black/30 relative">
                 <Image
                   src={tonightFeature.posterUrl}
                   alt={`${tonightFeature.film} theatrical poster`}
