@@ -15,7 +15,11 @@ type Series = {
   name: string;
   slug: string;
   description: string;
-  color: string;
+  accentClass: string;
+  tabBg: string;
+  tabText: string;
+  tabBorder: string;
+  headerBg: string;
   films: Film[];
 };
 
@@ -25,7 +29,11 @@ const series: Series[] = [
     slug: "friday-machines",
     description:
       "Robots, cyborgs, systems. Films where the technology is practical and the stakes are real. Good for a Friday.",
-    color: "text-[#60a5fa] border-[#1d4ed8]/40",
+    accentClass: "text-blue-700",
+    tabBg: "bg-blue-50 border-blue-300",
+    tabText: "text-blue-700",
+    tabBorder: "border-blue-300",
+    headerBg: "bg-blue-50",
     films: [
       { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", sharedPick: true },
       { title: "Terminator 2: Judgment Day", year: 1991, director: "James Cameron", runtime: "137 min", rating: "R", sharedPick: true, note: "Double feature option" },
@@ -40,7 +48,11 @@ const series: Series[] = [
     slug: "looks-good",
     description:
       "Visually ambitious films that reward watching on a big screen lying down. Strong cinematography, strong soundtracks, things happening in the frame.",
-    color: "text-[#a78bfa] border-[#7c3aed]/40",
+    accentClass: "text-purple-700",
+    tabBg: "bg-purple-50 border-purple-300",
+    tabText: "text-purple-700",
+    tabBorder: "border-purple-300",
+    headerBg: "bg-purple-50",
     films: [
       { title: "Holy Motors", year: 2012, director: "Leos Carax", runtime: "115 min", rating: "NR", sharedPick: true },
       { title: "Under the Skin", year: 2013, director: "Jonathan Glazer", runtime: "108 min", rating: "R", sharedPick: true },
@@ -55,7 +67,11 @@ const series: Series[] = [
     slug: "double-features",
     description:
       "Two films, one night. Announced together because they're better back to back. Short intermission. The counter stays open.",
-    color: "text-[#fbbf24] border-[#92400e]/40",
+    accentClass: "text-amber-700",
+    tabBg: "bg-amber-50 border-amber-300",
+    tabText: "text-amber-700",
+    tabBorder: "border-amber-300",
+    headerBg: "bg-amber-50",
     films: [
       { title: "Wayne's World", year: 1992, director: "Penelope Spheeris", runtime: "95 min", rating: "PG-13", sharedPick: true, note: "Double feature with Wayne's World 2" },
       { title: "Wayne's World 2", year: 1993, director: "Stephen Surjik", runtime: "95 min", rating: "PG-13", sharedPick: true, note: "Double feature — shown same night" },
@@ -70,7 +86,11 @@ const series: Series[] = [
     slug: "waters-night",
     description:
       "John Waters is the only person who gets his own series. Serial Mom, Pink Flamingos, Polyester, Hairspray. One night per film. Crowd light on judgment.",
-    color: "text-[#f9a8d4] border-[#9d174d]/40",
+    accentClass: "text-pink-700",
+    tabBg: "bg-pink-50 border-pink-300",
+    tabText: "text-pink-700",
+    tabBorder: "border-pink-300",
+    headerBg: "bg-pink-50",
     films: [
       { title: "Serial Mom", year: 1994, director: "John Waters", runtime: "95 min", rating: "R", sharedPick: true },
       { title: "Pink Flamingos", year: 1972, director: "John Waters", runtime: "93 min", rating: "NR", note: "Adults 18+ only" },
@@ -85,7 +105,11 @@ const series: Series[] = [
     slug: "worth-attention",
     description:
       "Films from the last ten years that are good and didn't get the run they deserved, or that people still haven't seen.",
-    color: "text-[#34d399] border-[#065f46]/40",
+    accentClass: "text-teal-700",
+    tabBg: "bg-teal-50 border-teal-300",
+    tabText: "text-teal-700",
+    tabBorder: "border-teal-300",
+    headerBg: "bg-teal-50",
     films: [
       { title: "The Eyes of Tammy Faye", year: 2021, director: "Michael Showalter", runtime: "126 min", rating: "PG-13", sharedPick: true },
       { title: "First Wives Club", year: 1996, director: "Hugh Wilson", runtime: "103 min", rating: "PG", sharedPick: true },
@@ -100,7 +124,11 @@ const series: Series[] = [
     slug: "horror-for-people",
     description:
       "Four films. All canonical, all legible, all genuinely scary. Not niche. Not gorehound. The ones people actually mean.",
-    color: "text-[#f87171] border-[#991b1b]/40",
+    accentClass: "text-red-700",
+    tabBg: "bg-red-50 border-red-300",
+    tabText: "text-red-700",
+    tabBorder: "border-red-300",
+    headerBg: "bg-red-50",
     films: [
       { title: "The Texas Chain Saw Massacre", year: 1974, director: "Tobe Hooper", runtime: "83 min", rating: "R", note: "Still works. More than you expect." },
       { title: "The Silence of the Lambs", year: 1991, director: "Jonathan Demme", runtime: "118 min", rating: "R" },
@@ -113,7 +141,11 @@ const series: Series[] = [
     slug: "late-harder",
     description:
       "Films that ask more. Scheduled later in the week or at 10 PM on select nights. Not homework — just films that work better when you're willing to stay with them.",
-    color: "text-[#f87171] border-[#7f1d1d]/40",
+    accentClass: "text-stone-700",
+    tabBg: "bg-stone-100 border-stone-400",
+    tabText: "text-stone-700",
+    tabBorder: "border-stone-400",
+    headerBg: "bg-stone-100",
     films: [
       { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR", sharedPick: true },
       { title: "Come and See", year: 1985, director: "Elem Klimov", runtime: "142 min", rating: "NR", sharedPick: true },
@@ -130,30 +162,31 @@ export default function Programming() {
   const active = series.find((s) => s.slug === activeSlug) ?? series[0];
 
   return (
-    <section id="programming" className="py-24 bg-[#0d0d0d]">
+    <section id="programming" className="py-24 bg-stone-50">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
+
+        {/* Section header */}
         <div className="mb-10">
-          <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
+          <span className="text-xs font-sans tracking-widest uppercase text-stone-400 mb-3 block">
             Season 1 · Summer 2026
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-2">Programming</h2>
-          <p className="text-[#9ca3af] font-sans text-sm">
-            36 films. 6 series. One screen. Showtime every night at 8 PM.
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-3">Programming</h2>
+          <p className="text-stone-500 font-sans text-sm">
+            36 films. 6 series. One screen. Showtime every night at 8&nbsp;PM.
           </p>
         </div>
 
-        {/* Series tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Series tab selector */}
+        <div className="flex flex-wrap gap-2 mb-8">
           {series.map((s) => (
             <button
               type="button"
               key={s.slug}
               onClick={() => setActiveSlug(s.slug)}
-              className={`text-xs font-sans px-4 py-2 rounded-full border transition-all ${
+              className={`text-sm font-sans font-medium px-4 py-2 rounded-lg border transition-all leading-snug ${
                 activeSlug === s.slug
-                  ? `${s.color} bg-[#111]`
-                  : "border-[#1f1f1f] text-[#6b7280] hover:border-[#2d2d2d] hover:text-[#9ca3af]"
+                  ? `${s.tabBg} ${s.tabText} shadow-sm`
+                  : "bg-white border-stone-200 text-stone-500 hover:border-stone-300 hover:text-stone-700"
               }`}
             >
               {s.name}
@@ -161,82 +194,83 @@ export default function Programming() {
           ))}
         </div>
 
-        {/* Active series */}
-        <div className="bg-[#111] border border-[#1f1f1f] rounded-xl overflow-hidden">
+        {/* Active series panel */}
+        <div className="rounded-2xl border border-stone-200 overflow-hidden bg-white shadow-sm">
+
           {/* Series header */}
-          <div className="p-8 border-b border-[#1a1a1a]">
+          <div className={`px-8 py-7 border-b border-stone-100 ${active.headerBg}`}>
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
-                <h3 className={`text-2xl font-bold mb-2 ${active.color.split(" ")[0]}`}>
+                <h3 className={`text-xl font-bold mb-1.5 ${active.accentClass}`}>
                   {active.name}
                 </h3>
-                <p className="text-sm text-[#9ca3af] font-sans max-w-lg leading-relaxed">
+                <p className="text-sm text-stone-600 font-sans max-w-xl leading-relaxed">
                   {active.description}
                 </p>
               </div>
-              <div className="text-xs font-sans text-[#6b7280] text-right">
-                <div>{active.films.length} films</div>
-                <div className="text-[#4b5563]">in this series</div>
+              <div className="text-right flex-shrink-0">
+                <div className={`text-2xl font-bold ${active.accentClass}`}>{active.films.length}</div>
+                <div className="text-xs font-sans text-stone-400">films</div>
               </div>
             </div>
           </div>
 
-          {/* Film table */}
-          <div>
+          {/* Film list */}
+          <div className="divide-y divide-stone-100">
             {active.films.map((film, i) => (
               <div
                 key={i}
-                className="flex flex-wrap items-center gap-4 px-8 py-5 border-b border-[#131313] last:border-b-0 hover:bg-[#0d0d0d] transition-colors group"
+                className="flex flex-wrap items-center gap-x-4 gap-y-1 px-6 sm:px-8 py-4 hover:bg-stone-50 transition-colors group"
               >
-                <div className="text-xs font-sans text-[#2d2d2d] w-6 flex-shrink-0 font-bold">
+                {/* Number */}
+                <div className={`font-mono text-xs font-bold w-7 flex-shrink-0 ${active.accentClass} opacity-60`}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
 
+                {/* Title + meta */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="font-bold group-hover:text-[#a78bfa] transition-colors">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-0.5">
+                    <span className="font-bold text-stone-900 text-sm sm:text-base">
                       {film.title}
                     </span>
-                    <span className="text-[#6b7280] font-sans text-sm">{film.year}</span>
+                    <span className="text-stone-400 font-sans text-sm">{film.year}</span>
                     {film.sharedPick && (
-                      <span className="text-[10px] font-sans bg-[#7c3aed]/15 text-[#c4b5fd] border border-[#7c3aed]/20 px-1.5 py-0.5 rounded">
-                        A+K Pick
-                      </span>
-                    )}
-                    {film.note && (
-                      <span className="text-[10px] font-sans text-[#6b7280] italic">
-                        {film.note}
+                      <span className="inline-flex items-center gap-1 text-[10px] font-sans font-semibold bg-violet-100 text-violet-700 border border-violet-200 px-2 py-0.5 rounded-full">
+                        ★ A+K Pick
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-[#6b7280] font-sans">Dir. {film.director}</div>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5">
+                    <span className="text-xs text-stone-400 font-sans">Dir. {film.director}</span>
+                    {film.note && (
+                      <span className="text-xs text-stone-400 font-sans italic">{film.note}</span>
+                    )}
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-xs font-sans text-[#6b7280] flex-shrink-0">
+                {/* Runtime + rating */}
+                <div className="flex items-center gap-3 text-xs font-sans text-stone-400 flex-shrink-0">
                   <span>{film.runtime}</span>
-                  <span className="border border-[#2d2d2d] px-1.5 py-0.5 rounded">
+                  <span className="border border-stone-200 px-1.5 py-0.5 rounded text-stone-500 font-medium">
                     {film.rating}
                   </span>
-                  <button
-                    type="button"
-                    className="text-[#6b7280] hover:text-[#7c3aed] transition-colors opacity-0 group-hover:opacity-100"
-                  >
+                  <span className="text-stone-300 group-hover:text-violet-500 transition-colors opacity-0 group-hover:opacity-100 hidden sm:inline">
                     Reserve →
-                  </button>
+                  </span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Footer note */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-sans text-[#4b5563]">
-          <span className="text-[#a78bfa] bg-[#7c3aed]/10 px-1.5 py-0.5 rounded">
-            A+K Pick
+        {/* Legend + footnote */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs font-sans text-stone-400">
+          <span className="inline-flex items-center gap-1.5 bg-violet-100 text-violet-700 border border-violet-200 px-2.5 py-1 rounded-full font-semibold">
+            ★ A+K Pick
           </span>
-          <span className="text-[#9ca3af]">= Alexandra and Kitrina programmed it together</span>
+          <span>= Alexandra and Kitrina programmed it together</span>
         </div>
-        <p className="mt-4 text-xs font-sans text-[#4b5563] text-center">
+        <p className="mt-3 text-xs font-sans text-stone-400 text-center">
           Programming subject to change. All screenings are for cultural purposes. This is a concept venue; no licensed screenings are implied.
         </p>
       </div>

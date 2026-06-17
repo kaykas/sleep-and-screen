@@ -18,84 +18,189 @@ const icons: Record<string, string> = {
   "late-and-harder": "◑",
 };
 
-const accentColors: Record<string, { border: string; text: string; tag: string; tagBg: string }> = {
+type ThemeAccent = {
+  bg: string;
+  border: string;
+  heading: string;
+  badge: string;
+  badgeBg: string;
+  tagBg: string;
+  tagText: string;
+  tagBorder: string;
+  iconColor: string;
+  cardActiveBg: string;
+  divider: string;
+};
+
+const accentMap: Record<string, ThemeAccent> = {
   breakup: {
-    border: "border-[#f87171]/25",
-    text: "text-[#f87171]",
-    tag: "text-[#f87171]",
-    tagBg: "bg-[#f87171]/10 border-[#f87171]/20",
+    bg: "bg-rose-50",
+    border: "border-rose-200",
+    heading: "text-rose-700",
+    badge: "text-rose-700",
+    badgeBg: "bg-rose-100 border-rose-200",
+    tagBg: "bg-rose-600",
+    tagText: "text-white",
+    tagBorder: "border-rose-600",
+    iconColor: "text-rose-400",
+    cardActiveBg: "bg-rose-50 border-rose-300",
+    divider: "bg-rose-100",
   },
   insomnia: {
-    border: "border-[#a78bfa]/25",
-    text: "text-[#a78bfa]",
-    tag: "text-[#a78bfa]",
-    tagBg: "bg-[#7c3aed]/10 border-[#7c3aed]/20",
+    bg: "bg-violet-50",
+    border: "border-violet-200",
+    heading: "text-violet-700",
+    badge: "text-violet-700",
+    badgeBg: "bg-violet-100 border-violet-200",
+    tagBg: "bg-violet-600",
+    tagText: "text-white",
+    tagBorder: "border-violet-600",
+    iconColor: "text-violet-400",
+    cardActiveBg: "bg-violet-50 border-violet-300",
+    divider: "bg-violet-100",
   },
   "bad-date": {
-    border: "border-[#fbbf24]/25",
-    text: "text-[#fbbf24]",
-    tag: "text-[#fbbf24]",
-    tagBg: "bg-[#d97706]/10 border-[#d97706]/20",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
+    heading: "text-amber-700",
+    badge: "text-amber-700",
+    badgeBg: "bg-amber-100 border-amber-200",
+    tagBg: "bg-amber-500",
+    tagText: "text-white",
+    tagBorder: "border-amber-500",
+    iconColor: "text-amber-400",
+    cardActiveBg: "bg-amber-50 border-amber-300",
+    divider: "bg-amber-100",
   },
   hometown: {
-    border: "border-[#34d399]/25",
-    text: "text-[#34d399]",
-    tag: "text-[#34d399]",
-    tagBg: "bg-[#34d399]/10 border-[#34d399]/20",
+    bg: "bg-emerald-50",
+    border: "border-emerald-200",
+    heading: "text-emerald-700",
+    badge: "text-emerald-700",
+    badgeBg: "bg-emerald-100 border-emerald-200",
+    tagBg: "bg-emerald-600",
+    tagText: "text-white",
+    tagBorder: "border-emerald-600",
+    iconColor: "text-emerald-400",
+    cardActiveBg: "bg-emerald-50 border-emerald-300",
+    divider: "bg-emerald-100",
   },
   "bad-decisions": {
-    border: "border-[#fb923c]/25",
-    text: "text-[#fb923c]",
-    tag: "text-[#fb923c]",
-    tagBg: "bg-[#fb923c]/10 border-[#fb923c]/20",
+    bg: "bg-orange-50",
+    border: "border-orange-200",
+    heading: "text-orange-700",
+    badge: "text-orange-700",
+    badgeBg: "bg-orange-100 border-orange-200",
+    tagBg: "bg-orange-500",
+    tagText: "text-white",
+    tagBorder: "border-orange-500",
+    iconColor: "text-orange-400",
+    cardActiveBg: "bg-orange-50 border-orange-300",
+    divider: "bg-orange-100",
   },
   "divorce-dad": {
-    border: "border-[#38bdf8]/25",
-    text: "text-[#38bdf8]",
-    tag: "text-[#38bdf8]",
-    tagBg: "bg-[#0ea5e9]/10 border-[#0ea5e9]/20",
+    bg: "bg-sky-50",
+    border: "border-sky-200",
+    heading: "text-sky-700",
+    badge: "text-sky-700",
+    badgeBg: "bg-sky-100 border-sky-200",
+    tagBg: "bg-sky-600",
+    tagText: "text-white",
+    tagBorder: "border-sky-600",
+    iconColor: "text-sky-400",
+    cardActiveBg: "bg-sky-50 border-sky-300",
+    divider: "bg-sky-100",
   },
   "horror-for-people": {
-    border: "border-[#f87171]/25",
-    text: "text-[#f87171]",
-    tag: "text-[#f87171]",
-    tagBg: "bg-[#ef4444]/10 border-[#ef4444]/20",
+    bg: "bg-red-50",
+    border: "border-red-200",
+    heading: "text-red-700",
+    badge: "text-red-700",
+    badgeBg: "bg-red-100 border-red-200",
+    tagBg: "bg-red-600",
+    tagText: "text-white",
+    tagBorder: "border-red-600",
+    iconColor: "text-red-400",
+    cardActiveBg: "bg-red-50 border-red-300",
+    divider: "bg-red-100",
   },
   "friday-night-machines": {
-    border: "border-[#60a5fa]/25",
-    text: "text-[#60a5fa]",
-    tag: "text-[#60a5fa]",
-    tagBg: "bg-[#3b82f6]/10 border-[#3b82f6]/20",
+    bg: "bg-blue-50",
+    border: "border-blue-200",
+    heading: "text-blue-700",
+    badge: "text-blue-700",
+    badgeBg: "bg-blue-100 border-blue-200",
+    tagBg: "bg-blue-600",
+    tagText: "text-white",
+    tagBorder: "border-blue-600",
+    iconColor: "text-blue-400",
+    cardActiveBg: "bg-blue-50 border-blue-300",
+    divider: "bg-blue-100",
   },
   "looks-good-on-a-mattress": {
-    border: "border-[#c084fc]/25",
-    text: "text-[#c084fc]",
-    tag: "text-[#c084fc]",
-    tagBg: "bg-[#7c3aed]/10 border-[#7c3aed]/20",
+    bg: "bg-purple-50",
+    border: "border-purple-200",
+    heading: "text-purple-700",
+    badge: "text-purple-700",
+    badgeBg: "bg-purple-100 border-purple-200",
+    tagBg: "bg-purple-600",
+    tagText: "text-white",
+    tagBorder: "border-purple-600",
+    iconColor: "text-purple-400",
+    cardActiveBg: "bg-purple-50 border-purple-300",
+    divider: "bg-purple-100",
   },
   "double-features": {
-    border: "border-[#fbbf24]/25",
-    text: "text-[#fbbf24]",
-    tag: "text-[#fbbf24]",
-    tagBg: "bg-[#d97706]/10 border-[#d97706]/20",
+    bg: "bg-yellow-50",
+    border: "border-yellow-200",
+    heading: "text-yellow-700",
+    badge: "text-yellow-700",
+    badgeBg: "bg-yellow-100 border-yellow-200",
+    tagBg: "bg-yellow-500",
+    tagText: "text-white",
+    tagBorder: "border-yellow-500",
+    iconColor: "text-yellow-500",
+    cardActiveBg: "bg-yellow-50 border-yellow-300",
+    divider: "bg-yellow-100",
   },
   "john-waters-night": {
-    border: "border-[#f9a8d4]/25",
-    text: "text-[#f9a8d4]",
-    tag: "text-[#f9a8d4]",
-    tagBg: "bg-[#db2777]/10 border-[#db2777]/20",
+    bg: "bg-pink-50",
+    border: "border-pink-200",
+    heading: "text-pink-700",
+    badge: "text-pink-700",
+    badgeBg: "bg-pink-100 border-pink-200",
+    tagBg: "bg-pink-600",
+    tagText: "text-white",
+    tagBorder: "border-pink-600",
+    iconColor: "text-pink-400",
+    cardActiveBg: "bg-pink-50 border-pink-300",
+    divider: "bg-pink-100",
   },
   "worth-your-attention": {
-    border: "border-[#34d399]/25",
-    text: "text-[#34d399]",
-    tag: "text-[#34d399]",
-    tagBg: "bg-[#059669]/10 border-[#059669]/20",
+    bg: "bg-teal-50",
+    border: "border-teal-200",
+    heading: "text-teal-700",
+    badge: "text-teal-700",
+    badgeBg: "bg-teal-100 border-teal-200",
+    tagBg: "bg-teal-600",
+    tagText: "text-white",
+    tagBorder: "border-teal-600",
+    iconColor: "text-teal-400",
+    cardActiveBg: "bg-teal-50 border-teal-300",
+    divider: "bg-teal-100",
   },
   "late-and-harder": {
-    border: "border-[#f87171]/25",
-    text: "text-[#f87171]",
-    tag: "text-[#f87171]",
-    tagBg: "bg-[#7f1d1d]/10 border-[#7f1d1d]/20",
+    bg: "bg-stone-100",
+    border: "border-stone-300",
+    heading: "text-stone-700",
+    badge: "text-stone-700",
+    badgeBg: "bg-stone-200 border-stone-300",
+    tagBg: "bg-stone-700",
+    tagText: "text-white",
+    tagBorder: "border-stone-700",
+    iconColor: "text-stone-500",
+    cardActiveBg: "bg-stone-100 border-stone-400",
+    divider: "bg-stone-200",
   },
 };
 
@@ -103,106 +208,121 @@ export default function ThemeNights() {
   const [open, setOpen] = useState<string>("breakup");
 
   const active = THEME_NIGHTS.find((t) => t.slug === open) ?? THEME_NIGHTS[0];
-  const colors = accentColors[active.slug] ?? accentColors["breakup"];
+  const colors = accentMap[active.slug] ?? accentMap["breakup"];
 
   return (
-    <section id="theme-nights" className="py-24 bg-[#0d0d0d]">
+    <section id="theme-nights" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-12">
-          <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
+          <span className="text-xs font-sans tracking-widest uppercase text-stone-400 mb-3 block">
             The calendar
           </span>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-2">
-                Theme Nights
-              </h2>
-              <p className="text-[#9ca3af] font-sans text-sm max-w-lg leading-relaxed">
-                Recurring series built around occasions. The mattresses stay the same. The program changes around them.
-              </p>
-            </div>
-          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-900 mb-3">
+            Theme Nights
+          </h2>
+          <p className="text-stone-500 font-sans text-sm max-w-lg leading-relaxed">
+            Recurring series built around occasions. The mattresses stay the same. The program changes around them.
+          </p>
         </div>
 
-        {/* Tab row */}
-        <div className="flex flex-wrap gap-2 mb-10">
+        {/* Theme selector grid — cards, not chips */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mb-10">
           {THEME_NIGHTS.map((night) => {
-            const c = accentColors[night.slug] ?? accentColors["breakup"];
+            const c = accentMap[night.slug] ?? accentMap["breakup"];
             const isActive = night.slug === open;
             return (
               <button
                 key={night.slug}
                 onClick={() => setOpen(night.slug)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded text-sm font-sans transition-colors border ${
+                className={`flex flex-col items-start gap-1.5 px-3 py-3 rounded-lg border text-left transition-all ${
                   isActive
-                    ? `${c.tagBg} ${c.text} ${c.border}`
-                    : "border-[#1f1f1f] text-[#6b7280] hover:text-[#9ca3af] hover:border-[#2d2d2d]"
+                    ? `${c.cardActiveBg} shadow-sm`
+                    : "bg-white border-stone-200 hover:border-stone-300 hover:bg-stone-50"
                 }`}
               >
-                <span className="text-base leading-none">{icons[night.slug]}</span>
-                {night.name}
+                <span className={`text-xl leading-none ${isActive ? c.iconColor : "text-stone-300"}`}>
+                  {icons[night.slug]}
+                </span>
+                <span
+                  className={`text-xs font-sans font-semibold leading-tight ${
+                    isActive ? c.heading : "text-stone-600"
+                  }`}
+                >
+                  {night.name}
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Active night detail */}
-        <div className={`bg-[#111] border rounded-xl overflow-hidden transition-colors ${colors.border}`}>
-          <div className="grid lg:grid-cols-[1.2fr_1fr] divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]">
+        {/* Active night detail card */}
+        <div className={`rounded-2xl border-2 overflow-hidden transition-all ${colors.border} ${colors.bg}`}>
+          <div className="grid lg:grid-cols-[1.25fr_1fr] divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-white">
+
             {/* Left: narrative */}
             <div className="p-8 lg:p-10">
-              <div className="flex items-center gap-3 mb-5">
-                <span className={`text-3xl ${colors.text}`}>{icons[active.slug]}</span>
+              {/* Series label + name */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className={`text-4xl leading-none ${colors.iconColor}`}>
+                  {icons[active.slug]}
+                </span>
                 <div>
-                  <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280]">
+                  <div className="text-[10px] font-sans tracking-widest uppercase text-stone-400 mb-0.5">
                     Recurring series
                   </div>
-                  <h3 className={`text-2xl font-bold ${colors.text}`}>{active.name}</h3>
+                  <h3 className={`text-2xl font-bold leading-tight ${colors.heading}`}>
+                    {active.name}
+                  </h3>
                 </div>
               </div>
 
-              {/* Tagline */}
-              <p className="text-lg font-medium text-[#f5f0e8] mb-5 leading-snug">
+              {/* Tagline — styled as a pull quote */}
+              <blockquote className={`text-base font-semibold leading-snug mb-5 pl-4 border-l-4 ${colors.border} ${colors.heading}`}>
                 &ldquo;{active.tagline}&rdquo;
-              </p>
+              </blockquote>
 
-              <p className="text-sm text-[#9ca3af] font-sans leading-relaxed mb-8">
+              <p className="text-sm text-stone-600 font-sans leading-relaxed mb-8">
                 {active.description}
               </p>
 
               {/* Schedule + concessions */}
               <div className="space-y-3">
-                <div className="flex gap-3 text-sm font-sans">
-                  <span className="text-[#4b5563] w-24 flex-shrink-0">Schedule</span>
-                  <span className="text-[#9ca3af]">{active.scheduledNote}</span>
+                <div className="flex gap-3 items-start text-sm font-sans">
+                  <span className={`text-[10px] font-sans tracking-widest uppercase font-bold w-20 flex-shrink-0 mt-0.5 ${colors.badge}`}>
+                    Schedule
+                  </span>
+                  <span className="text-stone-600">{active.scheduledNote}</span>
                 </div>
-                <div className="flex gap-3 text-sm font-sans">
-                  <span className="text-[#4b5563] w-24 flex-shrink-0">Counter</span>
-                  <span className="text-[#9ca3af]">{active.concessionNote}</span>
+                <div className={`h-px w-full ${colors.divider}`} />
+                <div className="flex gap-3 items-start text-sm font-sans">
+                  <span className={`text-[10px] font-sans tracking-widest uppercase font-bold w-20 flex-shrink-0 mt-0.5 ${colors.badge}`}>
+                    Counter
+                  </span>
+                  <span className="text-stone-600">{active.concessionNote}</span>
                 </div>
               </div>
             </div>
 
             {/* Right: film list */}
             <div className="p-8 lg:p-10">
-              <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-5">
+              <div className={`text-[10px] font-sans tracking-widest uppercase font-bold mb-5 ${colors.badge}`}>
                 Films in this series
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {active.films.map((film, i) => (
                   <li
                     key={film}
-                    className="flex items-center gap-3 py-2.5 border-b border-[#131313] last:border-0"
+                    className="flex items-center gap-3 py-2.5 border-b border-white/70 last:border-0"
                   >
-                    <span className="text-[#2d2d2d] font-sans text-xs w-5 flex-shrink-0">
+                    <span className={`font-mono text-xs w-6 flex-shrink-0 font-bold ${colors.iconColor}`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-sm font-medium text-[#f5f0e8]">{film}</span>
+                    <span className="text-sm font-medium text-stone-800">{film}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-xs font-sans text-[#4b5563] leading-relaxed">
+              <p className="mt-6 text-xs font-sans text-stone-400 leading-relaxed">
                 Films rotate within each series. Schedule posted weekly. Sign up for the newsletter to see the full season.
               </p>
             </div>
@@ -210,7 +330,7 @@ export default function ThemeNights() {
         </div>
 
         {/* Bottom footnote */}
-        <p className="mt-6 text-xs font-sans text-[#2d2d2d] text-center">
+        <p className="mt-6 text-xs font-sans text-stone-400 text-center">
           Theme nights use the same mattresses, same screen, same house rules. The occasion changes the program, not the venue.
         </p>
       </div>
