@@ -131,7 +131,7 @@ export default function JointPicks() {
               </div>
               <div>
                 <div className="text-sm font-medium text-[#f5f0e8] font-sans">
-                  {SECOND_VOICE.fullName}
+                  {SECOND_VOICE.firstName}
                 </div>
                 <div className="text-xs text-[#6b7280] font-sans">
                   {SECOND_VOICE.role}

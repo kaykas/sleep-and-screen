@@ -65,7 +65,7 @@ export default function KitrinasPicks() {
               </div>
               <div>
                 <div className="text-sm font-medium text-[#f5f0e8] font-sans">
-                  {SECOND_VOICE.fullName}
+                  {SECOND_VOICE.firstName}
                 </div>
                 <div className="text-xs text-[#6b7280] font-sans">
                   {SECOND_VOICE.role}
@@ -117,7 +117,7 @@ export default function KitrinasPicks() {
               <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded text-xs">
                 {SECOND_VOICE.firstName}&apos;s Pick
               </span>{" "}
-              in the schedule are personally selected by {SECOND_VOICE.fullName}.
+              in the schedule are personally selected by {SECOND_VOICE.firstName}.
             </div>
           </div>
         </div>

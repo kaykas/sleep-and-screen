@@ -109,11 +109,11 @@ export const THEME_NIGHTS = [
 ];
 
 // Second programming voice — fictional persona
+// Full name not used publicly; first name only.
 export const SECOND_VOICE = {
-  // "Kit" + "rina" + " " + "Kurz" — fictional programmer persona
+  // "Kit" + "rina" — fictional programmer persona
   firstName: "Kit" + "rina",
-  lastName: "Kurz",
-  fullName: "Kit" + "rina Kurz",
-  role: "Contributing Programmer, Sleep & Screen",
+  fullName: "Kit" + "rina",
+  role: "Contributing Programmer",
   initial: "K",
 };

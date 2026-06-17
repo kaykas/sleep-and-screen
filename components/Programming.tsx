@@ -233,7 +233,7 @@ export default function Programming() {
           <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded">
             {SECOND_VOICE.firstName}&apos;s Pick
           </span>
-          <span className="text-[#9ca3af]">= {SECOND_VOICE.fullName} asked for it</span>
+          <span className="text-[#9ca3af]">= {SECOND_VOICE.firstName} asked for it</span>
         </div>
         <p className="mt-4 text-xs font-sans text-[#4b5563] text-center">
           Programming subject to change. All screenings are for cultural purposes. This is a concept venue; no licensed screenings are implied.
