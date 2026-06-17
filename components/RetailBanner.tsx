@@ -23,7 +23,7 @@ const valueProps = [
   {
     icon: "🚚",
     headline: "Free Delivery & Setup",
-    sub: "Concord, Walnut Creek, Pleasant Hill + surrounding East Bay.",
+    sub: "Berkeley, Oakland, Alameda + surrounding East Bay.",
     color: "text-slate-700",
     bg: "bg-slate-50",
     border: "border-slate-200",

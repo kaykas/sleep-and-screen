@@ -14,7 +14,7 @@ const deliverySteps = [
   {
     step: "02",
     title: "Pick Your Date",
-    body: "Same-day pickup available. Or schedule delivery — we cover Concord, Walnut Creek, Pleasant Hill, and surrounding East Bay.",
+    body: "Same-day pickup available. Or schedule delivery — we cover Berkeley, Oakland, Alameda, and surrounding East Bay.",
     color: "text-slate-700",
     bg: "bg-slate-50",
     border: "border-slate-200",
@@ -38,7 +38,7 @@ const deliverySteps = [
 ];
 
 const serviceItems = [
-  ["Free delivery", "Concord & surrounding East Bay"],
+  ["Free delivery", "Berkeley & surrounding East Bay"],
   ["Setup included", "Frame assembly and packaging removal"],
   ["Old mattress removal", "$40, scheduled with delivery"],
   ["Warranty service", "Handled in-store — no manufacturer runaround"],
