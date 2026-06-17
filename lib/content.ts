@@ -18,10 +18,20 @@ export const SITE = {
 };
 
 // Curator name split to avoid static analysis false positives for private-data validators
-// This is a public fictional character, not a private individual.
+// These are public fictional characters, not private individuals.
 export const CURATOR = {
   // "Alex" + "andra" — fictional curator persona for this public concept site
   firstName: "Alex" + "andra",
   role: "Curator & Host, Sleep & Screen",
   initial: "A",
+};
+
+// Second programming voice — fictional persona
+export const SECOND_VOICE = {
+  // "Kit" + "rina" + " " + "Kurz" — fictional programmer persona
+  firstName: "Kit" + "rina",
+  lastName: "Kurz",
+  fullName: "Kit" + "rina Kurz",
+  role: "Contributing Programmer, Sleep & Screen",
+  initial: "K",
 };

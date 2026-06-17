@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CURATOR } from "@/lib/content";
+import { CURATOR, SECOND_VOICE } from "@/lib/content";
 
 type Film = {
   title: string;
@@ -10,6 +10,7 @@ type Film = {
   rating: string;
   note?: string;
   alexandras?: boolean;
+  kitrinas?: boolean;
 };
 
 type Series = {
@@ -58,7 +59,7 @@ const series: Series[] = [
       "The body as threat, mystery, failure, or transformation. Not exactly horror. Not exactly not.",
     color: "text-[#f87171] border-[#7f1d1d]/40",
     films: [
-      { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR" },
+      { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR", kitrinas: true },
       { title: "The Fly", year: 1986, director: "David Cronenberg", runtime: "96 min", rating: "R" },
       { title: "Naked Lunch", year: 1991, director: "David Cronenberg", runtime: "115 min", rating: "R" },
       { title: "Tusk", year: 1980, director: "Alexandro Jodorowsky", runtime: "100 min", rating: "R", note: "Jodorowsky short programs" },
@@ -73,8 +74,8 @@ const series: Series[] = [
       "The canon of late-night cinema. Films that became famous by being watched repeatedly after midnight by people who couldn't sleep.",
     color: "text-[#a78bfa] border-[#7c3aed]/40",
     films: [
-      { title: "Eraserhead", year: 1977, director: "David Lynch", runtime: "89 min", rating: "NR" },
-      { title: "El Topo", year: 1970, director: "Alejandro Jodorowsky", runtime: "125 min", rating: "NR" },
+      { title: "Eraserhead", year: 1977, director: "David Lynch", runtime: "89 min", rating: "NR", kitrinas: true },
+      { title: "El Topo", year: 1970, director: "Alejandro Jodorowsky", runtime: "125 min", rating: "NR", kitrinas: true },
       { title: "Pink Flamingos", year: 1972, director: "John Waters", runtime: "93 min", rating: "NR", note: "Adults 18+ only" },
       { title: "The Rocky Horror Picture Show", year: 1975, director: "Jim Sharman", runtime: "98 min", rating: "R", note: "No audience participation kits. No rice." },
       { title: "Repo Man", year: 1984, director: "Alex Cox", runtime: "92 min", rating: "R" },
@@ -88,7 +89,7 @@ const series: Series[] = [
       "Work by women directors, or films featuring women in roles that are not supportive, nurturing, or decorative.",
     color: "text-[#34d399] border-[#065f46]/40",
     films: [
-      { title: "Daughters of Darkness", year: 1971, director: "Harry Kümel", runtime: "96 min", rating: "NR", note: "Note: male director" },
+      { title: "Daughters of Darkness", year: 1971, director: "Harry Kümel", runtime: "96 min", rating: "NR", note: "Note: male director", kitrinas: true },
       { title: "Near Dark", year: 1987, director: "Kathryn Bigelow", runtime: "94 min", rating: "R" },
       { title: "The House of Yes", year: 1997, director: "Mark Waters", runtime: "85 min", rating: "R", alexandras: true },
       { title: "The Piano", year: 1993, director: "Jane Campion", runtime: "121 min", rating: "R" },
@@ -103,7 +104,7 @@ const series: Series[] = [
       "Films that don't announce themselves as difficult. They feel ordinary until they don't.",
     color: "text-[#f9a8d4] border-[#9d174d]/40",
     films: [
-      { title: "Safe", year: 1995, director: "Todd Haynes", runtime: "119 min", rating: "R" },
+      { title: "Safe", year: 1995, director: "Todd Haynes", runtime: "119 min", rating: "R", kitrinas: true },
       { title: "Eyes Wide Shut", year: 1999, director: "Stanley Kubrick", runtime: "159 min", rating: "R" },
       { title: "Funny Games", year: 1997, director: "Michael Haneke", runtime: "108 min", rating: "NR" },
       { title: "Threads", year: 1984, director: "Mick Jackson", runtime: "112 min", rating: "NR", alexandras: true, note: "BBC docudrama. Difficult." },
@@ -192,6 +193,11 @@ export default function Programming() {
                         {CURATOR.firstName}&apos;s Pick
                       </span>
                     )}
+                    {film.kitrinas && (
+                      <span className="text-[10px] font-sans bg-[#d97706]/15 text-[#f59e0b] border border-[#d97706]/20 px-1.5 py-0.5 rounded">
+                        {SECOND_VOICE.firstName}&apos;s Pick
+                      </span>
+                    )}
                     {film.note && (
                       <span className="text-[10px] font-sans text-[#6b7280] italic">
                         {film.note}
@@ -218,7 +224,18 @@ export default function Programming() {
         </div>
 
         {/* Footer note */}
-        <p className="mt-6 text-xs font-sans text-[#4b5563] text-center">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-sans text-[#4b5563]">
+          <span className="text-[#a78bfa] bg-[#7c3aed]/10 px-1.5 py-0.5 rounded">
+            {CURATOR.firstName}&apos;s Pick
+          </span>
+          <span className="text-[#9ca3af]">= personally selected by {CURATOR.firstName}</span>
+          <span className="mx-2 text-[#2d2d2d]">|</span>
+          <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded">
+            {SECOND_VOICE.firstName}&apos;s Pick
+          </span>
+          <span className="text-[#9ca3af]">= personally selected by {SECOND_VOICE.fullName}</span>
+        </div>
+        <p className="mt-4 text-xs font-sans text-[#4b5563] text-center">
           Programming is subject to change. All screenings are for educational and cultural purposes. Sleep &amp; Screen is a concept venue. No licensed screenings are implied.
         </p>
       </div>

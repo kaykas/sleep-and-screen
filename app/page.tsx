@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import TonightScreenings from "@/components/TonightScreenings";
 import AlexandrasPicks from "@/components/AlexandrasPicks";
+import KitrinasPicks from "@/components/KitrinasPicks";
 import Showroom from "@/components/Showroom";
 import Programming from "@/components/Programming";
 import Visit from "@/components/Visit";
@@ -17,6 +18,7 @@ export default function Home() {
       <HowItWorks />
       <TonightScreenings />
       <AlexandrasPicks />
+      <KitrinasPicks />
       <Showroom />
       <Programming />
       <Visit />
