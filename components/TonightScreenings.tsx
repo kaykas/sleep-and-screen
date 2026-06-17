@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 // TonightScreenings — Evening Hours current week. Subordinate to retail; factual, deadpan.
+// Poster thumbnails + IMDb-style metadata for each card.
 
 const screenings = [
   {
@@ -12,12 +13,16 @@ const screenings = [
     director: "Harmony Korine",
     runtime: "94 min",
     rating: "R",
+    genre: "Crime / Drama",
+    imdbScore: "5.3",
     series: "Looks Good on a Mattress",
     description:
       "Four college women rob a restaurant to fund spring break. James Franco plays a rapper named Alien. Korine shoots it like a music video that takes itself seriously. Genuinely unusual.",
     note: "A+K Pick",
     seats: 5,
     maxSeats: 12,
+    time: "8:00 PM",
+    pairingNote: "Counter open. Sparkling water, tea, and whatever fits the vibe.",
   },
   {
     date: "Wed Jun 18",
@@ -27,12 +32,16 @@ const screenings = [
     director: "Paul Verhoeven",
     runtime: "102 min",
     rating: "R",
+    genre: "Action / Sci-Fi",
+    imdbScore: "7.6",
     series: "Friday Night Machines",
     description:
       "A Detroit cop is killed, rebuilt as a machine, and sent back to police the same city. Verhoeven's satire is present throughout and does not announce itself.",
     note: null,
     seats: 9,
     maxSeats: 12,
+    time: "8:00 PM",
+    pairingNote: null,
   },
   {
     date: "Thu Jun 19",
@@ -42,12 +51,16 @@ const screenings = [
     director: "John Waters",
     runtime: "95 min",
     rating: "R",
+    genre: "Dark Comedy / Crime",
+    imdbScore: "6.8",
     series: "John Waters Night",
     description:
       "Kathleen Turner plays Beverly Sutphin: devoted suburban mother, serial killer. Waters plays it completely straight.",
     note: "A+K Pick",
     seats: 10,
     maxSeats: 12,
+    time: "8:00 PM",
+    pairingNote: "Programmed by Alexandra & Kitrina. Counter open until the last kill.",
   },
   {
     date: "Fri Jun 20",
@@ -57,12 +70,16 @@ const screenings = [
     director: "James Cameron",
     runtime: "107 + 137 min",
     rating: "R",
+    genre: "Sci-Fi / Action",
+    imdbScore: "8.0 / 8.6",
     series: "Double Features",
     description:
       "Both films, one night. Intermission after T1. Counter stays open.",
     note: "A+K Pick",
     seats: 3,
     maxSeats: 12,
+    time: "7:30 PM",
+    pairingNote: "Double feature. Starts 30 min early. Intermission ~10 PM.",
   },
   {
     date: "Sat Jun 21",
@@ -72,14 +89,66 @@ const screenings = [
     director: "Penelope Spheeris / Stephen Surjik",
     runtime: "95 + 95 min",
     rating: "PG-13",
+    genre: "Comedy",
+    imdbScore: "7.0 / 6.1",
     series: "Double Features",
     description:
       "Both films back to back. The camera-looks are better than you remember.",
     note: "A+K Pick",
     seats: 7,
     maxSeats: 12,
+    time: "8:00 PM",
+    pairingNote: "Double feature. Short intermission between films.",
   },
 ];
+
+// Minimal poster thumbnail — abstract cinema card, 2:3 ratio
+function MiniPoster({ film, year, isTonight }: { film: string; year: number; isTonight: boolean }) {
+  const label = film.split(" ").slice(0, 2).join(" ");
+  const accentColor = isTonight ? "#6366f1" : "#4b5563";
+  const glowColor = isTonight ? "#6366f1" : "#374151";
+
+  return (
+    <svg viewBox="0 0 52 78" className="w-full h-full block" aria-hidden="true">
+      <defs>
+        <linearGradient id={`mp-bg-${year}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#1e1a14" />
+          <stop offset="100%" stopColor="#0d0b08" />
+        </linearGradient>
+        <linearGradient id={`mp-shadow-${year}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#000" stopOpacity="0" />
+          <stop offset="100%" stopColor="#000" stopOpacity="0.65" />
+        </linearGradient>
+      </defs>
+      <rect width="52" height="78" fill={`url(#mp-bg-${year})`} />
+      {/* Accent glow top */}
+      <rect x="0" y="0" width="52" height="30" fill={glowColor} opacity="0.07" />
+      {/* Silhouette suggestion */}
+      <ellipse cx="26" cy="28" rx="7" ry="8" fill={accentColor} opacity="0.12" />
+      <rect x="20" y="35" width="12" height="14" rx="1.5" fill={accentColor} opacity="0.09" />
+      {/* Divider */}
+      <line x1="5" y1="52" x2="47" y2="52" stroke="#3a3020" strokeWidth="0.4" opacity="0.6" />
+      {/* Bottom shadow */}
+      <rect x="0" y="50" width="52" height="28" fill={`url(#mp-shadow-${year})`} />
+      {/* Title */}
+      <text x="26" y="63" textAnchor="middle" fill="#e8e0cc" fontSize="5.5" fontFamily="Georgia, serif" fontWeight="bold">
+        {label}
+      </text>
+      <text x="26" y="71" textAnchor="middle" fill="#5a4e30" fontSize="4.5" fontFamily="monospace" letterSpacing="0.8">
+        {year}
+      </text>
+      {/* Top "NOW" stripe */}
+      {isTonight && (
+        <>
+          <rect x="0" y="0" width="52" height="10" fill={accentColor} opacity="0.25" />
+          <text x="26" y="7.5" textAnchor="middle" fill="#a5b4fc" fontSize="4.5" fontFamily="monospace" fontWeight="bold" letterSpacing="1.5">
+            NOW
+          </text>
+        </>
+      )}
+    </svg>
+  );
+}
 
 export default function TonightScreenings() {
   const [rsvpFilm, setRsvpFilm] = useState<string | null>(null);
@@ -109,7 +178,7 @@ export default function TonightScreenings() {
               Current Screenings
             </h2>
             <p className="text-sm text-gray-500 mt-0.5">
-              Friday 8 PM. Showroom floor. 12 spots per night. Free with mattress purchase.
+              8 PM nightly. Showroom floor. 12 spots per night. Free with mattress purchase.
             </p>
           </div>
           <a
@@ -138,24 +207,27 @@ export default function TonightScreenings() {
                   : "border-gray-200 hover:border-gray-300"
               }`}
             >
-              <div className="p-5 md:p-6">
-                <div className="flex flex-wrap items-start gap-5">
-                  {/* Date block */}
-                  <div className="flex-shrink-0 w-14 text-center">
-                    <div className="text-[10px] font-extrabold tracking-widest uppercase text-gray-400">
-                      {s.dayLabel}
-                    </div>
-                    <div
-                      className={`text-sm font-extrabold mt-0.5 ${
-                        i === 0 ? "text-indigo-600" : "text-gray-500"
-                      }`}
-                    >
-                      {i === 0 ? "Tonight" : s.date.split(" ").slice(1).join(" ")}
-                    </div>
+              <div className="p-4 md:p-5">
+                <div className="flex items-start gap-4">
+
+                  {/* Poster thumbnail */}
+                  <div className="flex-shrink-0 w-[52px] h-[78px] rounded overflow-hidden border border-gray-200">
+                    <MiniPoster film={s.film} year={s.year} isTonight={i === 0} />
                   </div>
 
-                  {/* Film info */}
+                  {/* Main content */}
                   <div className="flex-1 min-w-0">
+                    {/* Date + series row */}
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className={`text-[10px] font-extrabold tracking-wider uppercase ${i === 0 ? "text-indigo-600" : "text-gray-400"}`}>
+                        {i === 0 ? "Tonight" : s.date} · {s.time}
+                      </span>
+                      <span className="text-[10px] bg-gray-100 text-gray-500 border border-gray-200 px-2 py-0.5 rounded">
+                        {s.series}
+                      </span>
+                    </div>
+
+                    {/* Title + year + A+K badge */}
                     <div className="flex flex-wrap items-center gap-2 mb-1">
                       <h3 className="text-base font-extrabold text-gray-900">{s.film}</h3>
                       <span className="text-gray-400 text-sm">{s.year}</span>
@@ -165,35 +237,52 @@ export default function TonightScreenings() {
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-wrap items-center gap-3 mb-2 text-xs text-gray-400">
-                      <span>Dir. {s.director}</span>
-                      <span>{s.runtime}</span>
-                      <span>{s.rating}</span>
-                      <span className="bg-gray-100 text-gray-600 border border-gray-200 px-2 py-0.5 rounded">
-                        {s.series}
-                      </span>
+
+                    {/* IMDb-style metadata row */}
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      {/* Star score */}
+                      <div className="flex items-center gap-1 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5">
+                        <span className="text-amber-500 text-xs leading-none">★</span>
+                        <span className="text-gray-800 font-extrabold text-[11px] leading-none">{s.imdbScore}</span>
+                        <span className="text-gray-400 text-[10px] leading-none">/10</span>
+                      </div>
+                      {/* MPAA */}
+                      <span className="text-[10px] border border-gray-300 text-gray-500 px-1.5 py-0.5 rounded font-bold">{s.rating}</span>
+                      {/* Runtime */}
+                      <span className="text-xs text-gray-400">{s.runtime}</span>
+                      {/* Genre */}
+                      <span className="text-[10px] text-gray-400 italic">{s.genre}</span>
+                      {/* Director */}
+                      <span className="text-xs text-gray-400">Dir. {s.director}</span>
                     </div>
+
+                    {/* Description */}
                     <p className="text-sm text-gray-600 leading-relaxed">{s.description}</p>
+
+                    {/* Pairing/concession note */}
+                    {s.pairingNote && (
+                      <p className="text-[11px] text-indigo-600 italic mt-1.5">{s.pairingNote}</p>
+                    )}
                   </div>
 
-                  {/* Seats + RSVP */}
-                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                  {/* Right column: seats + RSVP */}
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0 ml-2">
                     <div className="text-xs text-right">
                       <span className={s.seats <= 3 ? "text-red-600 font-bold" : "text-green-700 font-bold"}>
                         {s.seats} spots left
                       </span>
-                      <span className="text-gray-300 mx-1">·</span>
-                      <span className="text-gray-400">8 PM</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => setRsvpFilm(s.film)}
                       disabled={s.seats === 0}
-                      className="text-sm font-bold bg-indigo-700 hover:bg-indigo-800 disabled:bg-gray-200 disabled:text-gray-400 text-white px-5 py-2 rounded transition-colors"
+                      className="text-sm font-bold bg-indigo-700 hover:bg-indigo-800 disabled:bg-gray-200 disabled:text-gray-400 text-white px-4 py-2 rounded transition-colors whitespace-nowrap"
                     >
-                      {s.seats === 0 ? "Sold Out" : "Reserve"}
+                      {s.seats === 0 ? "Sold Out" : "Reserve →"}
                     </button>
+                    <div className="text-[10px] text-gray-400 text-right">View Showtimes</div>
                   </div>
+
                 </div>
               </div>
             </div>
