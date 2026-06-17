@@ -124,6 +124,66 @@ export const THEME_NIGHTS = [
     scheduledNote: "Annual. One film per night. Announced separately from the main calendar.",
     concessionNote: "Nos Energy on the counter all week. Corona available Friday and Saturday only.",
   },
+  {
+    slug: "friday-night-machines",
+    name: "Friday Night Machines",
+    tagline: "Films that run on something mechanical and relentless.",
+    description:
+      "A recurring Friday series built around movies with a machine logic to them — films that do not deviate, do not apologize, and do not ask permission. The Terminator is the anchor. RoboCop is on the list. So is Mad Max. The machines are on screen. The mattresses are comfortable.",
+    films: ["The Terminator", "Terminator 2: Judgment Day", "RoboCop", "Mad Max: Fury Road", "2001: A Space Odyssey"],
+    scheduledNote: "Rotating Friday series. Announced monthly.",
+    concessionNote: "Standard menu. No thematic concession required — the films are sufficient.",
+  },
+  {
+    slug: "looks-good-on-a-mattress",
+    name: "Looks Good on a Mattress",
+    tagline: "Films that reward being horizontal.",
+    description:
+      "Not every film needs to be watched upright in a theater. Some are better when you are lying down, not because they are easy but because they are immersive in a way that benefits from full physical relaxation. Under the Skin. Holy Motors. Safe. These are films that want the room quiet and the body still.",
+    films: ["Under the Skin", "Holy Motors", "Safe", "Jeanne Dielman", "Stalker", "A Brighter Summer Day"],
+    scheduledNote: "Monthly. Usually a Saturday. One film only — no double features.",
+    concessionNote: "Counter open before the film. Closes at the first frame.",
+  },
+  {
+    slug: "double-features",
+    name: "Double Features",
+    tagline: "Two films. One night. Chosen because they belong together.",
+    description:
+      "Evening Hours double features are not random pairings. Each double is curated by Alexandra & Kitrina for a specific reason — tonal rhyme, thematic contrast, or just the fact that one film earns the other. The Terminator and T2. Wayne's World 1 and 2. Wet Hot American Summer and Bill & Ted. First Wives Club and Serial Mom. The counter stays open through intermission.",
+    films: ["Various — announced per-night"],
+    scheduledNote: "Rotating. Check the monthly calendar.",
+    concessionNote: "Full counter both halves. Short intermission between films.",
+  },
+  {
+    slug: "john-waters-night",
+    name: "John Waters Night",
+    tagline: "Bad taste is what entertainment is all about.",
+    description:
+      "A single John Waters film, shown seriously, with full attention. Serial Mom is the most reliable entry point. Pink Flamingos exists. Female Trouble is underrated. The room will decide which film based on the crowd. Alexandra & Kitrina will not promise anything comfortable.",
+    films: ["Serial Mom", "Pink Flamingos", "Female Trouble", "Polyester", "Hairspray (1988)"],
+    scheduledNote: "Annual, usually spring. Announced three weeks out.",
+    concessionNote: "Gum available on Polyester nights only, for the Odorama tradition. Otherwise standard.",
+  },
+  {
+    slug: "worth-your-attention",
+    name: "Worth Your Attention",
+    tagline: "Films that did not get a fair chance the first time.",
+    description:
+      "Underseen films. Not obscure for its own sake — films that got lost, got dismissed, or got categorized wrong and deserve a second look. Smithereens is here. Safe is here. Come and See deserves more than the art-house reputation that made people avoid it.",
+    films: ["Smithereens", "Safe", "Come and See", "Possessor", "Ratcatcher", "Daisies"],
+    scheduledNote: "Bi-monthly. Announced with a brief write-up.",
+    concessionNote: "Standard menu. No thematic angle — let the film speak.",
+  },
+  {
+    slug: "late-and-harder",
+    name: "Late & Harder",
+    tagline: "Films that start at 10 PM and do not pretend otherwise.",
+    description:
+      "The late program. Nothing before 10 PM. Films that earn the hour — Possession, Eraserhead, Come and See, Gummo. Not an endurance contest. Not a joke. These are films that want the room tired and the defenses down. The mattresses help.",
+    films: ["Possession", "Eraserhead", "Come and See", "Gummo", "Inland Empire", "The Brown Bunny"],
+    scheduledNote: "Monthly late slot. Usually last Friday. Ends when it ends.",
+    concessionNote: "Coffee available until midnight. After that, you are on your own.",
+  },
 ];
 
 // June–August 2026 Evening Hours calendar
