@@ -22,7 +22,7 @@ const tonightFeature = {
   tagline: "She's the perfect mother. Except for the murder.",
   logline:
     "Kathleen Turner plays Beverly Sutphin: devoted suburban mother, serial killer. John Waters plays it completely straight.",
-  posterUrl: "https://image.tmdb.org/t/p/w342/vAZkFho9YdIXPmMdHMwr10Go2FF.jpg",
+  posterUrl: "/images/movies/serial-mom-poster.jpg",
   posterCredit: "Poster via TMDb",
 };
 
