@@ -109,7 +109,7 @@ export default function EveningHours() {
                 key={month.month}
                 type="button"
                 onClick={() => setActiveMonth(month.month)}
-                className={`flex flex-col items-start px-5 py-3 rounded-xl border-2 transition-all font-bold text-sm min-w-[140px] ${
+                className={`flex flex-col items-start px-5 py-3 rounded-xl border-2 transition-all font-bold text-sm flex-1 sm:flex-none sm:min-w-[140px] ${
                   isActive ? c.tabActive : c.tabInactive
                 }`}
               >
@@ -209,11 +209,18 @@ export default function EveningHours() {
                         {night.note && (
                           <span className="italic text-gray-400">{night.note}</span>
                         )}
+                        {/* Mobile-only Reserve CTA inline */}
+                        <a
+                          href="#tonight"
+                          className="sm:hidden bg-[#1d4ed8] text-white font-bold px-3 py-1 rounded-lg text-[10px] transition-colors whitespace-nowrap ml-auto"
+                        >
+                          Reserve →
+                        </a>
                       </div>
                     </div>
 
-                    {/* Right: Reserve CTA */}
-                    <div className="flex-shrink-0 flex flex-col items-end justify-center gap-2 px-4 py-4 border-l border-gray-100">
+                    {/* Right: Reserve CTA — hidden on mobile (inline below), visible sm+ */}
+                    <div className="hidden sm:flex flex-shrink-0 flex-col items-end justify-center gap-2 px-4 py-4 border-l border-gray-100">
                       <a
                         href="#tonight"
                         className="bg-[#1d4ed8] hover:bg-blue-800 text-white font-bold px-4 py-2 rounded-lg text-xs transition-colors whitespace-nowrap block"

@@ -48,8 +48,8 @@ export default function SplitHero() {
               aria-hidden="true"
             />
 
-            <div className="relative p-6 md:p-8 lg:p-9">
-              <div className="flex flex-wrap items-center gap-2 mb-5">
+            <div className="relative p-6 md:p-8 lg:p-10 flex flex-col items-center justify-center text-center min-h-[320px]">
+              <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
                 <span className="inline-flex items-center gap-2 bg-[#dc2626] text-white text-[11px] font-black tracking-[0.18em] uppercase px-3.5 py-1.5 rounded-full shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-white/75" />
                   Summer mattress event
@@ -57,69 +57,45 @@ export default function SplitHero() {
                 <span className="text-xs font-semibold text-gray-400">Ends Aug 31</span>
               </div>
 
-              <div className="grid md:grid-cols-[minmax(0,1fr)_220px] gap-6 md:gap-7 items-center">
-                <div>
-                  <h1 className="text-[36px] md:text-[44px] xl:text-[52px] leading-[0.98] font-black tracking-tight text-gray-950 mb-4">
-                    Up to <span className="text-[#dc2626]">40% off</span>
-                    <br />
-                    <span className="text-[#1d4ed8]">every mattress.</span>
-                  </h1>
-                  <p className="text-[15px] md:text-base text-gray-600 max-w-[500px] leading-relaxed mb-6">
-                    Innerspring, memory foam, latex, and hybrid models on the floor at{" "}
-                    <strong className="text-gray-900">{SITE.address.street}</strong>. Walk in, try the bed,
-                    take it home tonight or schedule free East Bay delivery.
-                  </p>
+              <h1 className="text-[36px] md:text-[44px] xl:text-[52px] leading-[0.98] font-black tracking-tight text-gray-950 mb-4">
+                Up to <span className="text-[#dc2626]">40% off</span>
+                <br />
+                <span className="text-[#1d4ed8]">every mattress.</span>
+              </h1>
 
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    <a
-                      href="#showroom"
-                      className="inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-red-700 active:bg-red-800 text-white font-black px-7 py-3.5 rounded-full text-sm transition-colors shadow-md hover:shadow-lg"
-                    >
-                      Shop the Sale <span aria-hidden="true">→</span>
-                    </a>
-                    <a
-                      href="#showroom"
-                      className="inline-flex items-center justify-center border-2 border-[#1d4ed8] text-[#1d4ed8] hover:bg-blue-50 font-extrabold px-6 py-3.5 rounded-full text-sm transition-colors"
-                    >
-                      View All Mattresses
-                    </a>
-                  </div>
+              <p className="text-[15px] md:text-base text-gray-600 max-w-lg leading-relaxed mb-6">
+                Innerspring, memory foam, latex, and hybrid models on the floor at{" "}
+                <strong className="text-gray-900">{SITE.address.street}</strong>. Walk in, try the bed,
+                take it home tonight or schedule free East Bay delivery.
+              </p>
 
-                  <div className="grid sm:grid-cols-2 gap-x-5 gap-y-2 max-w-[520px]">
-                    {trustBadges.map((badge) => (
-                      <div key={badge} className="flex items-center gap-2 text-xs font-semibold text-gray-600">
-                        <span className="inline-flex w-5 h-5 rounded-full bg-green-50 text-green-700 items-center justify-center text-sm font-black">
-                          ✓
-                        </span>
-                        {badge}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-4 shadow-inner">
-                  <div className="text-[10px] font-black uppercase tracking-[0.22em] text-[#dc2626] mb-3">
-                    Floor model spotlight
-                  </div>
-                  <div className="rounded-xl bg-white border border-blue-100 p-4 mb-4">
-                    <svg viewBox="0 0 220 124" className="w-full h-auto" aria-hidden="true">
-                      <rect x="25" y="40" width="170" height="54" rx="10" fill="#fff" stroke="#1d4ed8" strokeWidth="4" />
-                      <rect x="34" y="49" width="48" height="31" rx="6" fill="#dbeafe" />
-                      <line x1="92" y1="54" x2="180" y2="54" stroke="#93c5fd" strokeWidth="3" />
-                      <line x1="92" y1="67" x2="180" y2="67" stroke="#93c5fd" strokeWidth="3" />
-                      <line x1="92" y1="80" x2="180" y2="80" stroke="#93c5fd" strokeWidth="3" />
-                      <rect x="32" y="94" width="156" height="9" rx="3" fill="#bfdbfe" />
-                    </svg>
-                  </div>
-                  <div className="text-3xl font-black text-gray-950 leading-none">$499</div>
-                  <div className="text-sm font-extrabold text-[#1d4ed8] mt-1">Queen sets from</div>
-                  <p className="text-xs text-gray-500 leading-relaxed mt-3">
-                    Same-day pickup. Free setup. Twelve models on the floor.
-                  </p>
-                </div>
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <a
+                  href="#showroom"
+                  className="inline-flex items-center justify-center gap-2 bg-[#dc2626] hover:bg-red-700 active:bg-red-800 text-white font-black px-7 py-3.5 rounded-full text-sm transition-colors shadow-md hover:shadow-lg"
+                >
+                  Shop the Sale <span aria-hidden="true">→</span>
+                </a>
+                <a
+                  href="#showroom"
+                  className="inline-flex items-center justify-center border-2 border-[#1d4ed8] text-[#1d4ed8] hover:bg-blue-50 font-extrabold px-6 py-3.5 rounded-full text-sm transition-colors"
+                >
+                  View All Mattresses
+                </a>
               </div>
 
-              <div className="mt-6 pt-5 border-t border-gray-200 flex flex-wrap items-center gap-3 text-sm">
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                {trustBadges.map((badge) => (
+                  <div key={badge} className="flex items-center gap-2 text-xs font-semibold text-gray-600">
+                    <span className="inline-flex w-5 h-5 rounded-full bg-green-50 text-green-700 items-center justify-center text-sm font-black">
+                      ✓
+                    </span>
+                    {badge}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 pt-5 border-t border-gray-200 w-full flex flex-wrap justify-center items-center gap-3 text-sm">
                 <span className="text-amber-400 tracking-tight" aria-label="4.8 stars">★★★★★</span>
                 <span className="font-bold text-gray-800">4.8 Google Reviews</span>
                 <span className="text-gray-300">·</span>
