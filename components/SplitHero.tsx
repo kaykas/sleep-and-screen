@@ -33,7 +33,7 @@ export default function SplitHero() {
         <div className="grid md:grid-cols-[minmax(0,1fr)_380px] xl:grid-cols-[minmax(0,1fr)_440px] min-h-[500px]">
 
           {/* ── LEFT: Mattress Sale Billboard ── */}
-          <div className="px-6 md:px-8 lg:px-12 py-9 md:py-12 flex flex-col justify-center md:border-r border-gray-200 relative overflow-hidden">
+          <div className="px-6 md:px-8 lg:px-12 py-8 md:py-10 flex flex-col justify-start md:border-r border-gray-200 relative overflow-hidden">
             {/* Subtle background pattern */}
             <div
               className="absolute inset-0 opacity-[0.018] pointer-events-none"
@@ -47,7 +47,7 @@ export default function SplitHero() {
             {/* Warm wash behind promo card */}
             <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50/40 pointer-events-none" aria-hidden="true" />
 
-            <div className="relative max-w-[560px]">
+            <div className="relative max-w-[620px]">
               {/* Event badge row */}
               <div className="mb-4 flex items-center gap-2.5 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 bg-[#dc2626] text-white text-[10px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full">
@@ -104,8 +104,38 @@ export default function SplitHero() {
                 ))}
               </div>
 
+              {/* Retail promo card — makes the hero feel merchandised, not empty */}
+              <div className="mt-2 mb-5 rounded-2xl border border-blue-100 bg-white/90 shadow-sm overflow-hidden max-w-[540px]">
+                <div className="grid sm:grid-cols-[150px_1fr]">
+                  <div className="bg-blue-50 border-b sm:border-b-0 sm:border-r border-blue-100 p-4 flex items-center justify-center">
+                    <div className="w-full max-w-[130px]">
+                      <svg viewBox="0 0 180 96" className="w-full h-auto" aria-hidden="true">
+                        <rect x="20" y="28" width="140" height="42" rx="8" fill="#ffffff" stroke="#1d4ed8" strokeWidth="3"/>
+                        <rect x="26" y="34" width="36" height="24" rx="5" fill="#dbeafe"/>
+                        <line x1="68" y1="39" x2="150" y2="39" stroke="#93c5fd" strokeWidth="2"/>
+                        <line x1="68" y1="49" x2="150" y2="49" stroke="#93c5fd" strokeWidth="2"/>
+                        <line x1="68" y1="59" x2="150" y2="59" stroke="#93c5fd" strokeWidth="2"/>
+                        <rect x="28" y="70" width="124" height="8" rx="2" fill="#bfdbfe"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="text-[10px] font-extrabold uppercase tracking-widest text-[#dc2626] mb-1">
+                      Floor model spotlight
+                    </div>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <div className="text-2xl font-black text-gray-900">Queen sets from $499</div>
+                      <div className="text-sm font-bold text-[#1d4ed8]">same-day pickup</div>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Try it in the showroom, then take it home or schedule free East Bay delivery.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Review row */}
-              <div className="flex items-center gap-2.5 pt-5 border-t border-gray-200">
+              <div className="flex flex-wrap items-center gap-2.5 pt-5 border-t border-gray-200">
                 <span className="flex text-amber-400 gap-0.5" aria-label="4.8 stars">
                   ★★★★★
                 </span>
