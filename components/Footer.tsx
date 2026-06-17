@@ -74,13 +74,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-gray-700 pt-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="border-t border-gray-700 pt-6 flex flex-wrap items-center justify-between gap-3">
           <div className="text-xs text-gray-500">
-            © 2026 {SITE.name}. {SITE.address.city}, {SITE.address.state}.
+            © 2026 {SITE.name} · {SITE.address.city}, {SITE.address.state}
           </div>
-          <div className="text-xs text-gray-600">
-            Mattress store by day. Evening Hours film program after dark.
-            San Pablo Ave, Berkeley, CA.
+          <div className="flex flex-wrap gap-4 text-xs text-gray-600">
+            <span>Mattress store by day</span>
+            <span className="text-gray-700">·</span>
+            <span>Evening Hours film program after dark</span>
           </div>
         </div>
       </div>

@@ -102,13 +102,13 @@ export default function SplitHero() {
                     Floor model spotlight
                   </div>
                   <div className="rounded-xl bg-white border border-blue-100 p-4 mb-4">
-                    <svg viewBox="0 0 220 120" className="w-full h-auto" aria-hidden="true">
-                      <rect x="25" y="34" width="170" height="54" rx="10" fill="#fff" stroke="#1d4ed8" strokeWidth="4" />
-                      <rect x="34" y="43" width="48" height="31" rx="6" fill="#dbeafe" />
-                      <line x1="92" y1="48" x2="180" y2="48" stroke="#93c5fd" strokeWidth="3" />
-                      <line x1="92" y1="61" x2="180" y2="61" stroke="#93c5fd" strokeWidth="3" />
-                      <line x1="92" y1="74" x2="180" y2="74" stroke="#93c5fd" strokeWidth="3" />
-                      <rect x="32" y="88" width="156" height="9" rx="3" fill="#bfdbfe" />
+                    <svg viewBox="0 0 220 124" className="w-full h-auto" aria-hidden="true">
+                      <rect x="25" y="40" width="170" height="54" rx="10" fill="#fff" stroke="#1d4ed8" strokeWidth="4" />
+                      <rect x="34" y="49" width="48" height="31" rx="6" fill="#dbeafe" />
+                      <line x1="92" y1="54" x2="180" y2="54" stroke="#93c5fd" strokeWidth="3" />
+                      <line x1="92" y1="67" x2="180" y2="67" stroke="#93c5fd" strokeWidth="3" />
+                      <line x1="92" y1="80" x2="180" y2="80" stroke="#93c5fd" strokeWidth="3" />
+                      <rect x="32" y="94" width="156" height="9" rx="3" fill="#bfdbfe" />
                     </svg>
                   </div>
                   <div className="text-3xl font-black text-gray-950 leading-none">$499</div>

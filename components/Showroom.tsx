@@ -3,24 +3,16 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// Curated lifestyle photos — each mapped to a product image_key
+// AI-generated mattress product photos — served locally
 const PHOTOS: Record<string, string> = {
-  "shoreline-hybrid":
-    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-  "nightwatch-cooling":
-    "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80",
-  "estuary-latex":
-    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80",
-  "gravel-road-firm":
-    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
-  "memory-cloud-plush":
-    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80",
-  "harborview-800":
-    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80",
-  "harborview-500":
-    "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80",
-  "silvercrest-latex":
-    "https://images.unsplash.com/photo-1549497538-303791108f95?w=800&q=80",
+  "shoreline-hybrid":    "/products/shoreline-hybrid.png",
+  "nightwatch-cooling":  "/products/nightwatch-cooling.png",
+  "estuary-latex":       "/products/estuary-latex.png",
+  "gravel-road-firm":    "/products/gravel-road-firm.png",
+  "memory-cloud-plush":  "/products/memory-cloud-plush.png",
+  "harborview-800":      "/products/harborview-800.png",
+  "harborview-500":      "/products/harborview-500.png",
+  "silvercrest-latex":   "/products/silvercrest-latex.png",
 };
 
 const TYPE_LABEL: Record<string, string> = {

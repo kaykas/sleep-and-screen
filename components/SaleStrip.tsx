@@ -20,7 +20,7 @@ export default function SaleStrip() {
           href="#showroom"
           className="hidden sm:inline-block bg-white text-[#dc2626] hover:bg-red-50 font-extrabold text-xs px-4 py-1.5 rounded transition-colors flex-shrink-0 whitespace-nowrap"
         >
-          Shop Now →
+          Shop Sale →
         </a>
       </div>
     </div>

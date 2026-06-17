@@ -16,7 +16,7 @@ export default function Newsletter() {
         <div className="text-xs font-extrabold tracking-widest uppercase text-blue-300 mb-3">
           Stay Current
         </div>
-        <h2 className="text-3xl font-extrabold mb-3">
+        <h2 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
           Sale alerts. New arrivals. Screening schedule.
         </h2>
         <p className="text-blue-100 text-sm mb-8 leading-relaxed">
