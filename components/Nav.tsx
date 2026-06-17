@@ -1,171 +1,149 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { SITE } from "@/lib/content";
 
 const mainNavLinks = [
-  { label: "Mattresses",    href: "#showroom"       },
-  { label: "Sale",          href: "#showroom",  hot: true },
-  { label: "Financing",     href: "#showroom"       },
-  { label: "Delivery",      href: "#visit"          },
-  { label: "Evening Hours", href: "#evening-hours"  },
-  { label: "About",         href: "/about"          },
+  { label: "Shop Mattresses", href: "#showroom" },
+  { label: "Evening Hours",   href: "#evening-hours" },
+  { label: "Movie Nights",    href: "#theme-nights" },
+  { label: "About",           href: "/about" },
+  { label: "Visit",           href: "#visit" },
+  { label: "Sale",            href: "#showroom", hot: true },
 ];
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="sticky top-0 left-0 right-0 z-50">
+      {/* ── Main header ── */}
+      <div
+        className={`bg-white border-b border-gray-200 transition-shadow duration-150 ${
+          scrolled ? "shadow-md" : ""
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="h-16 flex items-center gap-6">
 
-      {/* ── Thin promo strip ── */}
-      <div className="bg-[#1d4ed8] text-white text-center text-xs font-semibold py-2 tracking-wide">
-        Summer Mattress Event — Up to 40% Off · Ends Aug 31
-        <span className="hidden sm:inline">
-          {" "}·{" "}
-          <a href="#showroom" className="underline underline-offset-2 hover:text-blue-200 transition-colors">
-            Shop Now
-          </a>
-        </span>
-      </div>
+            {/* Logo */}
+            <Link href="/" className="flex flex-col leading-none flex-shrink-0 mr-2">
+              <div className="flex items-baseline gap-0.5">
+                <span className="text-[22px] font-black tracking-tight leading-none text-[#dc2626]">
+                  East Bay
+                </span>
+                <span className="text-[22px] font-black tracking-tight leading-none text-[#1d4ed8] ml-1.5">
+                  Mattress
+                </span>
+              </div>
+              <span className="text-[10px] text-gray-400 font-medium tracking-wide mt-px">
+                {SITE.address.city}, {SITE.address.state} · {SITE.address.street}
+              </span>
+            </Link>
 
-      {/* ── Main header row ── */}
-      <div className={`bg-white border-b border-gray-200 transition-shadow ${scrolled ? "shadow-md" : ""}`}>
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-5">
-
-          {/* Logo */}
-          <a href="#" className="flex flex-col leading-none flex-shrink-0">
-            <span className="text-xl font-black tracking-tight leading-none">
-              <span className="text-[#dc2626]">East Bay</span>{" "}
-              <span className="text-[#1d4ed8]">Mattress</span>
-            </span>
-            <span className="text-[10px] text-gray-400 font-medium mt-0.5 tracking-wide">
-              {SITE.address.street}, {SITE.address.city}, {SITE.address.state}
-            </span>
-          </a>
-
-          {/* Search bar */}
-          <div className="flex-1 hidden md:flex items-center border border-gray-300 hover:border-blue-400 focus-within:border-blue-600 rounded-lg overflow-hidden transition-colors bg-white max-w-lg">
-            <input
-              type="text"
-              placeholder="Search mattresses, sizes, prices..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="flex-1 px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 outline-none bg-transparent"
-            />
-            <button
-              type="button"
-              className="bg-[#1d4ed8] hover:bg-blue-800 text-white px-4 py-2.5 text-sm font-semibold transition-colors flex-shrink-0"
-            >
-              Search
-            </button>
-          </div>
-
-          {/* Right: phone + CTA */}
-          <div className="hidden md:flex items-center gap-4 flex-shrink-0 ml-auto">
-            <a href={`tel:${SITE.phone}`} className="text-sm font-bold text-[#1d4ed8] hover:underline">
-              {SITE.phone}
-            </a>
-            <a
-              href="#showroom"
-              className="bg-[#dc2626] hover:bg-red-700 text-white text-sm font-extrabold px-5 py-2.5 rounded transition-colors whitespace-nowrap"
-            >
-              Shop Sale
-            </a>
-          </div>
-
-          {/* Mobile hamburger */}
-          <button
-            type="button"
-            className="md:hidden text-gray-800 p-2 ml-auto"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-0.5 bg-current mb-1.5" />
-            <div className="w-6 h-0.5 bg-current mb-1.5" />
-            <div className="w-6 h-0.5 bg-current" />
-          </button>
-        </div>
-
-        {/* ── Category nav — inline below header on desktop ── */}
-        <div className="hidden md:block border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center gap-1">
+            {/* Desktop nav links */}
+            <nav className="hidden md:flex items-center gap-0.5 ml-2" aria-label="Main navigation">
               {mainNavLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`text-sm px-4 py-2.5 transition-colors hover:text-[#1d4ed8] font-medium whitespace-nowrap flex-shrink-0 ${
+                  className={`px-3.5 py-2 text-sm font-semibold rounded transition-colors whitespace-nowrap ${
                     link.hot
-                      ? "text-[#dc2626] font-extrabold"
-                      : "text-gray-700"
+                      ? "text-[#dc2626] font-extrabold hover:bg-red-50"
+                      : "text-gray-700 hover:text-[#1d4ed8] hover:bg-blue-50"
                   }`}
                 >
                   {link.label}
                 </a>
               ))}
-              {/* bedMOVIE as a quiet badge at the end */}
+            </nav>
+
+            {/* Right: phone + CTA */}
+            <div className="hidden md:flex items-center gap-4 ml-auto flex-shrink-0">
               <a
-                href="#evening-hours"
-                className="ml-auto text-xs text-indigo-600 hover:text-indigo-800 font-semibold px-3 py-1 border border-indigo-200 rounded-full transition-colors whitespace-nowrap flex-shrink-0"
+                href={`tel:${SITE.phone}`}
+                className="text-sm font-bold text-gray-700 hover:text-[#1d4ed8] transition-colors"
               >
-                bedMOVIE ›
+                {SITE.phone}
+              </a>
+              <a
+                href="#showroom"
+                className="bg-[#dc2626] hover:bg-red-700 text-white text-sm font-extrabold px-5 py-2.5 rounded transition-colors whitespace-nowrap shadow-sm"
+              >
+                Shop Sale
               </a>
             </div>
+
+            {/* Mobile hamburger */}
+            <button
+              type="button"
+              className="md:hidden text-gray-800 p-2 ml-auto rounded hover:bg-gray-100 transition-colors"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
 
       {/* ── Mobile menu ── */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-xl">
-          <div className="px-4 pt-3 pb-2">
-            <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-              <input
-                type="text"
-                placeholder="Search mattresses..."
-                className="flex-1 px-3 py-2.5 text-sm outline-none"
-              />
-              <button type="button" className="bg-[#1d4ed8] text-white px-4 py-2.5 text-sm font-semibold">
-                Search
-              </button>
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-xl">
+          <div className="px-4 py-2">
+            <div className="mb-2 pt-2 pb-1 border-b border-gray-100">
+              <div className="text-sm font-extrabold text-[#1d4ed8]">{SITE.phone}</div>
+              <div className="text-xs text-gray-400 mt-0.5">Mon–Sun 10 AM–6 PM</div>
             </div>
-          </div>
-          <div className="px-4 pb-4">
-            <div className="text-sm font-black text-[#1d4ed8] mb-0.5">{SITE.phone}</div>
-            <div className="text-xs text-gray-500 mb-3">Mon–Sun 10 AM–6 PM</div>
             {mainNavLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className={`block py-3 text-sm font-semibold border-b border-gray-100 hover:text-[#1d4ed8] ${
-                  link.hot ? "text-red-600" : "text-gray-700"
+                className={`flex items-center py-3 text-sm font-semibold border-b border-gray-100 last:border-b-0 transition-colors ${
+                  link.hot
+                    ? "text-[#dc2626] font-extrabold"
+                    : "text-gray-700 hover:text-[#1d4ed8]"
                 }`}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
+                {link.hot && (
+                  <span className="ml-2 bg-red-100 text-red-700 text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded">
+                    Up to 40% Off
+                  </span>
+                )}
               </a>
             ))}
-            <a
-              href="#evening-hours"
-              className="block py-3 text-sm font-semibold border-b border-gray-100 text-indigo-600 hover:text-indigo-800"
-              onClick={() => setMenuOpen(false)}
-            >
-              bedMOVIE / Concessions
-            </a>
-            <div className="mt-4 flex flex-col gap-2">
-              <a href="#showroom" className="block text-center bg-[#dc2626] text-white font-extrabold py-3 rounded text-sm" onClick={() => setMenuOpen(false)}>
-                Shop Mattresses
+            <div className="mt-3 pb-3 flex flex-col gap-2">
+              <a
+                href="#showroom"
+                className="block text-center bg-[#dc2626] text-white font-extrabold py-3 rounded text-sm"
+                onClick={() => setMenuOpen(false)}
+              >
+                Shop Mattresses — Sale Prices
               </a>
-              <a href="#visit" className="block text-center border border-gray-300 text-gray-700 font-semibold py-3 rounded text-sm" onClick={() => setMenuOpen(false)}>
-                Visit Store
+              <a
+                href="#visit"
+                className="block text-center border border-gray-200 text-gray-700 font-semibold py-3 rounded text-sm hover:border-gray-300 transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Visit Showroom
               </a>
             </div>
           </div>

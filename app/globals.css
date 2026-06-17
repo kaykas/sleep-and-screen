@@ -58,9 +58,9 @@ body {
   border-radius: 3px;
 }
 
-/* Section anchors */
+/* Section anchors — offset accounts for utility bar + sticky nav height */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 5.5rem;
 }
 
 /* Retail utility classes */
@@ -116,4 +116,26 @@ section[id] {
 .btn-outline:hover {
   background: var(--brand-blue);
   color: white;
+}
+
+/* Retail section headers */
+.section-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 0.5rem;
+}
+
+/* Dark programming sections — consistent dark system */
+.dark-section {
+  background: #0d0d0d;
+  color: #f5f0e8;
+}
+
+/* Transition between retail (light) and evening (dark) */
+.section-transition-dark {
+  background: linear-gradient(to bottom, #ffffff 0%, #0d0d0d 100%);
+  height: 3rem;
 }

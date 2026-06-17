@@ -109,6 +109,62 @@ const firmnessBar: Record<string, { pct: number; label: string }> = {
   Firm: { pct: 85, label: "Firm" },
 };
 
+// Clean mattress product tile — no emoji, no photos needed
+const typeColors: Record<string, { bg: string; stripe: string; mattress: string; label: string }> = {
+  "Innerspring":    { bg: "#e8f0fe", stripe: "#1d4ed8", mattress: "#dce8f8", label: "#1d4ed8" },
+  "Memory Foam":    { bg: "#f0fdf4", stripe: "#16a34a", mattress: "#d8f0e0", label: "#16a34a" },
+  "Hybrid":         { bg: "#fdf2f8", stripe: "#9333ea", mattress: "#f3e8fd", label: "#7c3aed" },
+  "Latex Hybrid":   { bg: "#fffbeb", stripe: "#d97706", mattress: "#fef3c7", label: "#d97706" },
+  "Foam":           { bg: "#f8fafc", stripe: "#475569", mattress: "#e2e8f0", label: "#475569" },
+  "Euro Top":       { bg: "#fef2f2", stripe: "#dc2626", mattress: "#fee2e2", label: "#dc2626" },
+};
+
+function MattressTile({ type, onSale }: { type: string; onSale: boolean }) {
+  const c = typeColors[type] ?? typeColors["Hybrid"];
+  return (
+    <svg viewBox="0 0 280 144" className="w-full h-full" style={{ background: c.bg }} aria-hidden="true">
+      {/* Subtle grid background */}
+      {[0,28,56,84,112,140,168,196,224,252].map((x, i) => (
+        <line key={`v${i}`} x1={x} y1="0" x2={x} y2="144" stroke={c.stripe} strokeWidth="0.3" opacity="0.12" />
+      ))}
+      {[0,24,48,72,96,120,144].map((y, i) => (
+        <line key={`h${i}`} x1="0" y1={y} x2="280" y2={y} stroke={c.stripe} strokeWidth="0.3" opacity="0.12" />
+      ))}
+
+      {/* Mattress body */}
+      <rect x="40" y="42" width="200" height="64" rx="6" fill={c.mattress} stroke={c.stripe} strokeWidth="1.5" opacity="0.7" />
+      {/* Pillow zone */}
+      <rect x="46" y="48" width="50" height="40" rx="4" fill="white" opacity="0.55" />
+      {/* Quilting lines */}
+      {[100,120,140,160,180,200,220].map((x, i) => (
+        <line key={i} x1={x} y1="44" x2={x} y2="104" stroke={c.stripe} strokeWidth="0.6" opacity="0.2" />
+      ))}
+      {[56,70,84,96].map((y, i) => (
+        <line key={i} x1="96" y1={y} x2="238" y2={y} stroke={c.stripe} strokeWidth="0.6" opacity="0.15" />
+      ))}
+      {/* Mattress edge piping */}
+      <rect x="40" y="42" width="200" height="64" rx="6" fill="none" stroke={c.stripe} strokeWidth="2" opacity="0.35" />
+      {/* Low riser/platform shadow */}
+      <rect x="44" y="104" width="192" height="8" rx="2" fill={c.stripe} opacity="0.12" />
+
+      {/* Type label */}
+      <rect x="40" y="116" width="120" height="20" rx="3" fill={c.stripe} opacity="0.1" />
+      <text x="100" y="130" textAnchor="middle" fill={c.label} fontSize="10" fontWeight="700" fontFamily="-apple-system, sans-serif" opacity="0.85">
+        {type.toUpperCase()}
+      </text>
+
+      {/* Sale burst if on sale */}
+      {onSale && (
+        <>
+          <circle cx="244" cy="28" r="20" fill="#dc2626" opacity="0.92" />
+          <text x="244" y="25" textAnchor="middle" fill="white" fontSize="8" fontWeight="800" fontFamily="-apple-system, sans-serif">SALE</text>
+          <text x="244" y="35" textAnchor="middle" fill="white" fontSize="7" fontFamily="-apple-system, sans-serif">NOW</text>
+        </>
+      )}
+    </svg>
+  );
+}
+
 export default function Showroom() {
   return (
     <section id="showroom" className="py-14 bg-gray-50">
@@ -174,14 +230,9 @@ export default function Showroom() {
                   </div>
                 )}
 
-                {/* Faux product image block */}
-                <div className="bg-gradient-to-br from-slate-100 to-slate-200 h-36 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-4xl mb-1">🛏</div>
-                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                      {m.type}
-                    </div>
-                  </div>
+                {/* Product tile graphic — clean SVG, no emoji */}
+                <div className="relative overflow-hidden h-36">
+                  <MattressTile type={m.type} onSale={m.onSale} />
                 </div>
 
                 <div className="p-5 flex flex-col flex-1">

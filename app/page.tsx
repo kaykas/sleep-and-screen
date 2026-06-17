@@ -1,5 +1,7 @@
+import UtilityBar from "@/components/UtilityBar";
 import Nav from "@/components/Nav";
-import Hero from "@/components/Hero";
+import SaleStrip from "@/components/SaleStrip";
+import SplitHero from "@/components/SplitHero";
 import RetailBanner from "@/components/RetailBanner";
 import Showroom from "@/components/Showroom";
 import HowItWorks from "@/components/HowItWorks";
@@ -17,12 +19,21 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
-      {/* ── RETAIL FIRST ── */}
+      {/* ── UTILITY + NAV ── */}
+      <UtilityBar />
       <Nav />
-      <Hero />
+      <SaleStrip />
+
+      {/* ── HOMEPAGE SPLIT HERO ── */}
+      <SplitHero />
+
+      {/* ── RETAIL CORE ── */}
       <RetailBanner />
       <Showroom />
       <HowItWorks />
+
+      {/* ── Transition to Evening Hours ── */}
+      <div className="h-0.5 bg-gradient-to-r from-gray-100 via-indigo-200 to-gray-100" aria-hidden="true" />
 
       {/* ── EVENING HOURS — secondary in-store program ── */}
       <EveningHours />
