@@ -5,8 +5,8 @@ const INTERNAL_RECIPIENTS = [
   process.env.SUBSCRIBE_NOTIFY_JASCHA,
   process.env.SUBSCRIBE_NOTIFY_ALEXANDRA,
 ]
-  .map((email) => email.trim())
-  .filter(Boolean);
+  .map((email) => email?.trim())
+  .filter((email): email is string => Boolean(email));
 
 type SubscriberNotification = {
   email: string;
