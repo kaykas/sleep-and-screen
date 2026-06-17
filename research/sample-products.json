@@ -1,0 +1,481 @@
+{
+  "_meta": {
+    "description": "East Bay Mattress — sample product data for sleep-and-screen site redesign",
+    "note": "All products are fictional. Names, SKUs, prices, and specs are plausible scaffolding only. Replace with real inventory before launch.",
+    "generated": "June 2026",
+    "pricing_model": "Queen price shown. Other sizes roughly: Twin -30%, Full -15%, King +35%"
+  },
+  "mattresses": [
+    {
+      "id": "ebm-001",
+      "sku": "BR-SHORE-Q",
+      "slug": "bay-rest-shoreline-hybrid",
+      "name": "Bay Rest Shoreline Hybrid",
+      "brand": "Bay Rest",
+      "type": "hybrid",
+      "series": "Shoreline",
+      "badge": "Most Popular",
+      "comfort_level": "Medium",
+      "comfort_scale": 3,
+      "height_inches": 12,
+      "layers": {
+        "top": "1.5\" quilted euro-top cover",
+        "comfort": "2\" gel-infused memory foam + 1\" responsive poly foam",
+        "support": "7.5\" individually wrapped coil system"
+      },
+      "cooling": true,
+      "motion_isolation": "Good",
+      "edge_support": "Excellent",
+      "best_for_sleepers": ["Side", "Back", "Combo"],
+      "best_for_needs": ["Couples", "Hot sleepers"],
+      "rating": 4.7,
+      "review_count": 214,
+      "prices": {
+        "Twin": { "regular": 699, "sale": 499 },
+        "Full": { "regular": 799, "sale": 599 },
+        "Queen": { "regular": 999, "sale": 749 },
+        "King": { "regular": 1349, "sale": 1049 }
+      },
+      "financing_from": "from $21/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "shoreline-hybrid",
+      "image_alt": "Bay Rest Shoreline Hybrid mattress on a light wood platform bed frame",
+      "evening_hours_pairing": null,
+      "available_same_day": true
+    },
+    {
+      "id": "ebm-002",
+      "sku": "BR-NIGHT-Q",
+      "slug": "bay-rest-nightwatch-cooling",
+      "name": "Bay Rest Nightwatch Cooling Hybrid",
+      "brand": "Bay Rest",
+      "type": "hybrid",
+      "series": "Nightwatch",
+      "badge": "Staff Pick",
+      "comfort_level": "Medium Plush",
+      "comfort_scale": 4,
+      "height_inches": 13,
+      "layers": {
+        "top": "2\" phase-change cooling cover",
+        "comfort": "2.5\" open-cell gel memory foam + 1\" latex-feel comfort layer",
+        "support": "7.5\" pocketed coil system with perimeter foam encasement"
+      },
+      "cooling": true,
+      "motion_isolation": "Excellent",
+      "edge_support": "Good",
+      "best_for_sleepers": ["Side", "Back"],
+      "best_for_needs": ["Hot sleepers", "Couples", "Long movie watchers"],
+      "rating": 4.8,
+      "review_count": 187,
+      "prices": {
+        "Twin": { "regular": 849, "sale": null },
+        "Full": { "regular": 999, "sale": null },
+        "Queen": { "regular": 1199, "sale": 1099 },
+        "King": { "regular": 1599, "sale": 1499 }
+      },
+      "financing_from": "from $31/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "nightwatch-cooling",
+      "image_alt": "Bay Rest Nightwatch Cooling Hybrid — cool blue-toned bedroom lifestyle shot",
+      "evening_hours_pairing": {
+        "description": "Alexandra & Kitrina's pick for the Evening Hours screening room floor.",
+        "copy": "Runs cool through a double feature. Holds its shape. If you fall asleep, that's the point.",
+        "genre_match": "Long films, slow cinema, anything that rewards a second viewing"
+      },
+      "available_same_day": false
+    },
+    {
+      "id": "ebm-003",
+      "sku": "BR-EST-K",
+      "slug": "bay-rest-estuary-latex",
+      "name": "Bay Rest Estuary Natural Latex",
+      "brand": "Bay Rest",
+      "type": "latex",
+      "series": "Estuary",
+      "badge": "Premium",
+      "comfort_level": "Plush",
+      "comfort_scale": 4,
+      "height_inches": 11,
+      "layers": {
+        "top": "Organic cotton quilted cover with wool batting",
+        "comfort": "3\" Talalay latex comfort layer",
+        "support": "6\" Dunlop latex support core"
+      },
+      "cooling": true,
+      "motion_isolation": "Excellent",
+      "edge_support": "Good",
+      "best_for_sleepers": ["Side", "Combo"],
+      "best_for_needs": ["Eco-conscious", "Allergy-sensitive", "Hot sleepers"],
+      "rating": 4.9,
+      "review_count": 98,
+      "prices": {
+        "Twin": { "regular": 1199, "sale": null },
+        "Full": { "regular": 1399, "sale": null },
+        "Queen": { "regular": 1699, "sale": null },
+        "King": { "regular": 2299, "sale": null }
+      },
+      "financing_from": "from $47/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "estuary-latex",
+      "image_alt": "Bay Rest Estuary latex mattress with natural cotton cover on a light-toned bed",
+      "evening_hours_pairing": null,
+      "available_same_day": false
+    },
+    {
+      "id": "ebm-004",
+      "sku": "BR-GRV-F",
+      "slug": "bay-rest-gravel-road-firm",
+      "name": "Bay Rest Gravel Road Innerspring",
+      "brand": "Bay Rest",
+      "type": "innerspring",
+      "series": "Gravel Road",
+      "badge": "Best Value",
+      "comfort_level": "Firm",
+      "comfort_scale": 1,
+      "height_inches": 11,
+      "layers": {
+        "top": "1\" knit-top quilted cover",
+        "comfort": "1.5\" high-density poly foam",
+        "support": "9.5\" Bonnell coil system with foam encasement"
+      },
+      "cooling": false,
+      "motion_isolation": "Average",
+      "edge_support": "Excellent",
+      "best_for_sleepers": ["Back", "Stomach"],
+      "best_for_needs": ["Firm support", "Budget-conscious", "Guest rooms"],
+      "rating": 4.4,
+      "review_count": 342,
+      "prices": {
+        "Twin": { "regular": 299, "sale": 249 },
+        "Full": { "regular": 399, "sale": 329 },
+        "Queen": { "regular": 499, "sale": 399 },
+        "King": { "regular": 699, "sale": 579 }
+      },
+      "financing_from": "from $11/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "gravel-road-firm",
+      "image_alt": "Bay Rest Gravel Road firm innerspring — clean white mattress on a simple platform bed",
+      "evening_hours_pairing": null,
+      "available_same_day": true
+    },
+    {
+      "id": "ebm-005",
+      "sku": "BR-CLOUD-MF",
+      "slug": "bay-rest-memory-cloud-plush",
+      "name": "Bay Rest Memory Cloud Plush",
+      "brand": "Bay Rest",
+      "type": "memory_foam",
+      "series": "Memory Cloud",
+      "badge": null,
+      "comfort_level": "Ultra Plush",
+      "comfort_scale": 5,
+      "height_inches": 12,
+      "layers": {
+        "top": "2\" gel memory foam quilted cover",
+        "comfort": "3\" viscoelastic memory foam",
+        "support": "7\" high-density base foam"
+      },
+      "cooling": true,
+      "motion_isolation": "Excellent",
+      "edge_support": "Good",
+      "best_for_sleepers": ["Side"],
+      "best_for_needs": ["Couples", "Pressure relief", "Light sleepers"],
+      "rating": 4.6,
+      "review_count": 156,
+      "prices": {
+        "Twin": { "regular": 599, "sale": null },
+        "Full": { "regular": 699, "sale": null },
+        "Queen": { "regular": 849, "sale": 749 },
+        "King": { "regular": 1149, "sale": 1049 }
+      },
+      "financing_from": "from $21/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "memory-cloud-plush",
+      "image_alt": "Bay Rest Memory Cloud Plush — soft plush mattress in a cozy bedroom setting",
+      "evening_hours_pairing": null,
+      "available_same_day": false
+    },
+    {
+      "id": "ebm-006",
+      "sku": "BR-HARB-800",
+      "slug": "harborview-800-hybrid",
+      "name": "Harborview 800 Hybrid",
+      "brand": "Bay Rest",
+      "type": "hybrid",
+      "series": "Harborview",
+      "badge": "New",
+      "comfort_level": "Medium Firm",
+      "comfort_scale": 2,
+      "height_inches": 13.5,
+      "layers": {
+        "top": "1\" cashmere blend euro-top",
+        "comfort": "1.5\" gel foam + 1.5\" micro-coil comfort layer",
+        "support": "8\" pocketed coil with dual perimeter support"
+      },
+      "cooling": true,
+      "motion_isolation": "Good",
+      "edge_support": "Excellent",
+      "best_for_sleepers": ["Back", "Combo"],
+      "best_for_needs": ["Back pain relief", "Active lifestyles"],
+      "rating": 4.5,
+      "review_count": 43,
+      "prices": {
+        "Twin": { "regular": 799, "sale": null },
+        "Full": { "regular": 899, "sale": null },
+        "Queen": { "regular": 1099, "sale": null },
+        "King": { "regular": 1499, "sale": null }
+      },
+      "financing_from": "from $31/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "harborview-800",
+      "image_alt": "Harborview 800 Hybrid — modern bedroom with natural light, medium-firm mattress",
+      "evening_hours_pairing": null,
+      "available_same_day": false
+    },
+    {
+      "id": "ebm-007",
+      "sku": "BR-HARB-500",
+      "slug": "harborview-500-memory-foam",
+      "name": "Harborview 500 Memory Foam",
+      "brand": "Bay Rest",
+      "type": "memory_foam",
+      "series": "Harborview",
+      "badge": null,
+      "comfort_level": "Medium",
+      "comfort_scale": 3,
+      "height_inches": 10,
+      "layers": {
+        "top": "1\" knit stretch cover",
+        "comfort": "2\" medium-density memory foam",
+        "support": "7\" high-density support foam"
+      },
+      "cooling": false,
+      "motion_isolation": "Excellent",
+      "edge_support": "Average",
+      "best_for_sleepers": ["Side", "Back"],
+      "best_for_needs": ["First mattress", "Guest rooms", "Budget-mid range"],
+      "rating": 4.3,
+      "review_count": 289,
+      "prices": {
+        "Twin": { "regular": 399, "sale": null },
+        "Full": { "regular": 499, "sale": null },
+        "Queen": { "regular": 599, "sale": 499 },
+        "King": { "regular": 799, "sale": 699 }
+      },
+      "financing_from": "from $14/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "harborview-500",
+      "image_alt": "Harborview 500 Memory Foam — clean white mattress on a modern bed frame",
+      "evening_hours_pairing": null,
+      "available_same_day": true
+    },
+    {
+      "id": "ebm-008",
+      "sku": "BR-SLV-LAT",
+      "slug": "silvercrest-latex-hybrid",
+      "name": "SilverCrest Latex Hybrid",
+      "brand": "Bay Rest",
+      "type": "hybrid",
+      "series": "SilverCrest",
+      "badge": null,
+      "comfort_level": "Plush",
+      "comfort_scale": 4,
+      "height_inches": 13,
+      "layers": {
+        "top": "Organic cotton + wool quilted top",
+        "comfort": "2\" Talalay latex + 1\" transition foam",
+        "support": "8\" pocketed coil with edge reinforcement"
+      },
+      "cooling": true,
+      "motion_isolation": "Good",
+      "edge_support": "Good",
+      "best_for_sleepers": ["Side", "Back", "Combo"],
+      "best_for_needs": ["Eco-conscious", "Natural materials", "Couples"],
+      "rating": 4.7,
+      "review_count": 71,
+      "prices": {
+        "Twin": { "regular": 999, "sale": null },
+        "Full": { "regular": 1199, "sale": null },
+        "Queen": { "regular": 1399, "sale": 1199 },
+        "King": { "regular": 1899, "sale": 1699 }
+      },
+      "financing_from": "from $33/mo",
+      "trial_nights": 120,
+      "warranty_years": 10,
+      "delivery": "Free — in-room setup included",
+      "image_key": "silvercrest-latex",
+      "image_alt": "SilverCrest Latex Hybrid — natural tones, light bedroom with organic textures",
+      "evening_hours_pairing": {
+        "description": "Kitrina's pick.",
+        "copy": "Comfortable for the whole film. Doesn't run warm.",
+        "genre_match": "Anything by Agnès Varda. Nature documentaries."
+      },
+      "available_same_day": false
+    }
+  ],
+  "bases_and_accessories": [
+    {
+      "id": "acc-001",
+      "sku": "EB-ADJ-BASE-Q",
+      "slug": "adjustable-power-base-queen",
+      "name": "East Bay Power Adjustable Base",
+      "type": "adjustable_base",
+      "badge": "Bundle & Save",
+      "description": "Zero-gravity and anti-snore presets. Head and foot articulation. Wireless remote + app control. Compatible with most hybrid and memory foam mattresses.",
+      "features": [
+        "Head up to 60°",
+        "Foot up to 45°",
+        "Zero-gravity preset",
+        "Anti-snore position",
+        "Wireless remote + Bluetooth app",
+        "USB charging port (×2)",
+        "Under-bed LED"
+      ],
+      "prices": {
+        "Twin XL": { "regular": 599, "sale": 399 },
+        "Queen": { "regular": 799, "sale": 549 },
+        "King (split)": { "regular": 1299, "sale": 999 }
+      },
+      "financing_from": "from $15/mo",
+      "bundle_note": "Save $200 when purchased with any Bay Rest mattress.",
+      "warranty_years": 3,
+      "image_key": "adjustable-base",
+      "image_alt": "Adjustable power base with head elevated in a neutral bedroom"
+    },
+    {
+      "id": "acc-002",
+      "sku": "EB-BOXSPRING-LP",
+      "slug": "low-profile-box-spring",
+      "name": "Low-Profile Box Spring",
+      "type": "foundation",
+      "badge": null,
+      "description": "5\" height. Works with most traditional and panel bed frames. Standard and low-profile options available. Ships same day on most sizes.",
+      "features": [
+        "5\" low-profile height",
+        "Steel grid interior",
+        "Fabric cover",
+        "Compatible with most bed frames"
+      ],
+      "prices": {
+        "Twin": { "regular": 99, "sale": null },
+        "Full": { "regular": 119, "sale": null },
+        "Queen": { "regular": 139, "sale": null },
+        "King": { "regular": 179, "sale": null }
+      },
+      "financing_from": null,
+      "bundle_note": null,
+      "warranty_years": 5,
+      "image_key": "box-spring",
+      "image_alt": "Low-profile box spring with fabric cover on a simple bed frame"
+    },
+    {
+      "id": "acc-003",
+      "sku": "EB-PILLOW-GEL",
+      "slug": "cooling-gel-memory-foam-pillow",
+      "name": "Cooling Gel Memory Foam Pillow",
+      "type": "pillow",
+      "badge": "Best Seller",
+      "description": "Ventilated gel memory foam. Stays cool through the night. Machine-washable cover. Medium profile — suitable for side and back sleepers.",
+      "features": [
+        "Ventilated gel memory foam fill",
+        "Phase-change cooling cover",
+        "Machine-washable cover",
+        "Medium loft (5\")",
+        "CertiPUR-US certified foam"
+      ],
+      "prices": {
+        "Standard": { "regular": 59, "sale": null },
+        "Queen": { "regular": 69, "sale": null },
+        "King": { "regular": 79, "sale": null }
+      },
+      "financing_from": null,
+      "bundle_note": "2-pack available — save $20.",
+      "warranty_years": 3,
+      "image_key": "gel-pillow",
+      "image_alt": "Two cooling gel memory foam pillows on white bedding, flat lay"
+    },
+    {
+      "id": "acc-004",
+      "sku": "EB-PROT-QUEEN",
+      "slug": "waterproof-mattress-protector",
+      "name": "Waterproof Mattress Protector",
+      "type": "protector",
+      "badge": null,
+      "description": "Thin, breathable waterproof layer. Doesn't change the feel of your mattress. Keeps warranty valid. Fits up to 15\" profile.",
+      "features": [
+        "Waterproof membrane layer",
+        "Breathable cotton-blend top surface",
+        "Silent — no crinkle",
+        "Machine washable",
+        "360° stretch-fit band",
+        "Fits up to 15\" mattress profile"
+      ],
+      "prices": {
+        "Twin": { "regular": 39, "sale": null },
+        "Full": { "regular": 49, "sale": null },
+        "Queen": { "regular": 59, "sale": null },
+        "King": { "regular": 79, "sale": null }
+      },
+      "financing_from": null,
+      "bundle_note": "Recommended with every mattress purchase to maintain warranty coverage.",
+      "warranty_years": 2,
+      "image_key": "mattress-protector",
+      "image_alt": "White mattress protector fitted on a queen mattress, clean bedroom"
+    }
+  ],
+  "trust_copy": {
+    "trial": {
+      "nights": 120,
+      "headline": "120-Night Sleep Trial",
+      "body": "Try your mattress for 120 nights. If it's not right, we'll pick it up and make it right — full exchange or refund."
+    },
+    "delivery": {
+      "headline": "Free Delivery & Setup",
+      "body": "We deliver throughout the East Bay 7 days a week. Our crew sets up in the room you want and takes away all packaging."
+    },
+    "financing": {
+      "headline": "0% Financing Available",
+      "term_months": 36,
+      "body": "Qualified customers get 0% APR for 36 months. Apply in-store or start online in about a minute."
+    },
+    "price_match": {
+      "headline": "Best Price Guarantee",
+      "body": "Found it cheaper at a local store? Show us the price. We'll match it, same day."
+    },
+    "haul_away": {
+      "headline": "Old Mattress Haul-Away",
+      "body": "We'll remove your old mattress during delivery. No separate scheduling. Responsibly recycled when possible."
+    },
+    "sanitation": {
+      "headline": "Sanitation Guarantee",
+      "body": "Every mattress ships in sealed factory packaging. Our delivery team follows a clean-hands protocol."
+    },
+    "warranty": {
+      "years": 10,
+      "headline": "10-Year Limited Warranty",
+      "body": "Every mattress we sell is backed by a 10-year manufacturer warranty covering structural defects."
+    }
+  },
+  "evening_hours": {
+    "curators": ["Alexandra", "Kitrina"],
+    "tagline": "One film a night. Every mattress on the floor.",
+    "description": "Some nights, the best way to test a mattress is to watch a movie on one. Evening Hours screens one film a night in our showroom — curated by Alexandra & Kitrina. Doors at 6pm. No ticket required.",
+    "reserve_cta": "Reserve Your Spot",
+    "product_pairing_intro": "Picked for Evening Hours by Alexandra & Kitrina.",
+    "featured_products": ["ebm-002", "ebm-008"]
+  }
+}
