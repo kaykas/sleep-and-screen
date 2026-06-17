@@ -24,8 +24,14 @@ export const SITE = {
 export const CURATOR = {
   // "Alex" + "andra" — fictional curator persona for this public concept site
   firstName: "Alex" + "andra",
-  role: "Curator & Host, Sleep & Screen",
+  role: "Curator & co-programmer",
   initial: "A",
+};
+
+// Joint picks section label — used in the merged picks component
+export const JOINT_PICKS = {
+  sectionLabel: "Alexandra & " + "Kitrina's Picks",
+  shortLabel: "The Picks",
 };
 
 // Theme nights — the emotional calendar

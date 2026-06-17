@@ -23,93 +23,93 @@ type Series = {
 
 const series: Series[] = [
   {
-    name: "Damaged Americana",
-    slug: "damaged-americana",
+    name: "Friday Night Machines",
+    slug: "friday-machines",
     description:
-      "Films about the American suburbs, small towns, and landscapes that don't get written about. The wrong side of the American dream.",
-    color: "text-[#fbbf24] border-[#92400e]/40",
-    films: [
-      { title: "Gummo", year: 1997, director: "Harmony Korine", runtime: "89 min", rating: "NR", alexandras: true },
-      { title: "Kids", year: 1995, director: "Larry Clark", runtime: "91 min", rating: "NR" },
-      { title: "Smithereens", year: 1982, director: "Susan Seidelman", runtime: "93 min", rating: "R", alexandras: true },
-      { title: "River's Edge", year: 1986, director: "Tim Hunter", runtime: "99 min", rating: "R" },
-      { title: "Over the Edge", year: 1979, director: "Jonathan Kaplan", runtime: "95 min", rating: "PG" },
-      { title: "Slacker", year: 1990, director: "Richard Linklater", runtime: "97 min", rating: "R" },
-    ],
-  },
-  {
-    name: "Machine Nights",
-    slug: "machine-nights",
-    description:
-      "Technology, systems, and bodies. Films where the machine wins, doesn't win, or becomes unclear.",
+      "Robots, cyborgs, systems. Films where the technology is practical and the stakes are real. Good for a Friday.",
     color: "text-[#60a5fa] border-[#1d4ed8]/40",
     films: [
       { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", alexandras: true },
+      { title: "Terminator 2: Judgment Day", year: 1991, director: "James Cameron", runtime: "137 min", rating: "R", alexandras: true, note: "Double feature option" },
+      { title: "RoboCop", year: 1987, director: "Paul Verhoeven", runtime: "102 min", rating: "R" },
       { title: "Videodrome", year: 1983, director: "David Cronenberg", runtime: "87 min", rating: "R" },
-      { title: "Robocop", year: 1987, director: "Paul Verhoeven", runtime: "102 min", rating: "R" },
-      { title: "Tron", year: 1982, director: "Steven Lisberger", runtime: "96 min", rating: "PG" },
-      { title: "Dark Star", year: 1974, director: "John Carpenter", runtime: "83 min", rating: "G" },
       { title: "Hardware", year: 1990, director: "Richard Stanley", runtime: "94 min", rating: "R" },
+      { title: "Dark Star", year: 1974, director: "John Carpenter", runtime: "83 min", rating: "G" },
     ],
   },
   {
-    name: "Body Trouble",
-    slug: "body-trouble",
+    name: "Looks Good on a Mattress",
+    slug: "looks-good",
     description:
-      "The body as threat, mystery, failure, or transformation. Not exactly horror. Not exactly not.",
+      "Visually ambitious films that reward watching on a big screen lying down. Strong cinematography, strong soundtracks, things happening in the frame.",
+    color: "text-[#a78bfa] border-[#7c3aed]/40",
+    films: [
+      { title: "Holy Motors", year: 2012, director: "Leos Carax", runtime: "115 min", rating: "NR", kitrinas: true },
+      { title: "Under the Skin", year: 2013, director: "Jonathan Glazer", runtime: "108 min", rating: "R", kitrinas: true },
+      { title: "Spring Breakers", year: 2012, director: "Harmony Korine", runtime: "94 min", rating: "R", alexandras: true },
+      { title: "Daisies", year: 1966, director: "Věra Chytilová", runtime: "74 min", rating: "NR", kitrinas: true },
+      { title: "Daughters of Darkness", year: 1971, director: "Harry Kümel", runtime: "96 min", rating: "NR" },
+      { title: "El Topo", year: 1970, director: "Alejandro Jodorowsky", runtime: "125 min", rating: "NR" },
+    ],
+  },
+  {
+    name: "Double Features",
+    slug: "double-features",
+    description:
+      "Two films, one night. Announced together because they're better back to back. Short intermission. The counter stays open.",
+    color: "text-[#fbbf24] border-[#92400e]/40",
+    films: [
+      { title: "Wayne's World", year: 1992, director: "Penelope Spheeris", runtime: "95 min", rating: "PG-13", kitrinas: true, note: "Double feature with Wayne's World 2" },
+      { title: "Wayne's World 2", year: 1993, director: "Stephen Surjik", runtime: "95 min", rating: "PG-13", kitrinas: true, note: "Double feature — shown same night" },
+      { title: "Bill & Ted's Excellent Adventure", year: 1989, director: "Stephen Herek", runtime: "90 min", rating: "PG" },
+      { title: "Wet Hot American Summer", year: 2001, director: "David Wain", runtime: "97 min", rating: "R", kitrinas: true },
+      { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", note: "T1+T2 double feature, select nights" },
+      { title: "Repo Man", year: 1984, director: "Alex Cox", runtime: "92 min", rating: "R" },
+    ],
+  },
+  {
+    name: "John Waters Night",
+    slug: "waters-night",
+    description:
+      "John Waters is the only person who gets his own series. Serial Mom, Pink Flamingos, Polyester, Hairspray. One night per film. Crowd light on judgment.",
+    color: "text-[#f9a8d4] border-[#9d174d]/40",
+    films: [
+      { title: "Serial Mom", year: 1994, director: "John Waters", runtime: "95 min", rating: "R", alexandras: true },
+      { title: "Pink Flamingos", year: 1972, director: "John Waters", runtime: "93 min", rating: "NR", note: "Adults 18+ only" },
+      { title: "Polyester", year: 1981, director: "John Waters", runtime: "86 min", rating: "R", note: "Odorama scratch card provided" },
+      { title: "Hairspray", year: 1988, director: "John Waters", runtime: "92 min", rating: "PG" },
+      { title: "Female Trouble", year: 1974, director: "John Waters", runtime: "89 min", rating: "NR" },
+      { title: "Cry-Baby", year: 1990, director: "John Waters", runtime: "85 min", rating: "PG-13" },
+    ],
+  },
+  {
+    name: "Worth Your Attention",
+    slug: "worth-attention",
+    description:
+      "Films from the last ten years that are good and didn't get the run they deserved, or that people still haven't seen.",
+    color: "text-[#34d399] border-[#065f46]/40",
+    films: [
+      { title: "The Eyes of Tammy Faye", year: 2021, director: "Michael Showalter", runtime: "126 min", rating: "PG-13", kitrinas: true },
+      { title: "First Wives Club", year: 1996, director: "Hugh Wilson", runtime: "103 min", rating: "PG", alexandras: true },
+      { title: "Near Dark", year: 1987, director: "Kathryn Bigelow", runtime: "94 min", rating: "R" },
+      { title: "The House of Yes", year: 1997, director: "Mark Waters", runtime: "85 min", rating: "R" },
+      { title: "Smithereens", year: 1982, director: "Susan Seidelman", runtime: "93 min", rating: "R", alexandras: true },
+      { title: "Over the Edge", year: 1979, director: "Jonathan Kaplan", runtime: "95 min", rating: "PG" },
+    ],
+  },
+  {
+    name: "Late & Harder",
+    slug: "late-harder",
+    description:
+      "Films that ask more. Scheduled later in the week or at 10 PM on select nights. Not homework — just films that work better when you're willing to stay with them.",
     color: "text-[#f87171] border-[#7f1d1d]/40",
     films: [
       { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR", kitrinas: true },
-      { title: "The Fly", year: 1986, director: "David Cronenberg", runtime: "96 min", rating: "R" },
-      { title: "Naked Lunch", year: 1991, director: "David Cronenberg", runtime: "115 min", rating: "R" },
-      { title: "Tusk", year: 1980, director: "Alexandro Jodorowsky", runtime: "100 min", rating: "R", note: "Jodorowsky short programs" },
-      { title: "Society", year: 1989, director: "Brian Yuzna", runtime: "99 min", rating: "R" },
-      { title: "Shivers", year: 1975, director: "David Cronenberg", runtime: "87 min", rating: "R" },
-    ],
-  },
-  {
-    name: "Midnight Standards",
-    slug: "midnight-standards",
-    description:
-      "The canon of late-night cinema. Films that became famous by being watched repeatedly after midnight by people who couldn't sleep.",
-    color: "text-[#a78bfa] border-[#7c3aed]/40",
-    films: [
-      { title: "Eraserhead", year: 1977, director: "David Lynch", runtime: "89 min", rating: "NR", kitrinas: true },
-      { title: "El Topo", year: 1970, director: "Alejandro Jodorowsky", runtime: "125 min", rating: "NR", kitrinas: true },
-      { title: "Pink Flamingos", year: 1972, director: "John Waters", runtime: "93 min", rating: "NR", note: "Adults 18+ only" },
-      { title: "The Rocky Horror Picture Show", year: 1975, director: "Jim Sharman", runtime: "98 min", rating: "R", note: "No audience participation kits. No rice." },
-      { title: "Repo Man", year: 1984, director: "Alex Cox", runtime: "92 min", rating: "R" },
-      { title: "Liquid Sky", year: 1982, director: "Slava Tsukerman", runtime: "112 min", rating: "NR" },
-    ],
-  },
-  {
-    name: "Female Directors / Female Monsters",
-    slug: "female-directors",
-    description:
-      "Work by women directors, or films featuring women in roles that are not supportive, nurturing, or decorative.",
-    color: "text-[#34d399] border-[#065f46]/40",
-    films: [
-      { title: "Daughters of Darkness", year: 1971, director: "Harry Kümel", runtime: "96 min", rating: "NR", note: "Note: male director", kitrinas: true },
-      { title: "Near Dark", year: 1987, director: "Kathryn Bigelow", runtime: "94 min", rating: "R" },
-      { title: "The House of Yes", year: 1997, director: "Mark Waters", runtime: "85 min", rating: "R", alexandras: true },
-      { title: "The Piano", year: 1993, director: "Jane Campion", runtime: "121 min", rating: "R" },
-      { title: "Trouble Every Day", year: 2001, director: "Claire Denis", runtime: "101 min", rating: "NR" },
-      { title: "Housekeeper", year: 2002, director: "Claude Chabrol", runtime: "91 min", rating: "R" },
-    ],
-  },
-  {
-    name: "Comfortably Uncomfortable",
-    slug: "comfortably-uncomfortable",
-    description:
-      "Films that don't announce themselves as difficult. They feel ordinary until they don't.",
-    color: "text-[#f9a8d4] border-[#9d174d]/40",
-    films: [
-      { title: "Safe", year: 1995, director: "Todd Haynes", runtime: "119 min", rating: "R", kitrinas: true },
-      { title: "Eyes Wide Shut", year: 1999, director: "Stanley Kubrick", runtime: "159 min", rating: "R" },
+      { title: "Come and See", year: 1985, director: "Elem Klimov", runtime: "142 min", rating: "NR", kitrinas: true },
+      { title: "Eraserhead", year: 1977, director: "David Lynch", runtime: "89 min", rating: "NR" },
+      { title: "Safe", year: 1995, director: "Todd Haynes", runtime: "119 min", rating: "R" },
+      { title: "The Holy Mountain", year: 1973, director: "Alejandro Jodorowsky", runtime: "114 min", rating: "NR" },
       { title: "Funny Games", year: 1997, director: "Michael Haneke", runtime: "108 min", rating: "NR" },
-      { title: "Threads", year: 1984, director: "Mick Jackson", runtime: "112 min", rating: "NR", alexandras: true, note: "BBC docudrama. Difficult." },
-      { title: "A Simple Plan", year: 1998, director: "Sam Raimi", runtime: "121 min", rating: "R" },
-      { title: "Happiness", year: 1998, director: "Todd Solondz", runtime: "134 min", rating: "NR" },
     ],
   },
 ];
@@ -135,7 +135,8 @@ export default function Programming() {
         {/* Series tabs */}
         <div className="flex flex-wrap gap-2 mb-10">
           {series.map((s) => (
-            <button type="button"
+            <button
+              type="button"
               key={s.slug}
               onClick={() => setActiveSlug(s.slug)}
               className={`text-xs font-sans px-4 py-2 rounded-full border transition-all ${
@@ -174,7 +175,7 @@ export default function Programming() {
             {active.films.map((film, i) => (
               <div
                 key={i}
-                className={`flex flex-wrap items-center gap-4 px-8 py-5 border-b border-[#131313] last:border-b-0 hover:bg-[#0d0d0d] transition-colors group`}
+                className="flex flex-wrap items-center gap-4 px-8 py-5 border-b border-[#131313] last:border-b-0 hover:bg-[#0d0d0d] transition-colors group"
               >
                 <div className="text-xs font-sans text-[#2d2d2d] w-6 flex-shrink-0 font-bold">
                   {String(i + 1).padStart(2, "0")}
@@ -185,9 +186,7 @@ export default function Programming() {
                     <span className="font-bold group-hover:text-[#a78bfa] transition-colors">
                       {film.title}
                     </span>
-                    <span className="text-[#6b7280] font-sans text-sm">
-                      {film.year}
-                    </span>
+                    <span className="text-[#6b7280] font-sans text-sm">{film.year}</span>
                     {film.alexandras && (
                       <span className="text-[10px] font-sans bg-[#7c3aed]/15 text-[#a78bfa] border border-[#7c3aed]/20 px-1.5 py-0.5 rounded">
                         {CURATOR.firstName}&apos;s Pick
@@ -204,9 +203,7 @@ export default function Programming() {
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-[#6b7280] font-sans">
-                    Dir. {film.director}
-                  </div>
+                  <div className="text-xs text-[#6b7280] font-sans">Dir. {film.director}</div>
                 </div>
 
                 <div className="flex items-center gap-4 text-xs font-sans text-[#6b7280] flex-shrink-0">
@@ -214,7 +211,10 @@ export default function Programming() {
                   <span className="border border-[#2d2d2d] px-1.5 py-0.5 rounded">
                     {film.rating}
                   </span>
-                  <button type="button" className="text-[#6b7280] hover:text-[#7c3aed] transition-colors opacity-0 group-hover:opacity-100">
+                  <button
+                    type="button"
+                    className="text-[#6b7280] hover:text-[#7c3aed] transition-colors opacity-0 group-hover:opacity-100"
+                  >
                     Reserve →
                   </button>
                 </div>
@@ -228,15 +228,15 @@ export default function Programming() {
           <span className="text-[#a78bfa] bg-[#7c3aed]/10 px-1.5 py-0.5 rounded">
             {CURATOR.firstName}&apos;s Pick
           </span>
-          <span className="text-[#9ca3af]">= personally selected by {CURATOR.firstName}</span>
+          <span className="text-[#9ca3af]">= {CURATOR.firstName} asked for it</span>
           <span className="mx-2 text-[#2d2d2d]">|</span>
           <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded">
             {SECOND_VOICE.firstName}&apos;s Pick
           </span>
-          <span className="text-[#9ca3af]">= personally selected by {SECOND_VOICE.fullName}</span>
+          <span className="text-[#9ca3af]">= {SECOND_VOICE.fullName} asked for it</span>
         </div>
         <p className="mt-4 text-xs font-sans text-[#4b5563] text-center">
-          Programming is subject to change. All screenings are for educational and cultural purposes. Sleep &amp; Screen is a concept venue. No licensed screenings are implied.
+          Programming subject to change. All screenings are for cultural purposes. This is a concept venue; no licensed screenings are implied.
         </p>
       </div>
     </section>

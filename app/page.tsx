@@ -2,8 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import TonightScreenings from "@/components/TonightScreenings";
-import AlexandrasPicks from "@/components/AlexandrasPicks";
-import KitrinasPicks from "@/components/KitrinasPicks";
+import JointPicks from "@/components/JointPicks";
 import Showroom from "@/components/Showroom";
 import Programming from "@/components/Programming";
 import ThemeNights from "@/components/ThemeNights";
@@ -20,8 +19,7 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <TonightScreenings />
-      <AlexandrasPicks />
-      <KitrinasPicks />
+      <JointPicks />
       <Showroom />
       <ThemeNights />
       <Programming />
