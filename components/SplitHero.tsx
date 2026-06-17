@@ -1,7 +1,8 @@
 // SplitHero — homepage main hero
 // Left panel: mattress sale billboard — retail-first, high impact
-// Right panel: Tonight's Feature — cinema poster card with high-contrast layout
+// Right panel: Tonight's Feature — real movie poster + showtime metadata
 
+import Image from "next/image";
 import { SITE } from "@/lib/content";
 
 const tonightFeature = {
@@ -21,6 +22,8 @@ const tonightFeature = {
   tagline: "She's the perfect mother. Except for the murder.",
   logline:
     "Kathleen Turner plays Beverly Sutphin: devoted suburban mother, serial killer. John Waters plays it completely straight.",
+  posterUrl: "https://image.tmdb.org/t/p/w342/vAZkFho9YdIXPmMdHMwr10Go2FF.jpg",
+  posterCredit: "Poster via TMDb",
 };
 
 export default function SplitHero() {
@@ -139,11 +142,15 @@ export default function SplitHero() {
             {/* ── POSTER + METADATA ── */}
             <div className="flex gap-5 px-6 py-5">
               {/* Poster */}
-              <div
-                className="flex-shrink-0 w-[96px] h-[144px] rounded-lg overflow-hidden border border-white/15 shadow-lg"
-                aria-hidden="true"
-              >
-                <PosterGraphic title={tonightFeature.film} year={tonightFeature.year} />
+              <div className="flex-shrink-0 w-[108px] sm:w-[118px] aspect-[2/3] rounded-lg overflow-hidden border border-white/15 shadow-xl bg-black/30 relative">
+                <Image
+                  src={tonightFeature.posterUrl}
+                  alt={`${tonightFeature.film} theatrical poster`}
+                  fill
+                  sizes="118px"
+                  className="object-cover"
+                  priority
+                />
               </div>
 
               {/* Metadata */}
@@ -260,126 +267,3 @@ export default function SplitHero() {
   );
 }
 
-// Stylized cinema poster — 2:3 ratio, high internal contrast
-// Richer palette than before: warm cream title on deep blue-purple
-function PosterGraphic({ title, year }: { title: string; year: number }) {
-  const words = title.split(" ");
-  const line1 = words.slice(0, 2).join(" ");
-  const line2 = words.slice(2).join(" ");
-
-  return (
-    <svg
-      viewBox="0 0 96 144"
-      className="w-full h-full block"
-      aria-hidden="true"
-    >
-      <defs>
-        <linearGradient id="pg-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2d1b4e" />
-          <stop offset="55%" stopColor="#1a0f2e" />
-          <stop offset="100%" stopColor="#0e0818" />
-        </linearGradient>
-        <linearGradient id="pg-glow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
-        </linearGradient>
-        <linearGradient id="pg-vignette" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#000" stopOpacity="0" />
-          <stop offset="100%" stopColor="#000" stopOpacity="0.75" />
-        </linearGradient>
-        <radialGradient id="pg-center" cx="50%" cy="38%" r="40%">
-          <stop offset="0%" stopColor="#c4b5fd" stopOpacity="0.14" />
-          <stop offset="100%" stopColor="#c4b5fd" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
-      {/* Background */}
-      <rect width="96" height="144" fill="url(#pg-bg)" />
-
-      {/* Center spotlight */}
-      <rect width="96" height="144" fill="url(#pg-center)" />
-
-      {/* Top violet glow */}
-      <rect x="0" y="0" width="96" height="60" fill="url(#pg-glow)" />
-
-      {/* Abstract figure — head + shoulders silhouette */}
-      <ellipse cx="48" cy="46" rx="13" ry="15" fill="#c4b5fd" opacity="0.16" />
-      <path d="M28 78 Q34 60 48 58 Q62 60 68 78 Z" fill="#c4b5fd" opacity="0.10" />
-
-      {/* Vignette bottom */}
-      <rect x="0" y="80" width="96" height="64" fill="url(#pg-vignette)" />
-
-      {/* Divider rule */}
-      <line x1="10" y1="90" x2="86" y2="90" stroke="#c4b5fd" strokeWidth="0.5" opacity="0.25" />
-
-      {/* "TONIGHT" stripe at top */}
-      <rect x="0" y="0" width="96" height="13" fill="#6d28d9" opacity="0.6" />
-      <text
-        x="48" y="9"
-        textAnchor="middle"
-        fill="#e9d5ff"
-        fontSize="5.5"
-        fontFamily="monospace"
-        fontWeight="bold"
-        letterSpacing="2.5"
-      >
-        TONIGHT
-      </text>
-
-      {/* Title line 1 */}
-      <text
-        x="48" y="104"
-        textAnchor="middle"
-        fill="#f0eaff"
-        fontSize="10"
-        fontFamily="Georgia, serif"
-        fontWeight="bold"
-        letterSpacing="0.3"
-      >
-        {line1}
-      </text>
-      {/* Title line 2 (if exists) */}
-      {line2 && (
-        <text
-          x="48" y="117"
-          textAnchor="middle"
-          fill="#f0eaff"
-          fontSize="10"
-          fontFamily="Georgia, serif"
-          fontWeight="bold"
-          letterSpacing="0.3"
-        >
-          {line2}
-        </text>
-      )}
-
-      {/* Year */}
-      <text
-        x="48" y={line2 ? "131" : "120"}
-        textAnchor="middle"
-        fill="#a78bfa"
-        fontSize="6"
-        fontFamily="monospace"
-        letterSpacing="1.5"
-      >
-        {year}
-      </text>
-
-      {/* Corner tick marks — film frame detail */}
-      {([[2,14],[94,14],[2,130],[94,130]] as [number,number][]).map(([cx, cy], i) => (
-        <g key={i}>
-          <line
-            x1={cx < 50 ? cx : cx - 4} y1={cy}
-            x2={cx < 50 ? cx + 4 : cx} y2={cy}
-            stroke="#c4b5fd" strokeWidth="0.6" opacity="0.3"
-          />
-          <line
-            x1={cx} y1={cy < 80 ? cy : cy - 4}
-            x2={cx} y2={cy < 80 ? cy + 4 : cy}
-            stroke="#c4b5fd" strokeWidth="0.6" opacity="0.3"
-          />
-        </g>
-      ))}
-    </svg>
-  );
-}
