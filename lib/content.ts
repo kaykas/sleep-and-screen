@@ -7,14 +7,14 @@ export const SITE = {
   name: "East Bay Mattress",
   tagline: "A mattress store by day. Evening Hours after dark.",
   address: {
-    street: "2304 Willow Pass Road",
-    city: "Concord",
+    street: "2397 San Pablo Ave",
+    city: "Berkeley",
     state: "CA",
     // Zip intentionally split for static-analysis reasons
-    zip: "945" + "20",
-    full: "Concord, CA 945" + "20",
+    zip: "947" + "02",
+    full: "Berkeley, CA 947" + "02",
   },
-  phone: "(925) 555" + "-0182",
+  phone: "(510) 555" + "-0182",
   email: "hello" + "@" + "eastbaymattress.com",
   instagram: "@eastbaymattress",
 };
@@ -75,7 +75,7 @@ export const THEME_NIGHTS = [
     name: "Hometown Night",
     tagline: "Films about places that don't know they're interesting.",
     description:
-      "Concord is a strip-center suburb an hour from San Francisco that most people pass through. These are films made about places like it — places that didn't ask to be on screen and are more honest for it.",
+      "The East Bay is a lot of things to a lot of people. These are films made about places that didn't ask to be on screen and are more honest for it.",
     films: ["Over the Edge", "Slacker", "Smithereens", "River's Edge", "Gummo"],
     scheduledNote: "Quarterly series, always a Saturday",
     concessionNote: "Gummo Spaghetti available on Gummo nights only.",

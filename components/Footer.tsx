@@ -57,6 +57,7 @@ export default function Footer() {
                 ["Hours & Directions", "#visit"],
                 ["Evening Hours", "#evening-hours"],
                 ["Summer Calendar", "#evening-hours"],
+                ["About", "/about"],
                 ["Contact", "#visit"],
               ].map(([label, href]) => (
                 <li key={label}>
@@ -79,7 +80,7 @@ export default function Footer() {
           </div>
           <div className="text-xs text-gray-600">
             Mattress store by day. Evening Hours film program after dark.
-            Concept/prototype venue — no licensed public screenings implied.
+            San Pablo Ave, Berkeley, CA.
           </div>
         </div>
       </div>

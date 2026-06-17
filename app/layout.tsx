@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "East Bay Mattress — Mattress Store + Evening Screenings | Concord, CA",
+  title: "East Bay Mattress — Mattress Store + Evening Screenings | Berkeley, CA",
   description:
-    "Concord's mattress store by day. Evening Hours film programming after dark. Try the mattress. Stay for the movie. Open daily at 2304 Willow Pass Road, Concord, CA 94520.",
+    "Berkeley's mattress store by day. Evening Hours film programming after dark. Try the mattress. Stay for the movie. Open daily on San Pablo Ave, Berkeley, CA.",
   keywords: [
     "mattress store",
     "East Bay Mattress",
-    "Concord CA",
+    "Berkeley CA",
+    "San Pablo Ave",
     "film screening",
     "cult films",
     "Evening Hours",
-    "Willow Pass",
     "East Bay",
   ],
   openGraph: {

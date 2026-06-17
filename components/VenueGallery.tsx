@@ -1,427 +1,657 @@
-// VenueGallery — stylized illustrated placeholders for exterior + interior
-// No Google Maps / Street View imagery. All cards are CSS/SVG art compositions
-// evoking the Willow Pass retail corridor at night and the interior theater setup.
+// VenueGallery — CSS/SVG placeholder compositions for exterior + interior shots.
+// Visual direction: suburban strip-mall / retail plaza on Willow Pass Road.
+// Exterior: single-story commercial bay, plate-glass windows, stucco sign band, asphalt lot,
+//           neighboring generic stores implied. Mattress Warehouse / Mattress Firm adjacency.
+// Interior: mattress showroom with beds on low risers, price cards, fluorescent retail
+//           lighting by day; warmer conversion for evening screenings.
+// No external images, no CDN, no Google Street View.
 
 const exteriorScenes = [
   {
     id: "ext-1",
-    label: "Strip Mall Exterior · Willow Pass Road",
-    caption: "Suburban strip mall bay with plate-glass windows, stucco sign band, and asphalt parking out front.",
-    art: "exterior-night",
+    label: "Strip Mall Exterior · Day",
+    caption: "Multi-story commercial building, plate-glass showroom windows, large sign band. San Pablo Ave, Berkeley.",
+    art: "exterior-day",
   },
   {
     id: "ext-2",
     label: "Parking Lot · Dusk",
-    caption: "40 surface spots. The lot is full by 7:45 on screening nights.",
+    caption: "Street parking on San Pablo Ave and side streets. The block fills by 7:45 on screening nights.",
     art: "parking-dusk",
   },
   {
     id: "ext-3",
-    label: "Storefront Detail · Day",
-    caption: "Plain strip-mall mattress store by day. Same retail bay, same windows, small Evening Hours sign after 5 PM.",
-    art: "storefront-day",
+    label: "Storefront · Evening Hours",
+    caption: "Same storefront after 8 PM. Mattresses still visible through the plate glass. Showtime posted in the window.",
+    art: "exterior-night",
   },
 ];
 
 const interiorScenes = [
   {
     id: "int-1",
-    label: "The Theater Floor",
-    caption: "Twelve mattresses arranged in three rows. Screen fills the north wall.",
-    art: "theater-floor",
+    label: "Showroom Floor · Daytime",
+    caption: "Fluorescent retail lighting. Beds on low risers with price cards. 12 models on the floor, no appointment needed.",
+    art: "showroom-day",
   },
   {
     id: "int-2",
-    label: "Night Counter",
-    caption: "Concessions open at 7 PM. Order before the lights go down.",
-    art: "counter-night",
+    label: "Showroom Floor · Screening Night",
+    caption: "Same floor after 8 PM. Screen drops at the north wall. Overhead lights dim. Mattresses face it.",
+    art: "theater-floor",
   },
   {
     id: "int-3",
-    label: "Showroom by Day",
-    caption: "Same mattresses, different light. The store opens at 10 AM.",
-    art: "showroom-day",
+    label: "Concession Counter",
+    caption: "Open at 7 PM on screening nights. Popcorn, candy, limited hot items. Order before the lights go down.",
+    art: "counter-night",
   },
 ];
 
 type ArtKey =
+  | "exterior-day"
   | "exterior-night"
   | "parking-dusk"
-  | "storefront-day"
+  | "showroom-day"
   | "theater-floor"
-  | "counter-night"
-  | "showroom-day";
+  | "counter-night";
 
 function SceneArt({ art }: { art: ArtKey }) {
   switch (art) {
-    case "exterior-night":
+    // ── EXTERIOR DAY ── bland suburban retail plaza, midday sun, asphalt lot
+    case "exterior-day":
       return (
         <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
-          {/* Night sky gradient */}
           <defs>
-            <linearGradient id="sky-n" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0a0118" />
-              <stop offset="100%" stopColor="#1a1028" />
+            <linearGradient id="sky-day" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#b8cfe8" />
+              <stop offset="100%" stopColor="#dce8f5" />
             </linearGradient>
-            <linearGradient id="ground-n" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#111" />
-              <stop offset="100%" stopColor="#0a0a0a" />
+            <linearGradient id="asphalt" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#4a4a4a" />
+              <stop offset="100%" stopColor="#3a3a3a" />
             </linearGradient>
-            <filter id="glow-purple">
-              <feGaussianBlur stdDeviation="6" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
           </defs>
-          <rect width="400" height="220" fill="url(#sky-n)" />
-          {/* Stars */}
-          {[[30,20],[90,14],[140,30],[200,8],[260,22],[310,12],[360,28],[70,45],[180,40],[330,50]].map(([x,y],i) => (
-            <circle key={i} cx={x} cy={y} r="1" fill="#f5f0e8" opacity="0.5" />
-          ))}
-          {/* Strip center building */}
-          <rect x="30" y="110" width="340" height="80" fill="#131313" />
-          {/* Roofline detail */}
-          <rect x="30" y="105" width="340" height="8" fill="#1a1a1a" />
-          {/* Windows dark store left */}
-          <rect x="45" y="122" width="55" height="35" fill="#0d0d0d" stroke="#222" strokeWidth="1" />
-          <rect x="50" y="127" width="22" height="14" fill="#1a1a0e" opacity="0.5" />
-          <rect x="75" y="127" width="22" height="14" fill="#1a1a0e" opacity="0.4" />
-          {/* East Bay Mattress storefront — purple lit */}
-          <rect x="150" y="115" width="100" height="55" fill="#100b1f" stroke="#7c3aed" strokeWidth="1.5" />
-          {/* Purple glow behind sign */}
-          <rect x="152" y="117" width="96" height="28" fill="#7c3aed" opacity="0.12" />
-          {/* Sign text placeholder bars */}
-          <rect x="163" y="124" width="74" height="5" rx="1" fill="#a78bfa" opacity="0.9" />
-          <rect x="170" y="133" width="60" height="3" rx="1" fill="#7c3aed" opacity="0.6" />
-          {/* Entrance */}
-          <rect x="190" y="148" width="20" height="22" fill="#0d0d0d" stroke="#7c3aed" strokeWidth="1" />
-          {/* Right store */}
-          <rect x="268" y="122" width="80" height="35" fill="#0d0d0d" stroke="#222" strokeWidth="1" />
-          <rect x="272" y="127" width="30" height="14" fill="#fff7e6" opacity="0.06" />
-          {/* Ground / lot */}
-          <rect x="0" y="190" width="400" height="30" fill="url(#ground-n)" />
+          {/* Sky */}
+          <rect width="400" height="220" fill="url(#sky-day)" />
+          {/* Asphalt parking lot */}
+          <rect x="0" y="155" width="400" height="65" fill="url(#asphalt)" />
           {/* Parking lot lines */}
-          {[60,100,140,180,220,260,300,340].map((x,i) => (
-            <line key={i} x1={x} y1="191" x2={x} y2="218" stroke="#1f1f1f" strokeWidth="1" />
+          {[38,76,114,152,190,228,266,304,342,380].map((x, i) => (
+            <line key={i} x1={x} y1="156" x2={x} y2="218" stroke="#555" strokeWidth="1" />
           ))}
-          {/* Ambient purple spill on lot */}
-          <ellipse cx="200" cy="195" rx="80" ry="8" fill="#7c3aed" opacity="0.07" />
+          {/* Curb strip */}
+          <rect x="0" y="152" width="400" height="4" fill="#888" />
+
+          {/* Strip mall building — full width, single story, stucco */}
+          <rect x="0" y="55" width="400" height="100" fill="#d4ccc2" />
+          {/* Stucco texture hint — subtle horizontal banding */}
+          {[65,75,85,95,105,115,125,135,145].map((y, i) => (
+            <line key={i} x1="0" y1={y} x2="400" y2={y} stroke="#c8c0b5" strokeWidth="0.4" opacity="0.5" />
+          ))}
+          {/* Roofline / sign band — flat parapet */}
+          <rect x="0" y="45" width="400" height="13" fill="#c0b8ac" />
+          <rect x="0" y="44" width="400" height="3" fill="#a89f94" />
+
+          {/* LEFT TENANT — generic retail (nail salon implied) */}
+          <rect x="5" y="58" width="100" height="94" fill="#cec6bc" />
+          <rect x="8" y="68" width="94" height="60" fill="#e8e4de" stroke="#b0a898" strokeWidth="1" />
+          {/* Window reflection */}
+          <rect x="8" y="68" width="94" height="15" fill="white" opacity="0.25" />
+          {/* Tenant sign on band */}
+          <rect x="20" y="50" width="70" height="8" fill="#e8e4de" />
+          <rect x="28" y="52" width="54" height="3" rx="0.5" fill="#888" opacity="0.6" />
+          {/* Door */}
+          <rect x="55" y="108" width="22" height="44" fill="#d8d0c8" stroke="#a89f94" strokeWidth="1" />
+          <circle cx="75" cy="130" r="1.5" fill="#888" />
+
+          {/* CENTER TENANT — East Bay Mattress */}
+          <rect x="118" y="58" width="164" height="94" fill="#d0c8be" />
+          {/* Big plate-glass showroom windows */}
+          <rect x="121" y="70" width="76" height="62" fill="#d8e4f0" stroke="#a0aabb" strokeWidth="1.5" />
+          <rect x="203" y="70" width="76" height="62" fill="#d8e4f0" stroke="#a0aabb" strokeWidth="1.5" />
+          {/* Window reflection */}
+          <rect x="121" y="70" width="76" height="14" fill="white" opacity="0.3" />
+          <rect x="203" y="70" width="76" height="14" fill="white" opacity="0.3" />
+          {/* Mattress visible in window — left window */}
+          <rect x="128" y="98" width="60" height="22" rx="2" fill="#b8bcc4" stroke="#909498" strokeWidth="1" />
+          <rect x="130" y="100" width="20" height="8" rx="1" fill="#cccfd6" />
+          <rect x="128" y="106" width="60" height="3" fill="#a8aaae" opacity="0.6" />
+          {/* Price card in window */}
+          <rect x="165" y="116" width="18" height="6" rx="0.5" fill="white" />
+          <rect x="167" y="118" width="14" height="1.5" fill="#333" opacity="0.5" />
+          {/* Right window — another mattress */}
+          <rect x="209" y="100" width="62" height="20" rx="2" fill="#c4b8b0" stroke="#a09090" strokeWidth="1" />
+          <rect x="211" y="102" width="22" height="8" rx="1" fill="#d4c8c0" />
+          {/* Price card */}
+          <rect x="246" y="116" width="18" height="6" rx="0.5" fill="white" />
+          <rect x="248" y="118" width="14" height="1.5" fill="#333" opacity="0.5" />
+          {/* Sign band — East Bay Mattress */}
+          <rect x="120" y="49" width="160" height="10" fill="#1d4ed8" />
+          <rect x="135" y="52" width="130" height="4" rx="0.5" fill="white" opacity="0.85" />
+          {/* Entrance — center */}
+          <rect x="184" y="105" width="32" height="47" fill="#c8d4e0" stroke="#a0b0c0" strokeWidth="1.5" />
+          <rect x="185" y="106" width="13" height="44" fill="#d0dce8" />
+          <rect x="201" y="106" width="13" height="44" fill="#d0dce8" />
+          <circle cx="199" cy="129" r="1.5" fill="#607080" />
+
+          {/* RIGHT TENANT — Subway implied */}
+          <rect x="295" y="58" width="100" height="94" fill="#cec6bc" />
+          <rect x="298" y="68" width="94" height="60" fill="#e8e4de" stroke="#b0a898" strokeWidth="1" />
+          <rect x="298" y="68" width="94" height="14" fill="white" opacity="0.2" />
+          {/* Tenant sign */}
+          <rect x="308" y="50" width="72" height="8" fill="#22a048" />
+          <rect x="318" y="52" width="52" height="3" rx="0.5" fill="white" opacity="0.8" />
+          {/* Door */}
+          <rect x="330" y="108" width="22" height="44" fill="#d8d0c8" stroke="#a89f94" strokeWidth="1" />
+          <circle cx="350" cy="130" r="1.5" fill="#888" />
+
+          {/* Parked cars */}
+          {/* Car 1 */}
+          <rect x="35" y="162" width="58" height="18" rx="3" fill="#7a8a9a" />
+          <rect x="40" y="156" width="38" height="8" rx="2" fill="#8a9aaa" />
+          <rect x="40" y="178" width="10" height="4" rx="1" fill="#333" />
+          <rect x="83" y="178" width="10" height="4" rx="1" fill="#333" />
+          {/* Car 2 */}
+          <rect x="155" y="163" width="62" height="17" rx="3" fill="#c8a070" />
+          <rect x="162" y="157" width="40" height="8" rx="2" fill="#d4b080" />
+          <rect x="162" y="178" width="10" height="4" rx="1" fill="#333" />
+          <rect x="207" y="178" width="10" height="4" rx="1" fill="#333" />
+          {/* Car 3 */}
+          <rect x="285" y="162" width="60" height="18" rx="3" fill="#9a9a9a" />
+          <rect x="292" y="156" width="40" height="8" rx="2" fill="#aaaaaa" />
+          <rect x="292" y="178" width="10" height="4" rx="1" fill="#333" />
+          <rect x="335" y="178" width="10" height="4" rx="1" fill="#333" />
+          {/* Light pole */}
+          <rect x="196" y="90" width="4" height="62" fill="#888" />
+          <rect x="188" y="88" width="20" height="5" rx="1" fill="#999" />
         </svg>
       );
 
+    // ── PARKING LOT DUSK ── suburban strip mall, golden hour, cars in lot
     case "parking-dusk":
       return (
         <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
           <defs>
-            <linearGradient id="dusk-sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1a0a2e" />
-              <stop offset="50%" stopColor="#2d1654" />
-              <stop offset="100%" stopColor="#4a1d78" />
+            <linearGradient id="dusk-sky2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#4a3060" />
+              <stop offset="40%" stopColor="#c4681a" />
+              <stop offset="70%" stopColor="#e88030" />
+              <stop offset="100%" stopColor="#c86818" />
             </linearGradient>
-            <linearGradient id="dusk-lot" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#181818" />
+            <linearGradient id="dusk-lot2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#3a3530" />
+              <stop offset="100%" stopColor="#2a2520" />
+            </linearGradient>
+          </defs>
+          {/* Dusk sky */}
+          <rect width="400" height="160" fill="url(#dusk-sky2)" />
+          {/* Asphalt */}
+          <rect y="155" width="400" height="65" fill="url(#dusk-lot2)" />
+          <rect y="153" width="400" height="4" fill="#5a5248" />
+          {/* Parking lines faint in dusk */}
+          {[40,80,120,160,200,240,280,320,360].map((x, i) => (
+            <line key={i} x1={x} y1="157" x2={x} y2="218" stroke="#4a4540" strokeWidth="1" />
+          ))}
+
+          {/* Building silhouette — strip mall shape */}
+          <rect x="0" y="60" width="400" height="96" fill="#1a1510" />
+          {/* Roofline */}
+          <rect x="0" y="52" width="400" height="10" fill="#141008" />
+          {/* Utility lines on roof */}
+          <rect x="10" y="50" width="380" height="3" fill="#0a0a0a" />
+
+          {/* Tenant divisions implied by lit/unlit windows */}
+          {/* Left tenant — unlit, closed */}
+          <rect x="8" y="72" width="95" height="58" fill="#0d0a08" stroke="#252015" strokeWidth="1" />
+          {/* Center — East Bay Mattress lit warm */}
+          <rect x="118" y="68" width="164" height="62" fill="#1a1208" />
+          {/* Warm interior glow through windows */}
+          <rect x="122" y="72" width="74" height="48" fill="#e8a030" opacity="0.12" stroke="#c87020" strokeWidth="1" strokeOpacity="0.4" />
+          <rect x="204" y="72" width="74" height="48" fill="#e8a030" opacity="0.10" stroke="#c87020" strokeWidth="1" strokeOpacity="0.4" />
+          {/* Mattresses dimly visible through warm-lit windows */}
+          <rect x="128" y="90" width="58" height="18" rx="2" fill="#2a2018" stroke="#4a3820" strokeWidth="0.5" />
+          <rect x="212" y="92" width="58" height="16" rx="2" fill="#2a2018" stroke="#4a3820" strokeWidth="0.5" />
+          {/* Sign band lit blue */}
+          <rect x="118" y="52" width="164" height="11" fill="#1d4ed8" opacity="0.7" />
+          <rect x="132" y="55" width="136" height="4" rx="0.5" fill="white" opacity="0.6" />
+          {/* Showtime sign in window — small */}
+          <rect x="250" y="94" width="42" height="18" rx="1" fill="#1a1a10" stroke="#d97706" strokeWidth="1" strokeOpacity="0.8" />
+          <rect x="254" y="98" width="34" height="3" rx="0.5" fill="#d97706" opacity="0.7" />
+          <rect x="257" y="104" width="28" height="2" rx="0.5" fill="#d97706" opacity="0.5" />
+
+          {/* Right tenant — dim */}
+          <rect x="296" y="72" width="97" height="56" fill="#0d0a08" stroke="#1a1510" strokeWidth="1" />
+          <rect x="308" y="50" width="72" height="8" fill="#187028" opacity="0.6" />
+
+          {/* Light pole with sodium glow */}
+          <rect x="197" y="88" width="4" height="70" fill="#5a5248" />
+          <ellipse cx="199" cy="90" rx="24" ry="10" fill="#e8a030" opacity="0.18" />
+          <rect x="189" y="85" width="22" height="5" rx="1" fill="#887860" />
+
+          {/* Cars */}
+          <rect x="32" y="162" width="56" height="17" rx="3" fill="#303028" />
+          <rect x="38" y="157" width="36" height="7" rx="2" fill="#383830" />
+          <rect x="38" y="177" width="10" height="3" rx="1" fill="#1a1818" />
+          <rect x="78" y="177" width="10" height="3" rx="1" fill="#1a1818" />
+          {/* Headlights */}
+          <ellipse cx="88" cy="172" rx="8" ry="3" fill="#e8e0c0" opacity="0.3" />
+
+          <rect x="152" y="161" width="60" height="18" rx="3" fill="#403830" />
+          <rect x="158" y="156" width="40" height="7" rx="2" fill="#504838" />
+          <rect x="158" y="177" width="10" height="3" rx="1" fill="#1a1818" />
+          <rect x="202" y="177" width="10" height="3" rx="1" fill="#1a1818" />
+
+          <rect x="286" y="162" width="58" height="17" rx="3" fill="#282828" />
+          <rect x="293" y="157" width="38" height="7" rx="2" fill="#303030" />
+        </svg>
+      );
+
+    // ── EXTERIOR NIGHT ── same strip mall bay after dark, mattresses through glass, showtime posted
+    case "exterior-night":
+      return (
+        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
+          <defs>
+            <linearGradient id="night-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#06060e" />
+              <stop offset="100%" stopColor="#0d0d18" />
+            </linearGradient>
+            <linearGradient id="night-lot" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1a1a1a" />
               <stop offset="100%" stopColor="#111" />
             </linearGradient>
           </defs>
-          <rect width="400" height="180" fill="url(#dusk-sky)" />
-          <rect y="160" width="400" height="60" fill="url(#dusk-lot)" />
-          {/* Horizon glow */}
-          <ellipse cx="200" cy="160" rx="220" ry="25" fill="#7c3aed" opacity="0.15" />
-          {/* Building silhouette */}
-          <rect x="60" y="80" width="280" height="85" fill="#0d0d0d" />
-          <rect x="60" y="74" width="280" height="8" fill="#131313" />
-          {/* Lit sign */}
-          <rect x="155" y="88" width="90" height="22" fill="#7c3aed" opacity="0.2" />
-          <rect x="163" y="93" width="74" height="4" rx="1" fill="#a78bfa" opacity="0.85" />
-          <rect x="168" y="101" width="64" height="3" rx="1" fill="#7c3aed" opacity="0.5" />
-          {/* Cars silhouette */}
-          <rect x="40" y="168" width="55" height="18" rx="3" fill="#1a1a1a" />
-          <rect x="44" y="163" width="35" height="8" rx="2" fill="#222" />
-          <rect x="150" y="165" width="65" height="20" rx="3" fill="#1a1a1a" />
-          <rect x="157" y="159" width="42" height="9" rx="2" fill="#222" />
-          <rect x="290" y="167" width="58" height="19" rx="3" fill="#1a1a1a" />
-          <rect x="296" y="162" width="38" height="8" rx="2" fill="#222" />
+          {/* Night sky */}
+          <rect width="400" height="220" fill="url(#night-sky)" />
+          {/* Faint stars */}
+          {[[25,18],[70,10],[140,25],[210,8],[280,20],[350,14],[95,38],[320,42],[180,35]].map(([x,y],i) => (
+            <circle key={i} cx={x} cy={y} r={i%3===0?1.2:0.7} fill="#e0d8f0" opacity="0.4" />
+          ))}
+          {/* Asphalt */}
+          <rect y="158" width="400" height="62" fill="url(#night-lot)" />
+          <rect y="155" width="400" height="4" fill="#2a2a2a" />
           {/* Lot lines */}
-          {[80,125,170,215,260,305,345].map((x,i) => (
-            <line key={i} x1={x} y1="161" x2={x} y2="220" stroke="#1f1f1f" strokeWidth="1" />
+          {[40,80,120,160,200,240,280,320,360].map((x, i) => (
+            <line key={i} x1={x} y1="159" x2={x} y2="218" stroke="#222" strokeWidth="1" />
           ))}
-          {/* Headlight glow */}
-          <ellipse cx="95" cy="186" rx="18" ry="4" fill="#fbbf24" opacity="0.12" />
-          <ellipse cx="215" cy="185" rx="18" ry="4" fill="#fbbf24" opacity="0.1" />
+          {/* Building */}
+          <rect x="0" y="58" width="400" height="100" fill="#0d0c0a" />
+          <rect x="0" y="50" width="400" height="10" fill="#080806" />
+
+          {/* Left tenant — dark/closed */}
+          <rect x="5" y="70" width="100" height="60" fill="#080806" stroke="#181816" strokeWidth="1" />
+          <rect x="5" y="50" width="100" height="10" fill="#101010" />
+
+          {/* East Bay Mattress — lit interior, warm overhead retail fluorescent */}
+          <rect x="118" y="65" width="164" height="65" fill="#14120a" />
+          {/* Fluorescent spill — warm retail light through glass */}
+          <rect x="122" y="68" width="74" height="50" fill="#f5e8c0" opacity="0.09" stroke="#c8a840" strokeWidth="1" strokeOpacity="0.5" />
+          <rect x="204" y="68" width="74" height="50" fill="#f5e8c0" opacity="0.08" stroke="#c8a840" strokeWidth="1" strokeOpacity="0.4" />
+          {/* Mattresses clearly visible through window in fluorescent light */}
+          <rect x="128" y="88" width="60" height="18" rx="2" fill="#3a3428" stroke="#5a5040" strokeWidth="0.8" />
+          <rect x="130" y="90" width="18" height="8" rx="1" fill="#4a4438" />
+          <rect x="128" y="94" width="60" height="2" fill="#3e3830" opacity="0.8" />
+          {/* Price card lit */}
+          <rect x="164" y="102" width="18" height="5" rx="0.5" fill="#f0e8d0" opacity="0.7" />
+          <rect x="166" y="103.5" width="14" height="1" fill="#604000" opacity="0.6" />
+          {/* Right window mattress */}
+          <rect x="210" y="90" width="62" height="18" rx="2" fill="#3a3428" stroke="#504838" strokeWidth="0.8" />
+          <rect x="212" y="92" width="20" height="8" rx="1" fill="#4a4438" />
+          <rect x="210" y="96" width="62" height="2" fill="#3e3830" opacity="0.6" />
+          {/* Price card */}
+          <rect x="248" y="104" width="18" height="5" rx="0.5" fill="#f0e8d0" opacity="0.6" />
+
+          {/* Showtime sign in window — clear and readable */}
+          <rect x="156" y="108" width="88" height="20" rx="1" fill="#0a0800" stroke="#e8a020" strokeWidth="1.5" />
+          <rect x="160" y="112" width="80" height="3" rx="0.5" fill="#e8a020" opacity="0.9" />
+          <rect x="163" y="118" width="74" height="2" rx="0.5" fill="#e8a020" opacity="0.6" />
+          {/* "TONIGHT" label */}
+          <rect x="163" y="108" width="30" height="5" rx="0.5" fill="#e8a020" opacity="0.8" />
+
+          {/* Sign band — blue neon-ish */}
+          <rect x="118" y="50" width="164" height="11" fill="#1d4ed8" opacity="0.5" />
+          <rect x="130" y="53" width="140" height="4" rx="0.5" fill="white" opacity="0.7" />
+          {/* Sign glow */}
+          <rect x="108" y="50" width="184" height="14" fill="#1d4ed8" opacity="0.06" />
+
+          {/* Entrance door — lit frame */}
+          <rect x="184" y="105" width="32" height="48" fill="#100e08" stroke="#c8a840" strokeWidth="1" strokeOpacity="0.5" />
+          <rect x="185" y="106" width="13" height="44" fill="#181408" />
+          <rect x="201" y="106" width="13" height="44" fill="#181408" />
+
+          {/* Right tenant — dark */}
+          <rect x="296" y="68" width="98" height="60" fill="#080806" stroke="#181816" strokeWidth="1" />
+          <rect x="296" y="50" width="98" height="10" fill="#101010" />
+
+          {/* Light pole + sodium glow */}
+          <rect x="197" y="92" width="4" height="68" fill="#4a4440" />
+          <rect x="189" y="88" width="20" height="6" rx="1" fill="#9a8858" />
+          <ellipse cx="199" cy="92" rx="26" ry="10" fill="#e8d080" opacity="0.12" />
+          {/* Lot glow under pole */}
+          <ellipse cx="199" cy="168" rx="40" ry="8" fill="#e8d080" opacity="0.06" />
+
+          {/* Cars in lot */}
+          <rect x="30" y="163" width="58" height="17" rx="3" fill="#1a1a1a" />
+          <rect x="36" y="158" width="36" height="7" rx="2" fill="#222" />
+          <rect x="148" y="162" width="62" height="18" rx="3" fill="#181818" />
+          <rect x="155" y="157" width="40" height="7" rx="2" fill="#1f1f1f" />
+          <rect x="285" y="163" width="60" height="17" rx="3" fill="#1a1a1a" />
+          <rect x="292" y="158" width="38" height="7" rx="2" fill="#222" />
+          {/* Headlight glow one car */}
+          <ellipse cx="207" cy="172" rx="10" ry="3" fill="#f0f0e0" opacity="0.2" />
         </svg>
       );
 
-    case "storefront-day":
-      return (
-        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
-          <defs>
-            <linearGradient id="day-sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1e293b" />
-              <stop offset="100%" stopColor="#334155" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="90" fill="url(#day-sky)" />
-          <rect y="90" width="400" height="130" fill="#1a1a1a" />
-          {/* Building facade */}
-          <rect x="40" y="45" width="320" height="145" fill="#141414" stroke="#222" strokeWidth="1" />
-          {/* Awning */}
-          <polygon points="40,80 360,80 360,95 40,95" fill="#1f1f1f" />
-          <rect x="40" y="79" width="320" height="4" fill="#7c3aed" opacity="0.4" />
-          {/* Daytime sign - unlit but legible */}
-          <rect x="140" y="53" width="120" height="28" fill="#111" stroke="#2d2d2d" strokeWidth="1" />
-          <rect x="148" y="60" width="104" height="5" rx="1" fill="#f5f0e8" opacity="0.5" />
-          <rect x="155" y="69" width="90" height="3" rx="1" fill="#9ca3af" opacity="0.3" />
-          {/* Store windows */}
-          <rect x="55" y="100" width="120" height="60" fill="#0d0d0d" stroke="#1f1f1f" strokeWidth="1" />
-          {/* Mattress display in window */}
-          <rect x="65" y="110" width="45" height="30" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
-          <rect x="67" y="112" width="41" height="4" rx="1" fill="#7c3aed" opacity="0.2" />
-          <rect x="118" y="113" width="50" height="25" rx="2" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
-          {/* Entrance door */}
-          <rect x="190" y="110" width="28" height="50" fill="#0a0a0a" stroke="#2d2d2d" strokeWidth="1" />
-          <rect x="192" y="112" width="11" height="44" fill="#111" />
-          <rect x="205" y="112" width="11" height="44" fill="#111" />
-          <circle cx="203" cy="136" r="1.5" fill="#9ca3af" />
-          {/* Right window */}
-          <rect x="235" y="100" width="110" height="60" fill="#0d0d0d" stroke="#1f1f1f" strokeWidth="1" />
-          <rect x="242" y="108" width="90" height="40" fill="#111" />
-          {/* Sidewalk */}
-          <rect x="0" y="190" width="400" height="30" fill="#131313" />
-          {[50,100,150,200,250,300,350].map((x,i) => (
-            <line key={i} x1={x} y1="191" x2={x-5} y2="220" stroke="#1a1a1a" strokeWidth="1" />
-          ))}
-        </svg>
-      );
-
-    case "theater-floor":
-      return (
-        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
-          <defs>
-            <linearGradient id="screen-glow" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#e8e0d4" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#c4b8a8" stopOpacity="0.6" />
-            </linearGradient>
-            <linearGradient id="floor-g" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#111" />
-              <stop offset="100%" stopColor="#0a0a0a" />
-            </linearGradient>
-            <filter id="screen-blur">
-              <feGaussianBlur stdDeviation="3" />
-            </filter>
-          </defs>
-          {/* Room background */}
-          <rect width="400" height="220" fill="url(#floor-g)" />
-          {/* Ceiling */}
-          <rect x="0" y="0" width="400" height="18" fill="#0f0f0f" />
-          {/* Screen wall glow behind screen */}
-          <rect x="50" y="5" width="300" height="90" fill="#f5f0e8" opacity="0.04" filter="url(#screen-blur)" />
-          {/* Screen */}
-          <rect x="70" y="8" width="260" height="75" rx="1" fill="url(#screen-glow)" opacity="0.85" />
-          {/* Screen frame */}
-          <rect x="68" y="6" width="264" height="79" rx="1" fill="none" stroke="#2d2d2d" strokeWidth="2" />
-          {/* Film content suggestion — abstract bars */}
-          <rect x="80" y="16" width="120" height="60" fill="#c4b8a8" opacity="0.3" />
-          <rect x="210" y="16" width="110" height="60" fill="#8a7a6a" opacity="0.4" />
-          <rect x="80" y="40" width="240" height="2" fill="#0a0a0a" opacity="0.2" />
-          {/* Projector beam */}
-          <polygon points="200,0 180,8 220,8" fill="#f5f0e8" opacity="0.06" />
-          {/* Screen ambient spill on floor */}
-          <ellipse cx="200" cy="95" rx="160" ry="12" fill="#f5f0e8" opacity="0.04" />
-          {/* Mattresses — 3 rows of 4 */}
-          {[0,1,2].map(row => (
-            [0,1,2,3].map(col => {
-              const x = 35 + col * 84;
-              const y = 105 + row * 36;
-              const isCenter = col === 1 || col === 2;
-              return (
-                <g key={`${row}-${col}`}>
-                  <rect
-                    x={x} y={y}
-                    width={74} height={28}
-                    rx="3"
-                    fill={isCenter && row === 1 ? "#1a1030" : "#141414"}
-                    stroke={isCenter && row === 1 ? "#7c3aed" : "#222"}
-                    strokeWidth={isCenter && row === 1 ? "1.5" : "1"}
-                  />
-                  {/* Pillow */}
-                  <rect x={x+4} y={y+4} width="18" height="10" rx="2" fill="#1f1f1f" stroke="#2a2a2a" strokeWidth="0.5" />
-                  {/* Bedding texture line */}
-                  <line x1={x+26} y1={y+8} x2={x+70} y2={y+8} stroke="#222" strokeWidth="0.5" />
-                  <line x1={x+26} y1={y+14} x2={x+70} y2={y+14} stroke="#1a1a1a" strokeWidth="0.5" />
-                  {/* Screen light reflection on top mattresses */}
-                  {row === 0 && <rect x={x} y={y} width={74} height={5} rx="1" fill="#f5f0e8" opacity="0.04" />}
-                </g>
-              );
-            })
-          ))}
-          {/* Side wall detail */}
-          <rect x="0" y="0" width="28" height="220" fill="#0d0d0d" />
-          <rect x="372" y="0" width="28" height="220" fill="#0d0d0d" />
-          {/* Aisle strip lights */}
-          {[110,146,182].map((y,i) => (
-            <rect key={i} x="2" y={y} width="3" height="18" rx="1" fill="#7c3aed" opacity="0.3" />
-          ))}
-          {[110,146,182].map((y,i) => (
-            <rect key={i} x="395" y={y} width="3" height="18" rx="1" fill="#7c3aed" opacity="0.3" />
-          ))}
-        </svg>
-      );
-
-    case "counter-night":
-      return (
-        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
-          <defs>
-            <linearGradient id="counter-bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0d0d0d" />
-              <stop offset="100%" stopColor="#111" />
-            </linearGradient>
-            <linearGradient id="amber-spill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#d97706" stopOpacity="0.15" />
-              <stop offset="100%" stopColor="#d97706" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <rect width="400" height="220" fill="url(#counter-bg)" />
-          {/* Overhead warm light pool */}
-          <ellipse cx="200" cy="80" rx="160" ry="60" fill="url(#amber-spill)" />
-          {/* Back wall shelves */}
-          <rect x="20" y="20" width="360" height="100" fill="#0a0a0a" />
-          {/* Shelf boards */}
-          {[30,60,95].map((y,i) => (
-            <rect key={i} x="25" y={y} width="350" height="3" fill="#1a1a1a" />
-          ))}
-          {/* Items on shelves — candy boxes */}
-          {[40,65,90,115,140,165,190,215,240,265,290,315,340].map((x,i) => {
-            const colors = ["#7c3aed","#d97706","#f87171","#34d399","#60a5fa","#f472b6","#a78bfa"];
-            const color = colors[i % colors.length];
-            const shelfY = i < 5 ? 10 : i < 9 ? 38 : 65;
-            return (
-              <rect key={i} x={x} y={shelfY} width="18" height="18" rx="1"
-                fill={color} opacity="0.25" stroke={color} strokeWidth="0.5" strokeOpacity="0.5" />
-            );
-          })}
-          {/* Popcorn machine silhouette */}
-          <rect x="330" y="15" width="40" height="90" rx="4" fill="#111" stroke="#d97706" strokeWidth="1" strokeOpacity="0.4" />
-          <ellipse cx="350" cy="22" rx="16" ry="6" fill="#d97706" opacity="0.15" />
-          <rect x="338" y="26" width="24" height="50" fill="#1a1a1a" />
-          {[0,1,2,3,4].map(i => (
-            <circle key={i} cx={340+i*5} cy={30+i*7} r="3" fill="#f59e0b" opacity={0.1+i*0.04} />
-          ))}
-          {/* Counter surface */}
-          <rect x="0" y="115" width="400" height="20" fill="#141414" stroke="#1f1f1f" strokeWidth="1" />
-          <rect x="0" y="120" width="400" height="2" fill="#1f1f1f" />
-          {/* Items on counter */}
-          {/* Popcorn bag */}
-          <polygon points="130,90 145,90 148,115 127,115" fill="#1a1a1a" stroke="#d97706" strokeWidth="1" strokeOpacity="0.5" />
-          <rect x="129" y="86" width="18" height="6" rx="1" fill="#d97706" opacity="0.2" />
-          {/* Candy bar */}
-          <rect x="165" y="97" width="28" height="18" rx="2" fill="#7c3aed" opacity="0.3" stroke="#a78bfa" strokeWidth="0.5" strokeOpacity="0.5" />
-          {/* Soda cup */}
-          <polygon points="200,88 212,88 215,115 197,115" fill="#1a1a1a" stroke="#60a5fa" strokeWidth="1" strokeOpacity="0.4" />
-          <rect x="200" y="84" width="12" height="6" rx="1" fill="#60a5fa" opacity="0.2" />
-          {/* Spaghetti bowl — special item */}
-          <ellipse cx="265" cy="106" rx="28" ry="9" fill="#111" stroke="#f87171" strokeWidth="1.5" />
-          <ellipse cx="265" cy="103" rx="24" ry="7" fill="#1a1a1a" />
-          {/* Spaghetti squiggle lines */}
-          {[-10,-5,0,5,10].map((dx,i) => (
-            <path key={i}
-              d={`M ${255+dx} ${100+i} q ${3} ${2} ${6} ${0} q ${3} ${-2} ${6} ${0}`}
-              stroke="#f87171" strokeWidth="0.8" fill="none" opacity="0.5" />
-          ))}
-          {/* Label card */}
-          <rect x="245" y="113" width="40" height="10" rx="1" fill="#f87171" opacity="0.15" />
-          <rect x="249" y="116" width="32" height="2" rx="0.5" fill="#f87171" opacity="0.4" />
-          {/* Floor */}
-          <rect x="0" y="135" width="400" height="85" fill="#0a0a0a" />
-          {/* Floor grid */}
-          {[50,100,150,200,250,300,350].map((x,i) => (
-            <line key={i} x1={x} y1="135" x2={x} y2="220" stroke="#111" strokeWidth="1" />
-          ))}
-          {[160,185,210].map((y,i) => (
-            <line key={i} x1="0" y1={y} x2="400" y2={y} stroke="#111" strokeWidth="1" />
-          ))}
-        </svg>
-      );
-
+    // ── SHOWROOM DAY ── retail fluorescent lighting, mattresses on low risers, price cards
     case "showroom-day":
       return (
         <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
           <defs>
-            <linearGradient id="day-room" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#161616" />
-              <stop offset="100%" stopColor="#111" />
+            <linearGradient id="showroom-floor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#e8e0d8" />
+              <stop offset="100%" stopColor="#dcd4cc" />
             </linearGradient>
-            <linearGradient id="window-light" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#f5f0e8" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#f5f0e8" stopOpacity="0" />
+            <linearGradient id="showroom-wall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f0ece8" />
+              <stop offset="100%" stopColor="#e4e0dc" />
             </linearGradient>
           </defs>
-          <rect width="400" height="220" fill="url(#day-room)" />
-          {/* Ceiling */}
-          <rect x="0" y="0" width="400" height="22" fill="#0f0f0f" />
-          {/* Overhead lights */}
-          {[60,120,180,240,300,360].map((x,i) => (
+          {/* Ceiling — off-white drop tile */}
+          <rect width="400" height="220" fill="url(#showroom-wall)" />
+          <rect x="0" y="0" width="400" height="28" fill="#f0f0ee" />
+          {/* Ceiling tile grid */}
+          {[0,50,100,150,200,250,300,350,400].map((x, i) => (
+            <line key={`cv${i}`} x1={x} y1="0" x2={x} y2="28" stroke="#dcdcda" strokeWidth="0.5" />
+          ))}
+          {[0,14,28].map((y, i) => (
+            <line key={`ch${i}`} x1="0" y1={y} x2="400" y2={y} stroke="#dcdcda" strokeWidth="0.5" />
+          ))}
+          {/* Fluorescent light fixtures */}
+          {[50,150,250,350].map((x, i) => (
             <g key={i}>
-              <rect x={x-6} y="4" width="12" height="4" rx="1" fill="#f5f0e8" opacity="0.2" />
-              <ellipse cx={x} cy="22" rx="30" ry="8" fill="#f5f0e8" opacity="0.04" />
+              <rect x={x-28} y="4" width="56" height="6" rx="1" fill="#f8f8f0" stroke="#ccc" strokeWidth="0.5" />
+              <rect x={x-26} y="5" width="52" height="4" fill="#fffef0" opacity="0.9" />
+              <ellipse cx={x} cy="28" rx="50" ry="16" fill="#fffef0" opacity="0.4" />
             </g>
           ))}
-          {/* Window light spill from left */}
-          <rect x="0" y="22" width="200" height="198" fill="url(#window-light)" />
-          {/* Floor */}
-          <rect x="0" y="170" width="400" height="50" fill="#0d0d0d" />
-          {/* Floor grain lines */}
-          {[40,80,120,160,200,240,280,320,360].map((x,i) => (
-            <line key={i} x1={x} y1="170" x2={x+10} y2="220" stroke="#131313" strokeWidth="1" />
+          {/* Floor — light beige vinyl */}
+          <rect x="0" y="165" width="400" height="55" fill="url(#showroom-floor)" />
+          <rect x="0" y="164" width="400" height="2" fill="#c8c0b8" />
+          {/* Floor tile lines */}
+          {[0,50,100,150,200,250,300,350,400].map((x, i) => (
+            <line key={i} x1={x} y1="165" x2={x} y2="220" stroke="#d8d0c8" strokeWidth="0.8" />
           ))}
-          {/* Mattresses on display plinths */}
-          {[0,1,2].map(col => {
-            const bases = [
-              { x: 20, y: 140, w: 100, badge: null },
-              { x: 150, y: 135, w: 100, badge: "Popular" },
-              { x: 280, y: 140, w: 100, badge: null },
-            ];
-            const b = bases[col];
+          {/* Wall — back wall, plain painted */}
+          <rect x="0" y="28" width="400" height="138" fill="#eeece8" />
+          {/* Wall panel / branding strip */}
+          <rect x="0" y="28" width="400" height="6" fill="#1d4ed8" opacity="0.15" />
+
+          {/* Left info panel on wall */}
+          <rect x="12" y="38" width="80" height="90" fill="#e8e4e0" stroke="#d0ccc8" strokeWidth="1" />
+          <rect x="16" y="42" width="72" height="5" rx="0.5" fill="#1d4ed8" opacity="0.5" />
+          <rect x="16" y="51" width="60" height="3" rx="0.5" fill="#666" opacity="0.4" />
+          <rect x="16" y="58" width="68" height="3" rx="0.5" fill="#666" opacity="0.35" />
+          <rect x="16" y="65" width="52" height="3" rx="0.5" fill="#666" opacity="0.3" />
+          <rect x="16" y="78" width="72" height="42" fill="#e0dcd8" stroke="#ccc" strokeWidth="0.5" />
+          <rect x="20" y="82" width="64" height="3" rx="0.5" fill="#888" opacity="0.3" />
+          <rect x="20" y="89" width="56" height="3" rx="0.5" fill="#888" opacity="0.25" />
+          <rect x="20" y="96" width="60" height="3" rx="0.5" fill="#888" opacity="0.25" />
+          <rect x="20" y="103" width="48" height="3" rx="0.5" fill="#888" opacity="0.2" />
+
+          {/* Mattresses on low risers — 3 beds */}
+          {[
+            { x: 105, y: 118, w: 80, h: 34, color: "#d8d0c8", pillow: "#e0dcd8", label: "From $499", badge: null },
+            { x: 200, y: 114, w: 84, h: 38, color: "#c8c4c0", pillow: "#d4d0cc", label: "From $849", badge: "Best Seller" },
+            { x: 300, y: 118, w: 80, h: 34, color: "#ccc8c4", pillow: "#d8d4d0", label: "From $1,299", badge: null },
+          ].map((bed, i) => (
+            <g key={i}>
+              {/* Low riser platform */}
+              <rect x={bed.x - 2} y={bed.y + bed.h} width={bed.w + 4} height={8} rx="1"
+                fill="#ccc4bc" stroke="#b8b0a8" strokeWidth="0.5" />
+              {/* Mattress body */}
+              <rect x={bed.x} y={bed.y} width={bed.w} height={bed.h} rx="3"
+                fill={bed.color} stroke="#b0a8a0" strokeWidth="1" />
+              {/* Pillow area */}
+              <rect x={bed.x + 4} y={bed.y + 5} width={bed.w * 0.3} height={bed.h - 12} rx="2"
+                fill={bed.pillow} stroke="#c0b8b0" strokeWidth="0.5" />
+              {/* Bedding fold lines */}
+              <line x1={bed.x + bed.w * 0.35} y1={bed.y + 10} x2={bed.x + bed.w - 4} y2={bed.y + 10}
+                stroke="#a8a0a0" strokeWidth="0.6" />
+              <line x1={bed.x + bed.w * 0.35} y1={bed.y + 18} x2={bed.x + bed.w - 4} y2={bed.y + 18}
+                stroke="#a8a0a0" strokeWidth="0.4" />
+              <line x1={bed.x + bed.w * 0.35} y1={bed.y + 26} x2={bed.x + bed.w - 4} y2={bed.y + 26}
+                stroke="#a8a0a0" strokeWidth="0.3" />
+              {/* Mattress edge piping */}
+              <rect x={bed.x} y={bed.y} width={bed.w} height={bed.h} rx="3"
+                fill="none" stroke="#908888" strokeWidth="0.5" />
+              {/* Sale badge */}
+              {bed.badge && (
+                <rect x={bed.x + bed.w - 36} y={bed.y - 10} width={40} height={12} rx="2"
+                  fill="#dc2626" />
+              )}
+              {bed.badge && (
+                <rect x={bed.x + bed.w - 32} y={bed.y - 7} width={32} height={3} rx="0.5"
+                  fill="white" opacity="0.9" />
+              )}
+              {/* Price card on riser */}
+              <rect x={bed.x + 4} y={bed.y + bed.h + 2} width={48} height={20} rx="1"
+                fill="white" stroke="#c8c0b8" strokeWidth="0.5" />
+              <rect x={bed.x + 8} y={bed.y + bed.h + 5} width={40} height={4} rx="0.5"
+                fill="#1d4ed8" opacity="0.7" />
+              <rect x={bed.x + 8} y={bed.y + bed.h + 12} width={32} height={3} rx="0.5"
+                fill="#666" opacity="0.5" />
+              <rect x={bed.x + 8} y={bed.y + bed.h + 17} width={24} height={2} rx="0.5"
+                fill="#999" opacity="0.4" />
+            </g>
+          ))}
+
+          {/* Right info panel */}
+          <rect x="308" y="38" width="80" height="90" fill="#e8e4e0" stroke="#d0ccc8" strokeWidth="1" />
+          <rect x="312" y="42" width="72" height="5" rx="0.5" fill="#dc2626" opacity="0.5" />
+          <rect x="312" y="51" width="60" height="3" rx="0.5" fill="#666" opacity="0.4" />
+          <rect x="312" y="58" width="68" height="3" rx="0.5" fill="#666" opacity="0.35" />
+          <rect x="312" y="78" width="72" height="42" fill="#e0dcd8" stroke="#ccc" strokeWidth="0.5" />
+          <rect x="316" y="82" width="64" height="3" rx="0.5" fill="#888" opacity="0.3" />
+          <rect x="316" y="89" width="56} height=" rx="0.5" fill="#888" opacity="0.25" />
+
+          {/* Customer foot traffic hint — faint silhouette */}
+          <ellipse cx="200" cy="168" rx="12" ry="5" fill="#c0b8b0" opacity="0.3" />
+        </svg>
+      );
+
+    // ── THEATER FLOOR ── same showroom floor in screening mode, screen down, mattresses face it
+    case "theater-floor":
+      return (
+        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
+          <defs>
+            <linearGradient id="screen-g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f0ece4" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#d8d0c4" stopOpacity="0.75" />
+            </linearGradient>
+            <linearGradient id="dim-floor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1a1510" />
+              <stop offset="100%" stopColor="#120f0a" />
+            </linearGradient>
+          </defs>
+          {/* Darkened showroom ceiling */}
+          <rect width="400" height="220" fill="url(#dim-floor)" />
+          <rect x="0" y="0" width="400" height="22" fill="#100c08" />
+          {/* Fluorescent lights OFF — only faint aisle strip lights */}
+          {[60, 180, 300].map((x, i) => (
+            <rect key={i} x={x-20} y="4" width="40" height="5" rx="1" fill="#1a1510" stroke="#252015" strokeWidth="0.5" />
+          ))}
+          {/* Screen — pulled down over the mattress display wall, fills north wall */}
+          <rect x="38" y="6" width="324" height="88" rx="1" fill="url(#screen-g)" opacity="0.88" />
+          <rect x="36" y="4" width="328" height="92" rx="1" fill="none" stroke="#2a2520" strokeWidth="2" />
+          {/* Screen content — warm film tones, abstract */}
+          <rect x="50" y="12" width="160" height="76" fill="#c8b898" opacity="0.35" />
+          <rect x="220" y="12" width="132" height="76" fill="#887060" opacity="0.4" />
+          <rect x="50" y="48" width="302" height="2" fill="#000" opacity="0.15" />
+          {/* Projector beam hint from back */}
+          <polygon points="200,0 183,8 217,8" fill="#f0ece4" opacity="0.05" />
+          {/* Screen ambient spill on floor/beds */}
+          <ellipse cx="200" cy="105" rx="180" ry="14" fill="#e8dcc8" opacity="0.06" />
+
+          {/* Mattresses — same retail beds, now facing screen in dim light */}
+          {[0,1,2].map(row => (
+            [0,1,2,3].map(col => {
+              const x = 30 + col * 86;
+              const y = 108 + row * 35;
+              const lit = row === 0;
+              return (
+                <g key={`${row}-${col}`}>
+                  {/* Low riser */}
+                  <rect x={x} y={y + 24} width={78} height={6} rx="1" fill="#1e1a14" stroke="#282218" strokeWidth="0.5" />
+                  {/* Mattress body — same retail bed, just dimmer */}
+                  <rect x={x} y={y} width={78} height={26} rx="3"
+                    fill={lit ? "#2a2518" : "#1a1610"}
+                    stroke={lit ? "#3a3020" : "#221e14"}
+                    strokeWidth="1" />
+                  {/* Pillow visible */}
+                  <rect x={x+4} y={y+4} width="20" height="12" rx="2"
+                    fill={lit ? "#302820" : "#201c14"} stroke="#282018" strokeWidth="0.4" />
+                  {/* Screen light catch on top-row beds */}
+                  {lit && <rect x={x} y={y} width={78} height={4} rx="1" fill="#e8dcc8" opacity="0.06" />}
+                  {/* Price cards still on beds — strip-mall detail */}
+                  <rect x={x + 46} y={y + 2} width="28" height="10" rx="0.5"
+                    fill="#141008" stroke="#2a2518" strokeWidth="0.5" />
+                  <rect x={x + 48} y={y + 4} width="24" height="2" rx="0.2" fill="#a89060" opacity="0.3" />
+                </g>
+              );
+            })
+          ))}
+          {/* Aisle strip lights — warm amber, retail floor detail */}
+          {[112, 147, 182].map((y, i) => (
+            <g key={i}>
+              <rect x="2" y={y} width="4" height="14" rx="1" fill="#d97706" opacity="0.35" />
+              <rect x="394" y={y} width="4" height="14" rx="1" fill="#d97706" opacity="0.3" />
+            </g>
+          ))}
+          {/* Side walls — showroom drywall, not cinema walls */}
+          <rect x="0" y="0" width="24" height="220" fill="#0f0c08" />
+          <rect x="376" y="0" width="24" height="220" fill="#0f0c08" />
+        </svg>
+      );
+
+    // ── CONCESSION COUNTER ── retail-style, no fancy bar
+    case "counter-night":
+      return (
+        <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
+          <defs>
+            <linearGradient id="counter-wall" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#f0ece8" />
+              <stop offset="60%" stopColor="#e8e4e0" />
+              <stop offset="100%" stopColor="#d8d4d0" />
+            </linearGradient>
+            <linearGradient id="counter-top" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#c8c0b8" />
+              <stop offset="100%" stopColor="#b8b0a8" />
+            </linearGradient>
+          </defs>
+          {/* Wall */}
+          <rect width="400" height="220" fill="url(#counter-wall)" />
+          {/* Ceiling — same drop tile */}
+          <rect x="0" y="0" width="400" height="24" fill="#f4f4f2" />
+          {[0,50,100,150,200,250,300,350,400].map((x, i) => (
+            <line key={`cv${i}`} x1={x} y1="0" x2={x} y2="24" stroke="#e4e4e2" strokeWidth="0.5" />
+          ))}
+          {[0,12,24].map((y, i) => (
+            <line key={`ch${i}`} x1="0" y1={y} x2="400" y2={y} stroke="#e4e4e2" strokeWidth="0.5" />
+          ))}
+          {/* Fluorescent fixture */}
+          <rect x="140" y="4" width="120" height="6" rx="1" fill="#fefef8" stroke="#ddd" strokeWidth="0.5" />
+          <rect x="143" y="5" width="114" height="4" fill="#fffef0" />
+          <ellipse cx="200" cy="24" rx="90" ry="16" fill="#fffef0" opacity="0.5" />
+
+          {/* Wall shelving — retail shelving unit */}
+          <rect x="15" y="28" width="370" height="88" fill="#eae6e2" stroke="#d0ccc8" strokeWidth="1" />
+          {/* Shelf boards */}
+          {[56,82,108].map((y, i) => (
+            <rect key={i} x="18" y={y} width="364" height="3" fill="#d0ccc8" />
+          ))}
+          {/* Items on shelves */}
+          {/* Top shelf — candy/snacks retail boxes */}
+          {[28,60,92,124,156,188,220,252,284,316,348].map((x, i) => {
+            const colors = ["#dc2626","#1d4ed8","#16a34a","#d97706","#7c3aed","#db2777","#dc2626","#1d4ed8","#16a34a","#d97706","#7c3aed"];
             return (
-              <g key={col}>
-                {/* Plinth */}
-                <rect x={b.x} y={b.y+28} width={b.w} height={12} rx="1" fill="#131313" stroke="#1a1a1a" strokeWidth="1" />
-                {/* Mattress */}
-                <rect x={b.x} y={b.y} width={b.w} height={30} rx="3"
-                  fill="#141414" stroke={b.badge ? "#7c3aed" : "#222"}
-                  strokeWidth={b.badge ? "1.5" : "1"} />
-                {/* Pillow */}
-                <rect x={b.x+4} y={b.y+5} width="22" height="12" rx="2" fill="#1a1a1a" stroke="#2a2a2a" strokeWidth="0.5" />
-                {/* Bedding lines */}
-                <line x1={b.x+30} y1={b.y+10} x2={b.x+b.w-4} y2={b.y+10} stroke="#1f1f1f" strokeWidth="0.5" />
-                <line x1={b.x+30} y1={b.y+18} x2={b.x+b.w-4} y2={b.y+18} stroke="#191919" strokeWidth="0.5" />
-                {/* Badge */}
-                {b.badge && (
-                  <rect x={b.x+b.w-32} y={b.y-8} width="36" height="10" rx="2"
-                    fill="#7c3aed" opacity="0.3" />
-                )}
-                {/* Price tag */}
-                <rect x={b.x} y={b.y+42} width="44" height="16" rx="1" fill="#111" stroke="#1f1f1f" strokeWidth="0.5" />
-                <rect x={b.x+4} y={b.y+45} width="26" height="3" rx="0.5" fill="#9ca3af" opacity="0.3" />
-                <rect x={b.x+4} y={b.y+51} width="18" height="2" rx="0.5" fill="#6b7280" opacity="0.2" />
+              <g key={i}>
+                <rect x={x} y="33" width="24" height="20" rx="1" fill={colors[i % colors.length]} opacity="0.75" />
+                <rect x={x+2} y="35" width="20" height="4" rx="0.5" fill="white" opacity="0.4" />
               </g>
             );
           })}
-          {/* Wall shelving / info panels */}
-          <rect x="15" y="30" width="80" height="95" fill="#0d0d0d" stroke="#1a1a1a" strokeWidth="1" />
-          <rect x="20" y="35" width="70" height="5" rx="0.5" fill="#f5f0e8" opacity="0.08" />
-          <rect x="20" y="44" width="55" height="3" rx="0.5" fill="#9ca3af" opacity="0.1" />
-          <rect x="20" y="51" width="65" height="3" rx="0.5" fill="#9ca3af" opacity="0.08" />
-          <rect x="20" y="58" width="45" height="3" rx="0.5" fill="#9ca3af" opacity="0.06" />
-          {/* Far right panel */}
-          <rect x="305" y="30" width="80" height="95" fill="#0d0d0d" stroke="#1a1a1a" strokeWidth="1" />
-          <rect x="310" y="35" width="70" height="5" rx="0.5" fill="#f5f0e8" opacity="0.06" />
-          <rect x="310" y="44" width="55" height="3" rx="0.5" fill="#9ca3af" opacity="0.08" />
+          {/* Second shelf — drink bottles */}
+          {[28,65,102,139,176,213,250,287,324,361].map((x, i) => (
+            <g key={i}>
+              <rect x={x} y="60" width="16" height="20" rx="2" fill="#60a5fa" opacity="0.5" stroke="#3b82f6" strokeWidth="0.5" strokeOpacity="0.4" />
+              <ellipse cx={x+8} cy="59" rx="7" ry="2.5" fill="#93c5fd" opacity="0.4" />
+            </g>
+          ))}
+          {/* Third shelf — gummo spaghetti + misc */}
+          {[28,90,152,220,288,350].map((x, i) => (
+            <g key={i}>
+              <rect x={x} y="86" width="38" height="18" rx="1" fill="#f0e8d8" stroke="#d0c8b0" strokeWidth="0.5" />
+              <rect x={x+3} y="89" width="32" height="3" rx="0.5" fill="#888" opacity="0.35" />
+              <rect x={x+3} y="95" width="24" height="2" rx="0.5" fill="#888" opacity="0.25" />
+            </g>
+          ))}
+
+          {/* Counter surface */}
+          <rect x="0" y="116" width="400" height="16" fill="url(#counter-top)" />
+          <rect x="0" y="115" width="400" height="2" fill="#a8a098" />
+          <rect x="0" y="130" width="400" height="2" fill="#9a9288" />
+
+          {/* Counter front panel */}
+          <rect x="0" y="132" width="400" height="60" fill="#e0dcd8" />
+          <rect x="0" y="134" width="400" height="4" fill="#d0ccc8" />
+
+          {/* Counter items */}
+          {/* Popcorn */}
+          <g>
+            <polygon points="120,88 134,88 137,116 117,116" fill="#f0e8d0" stroke="#c8a840" strokeWidth="1" />
+            <rect x="119" y="84" width="16" height="6" rx="1" fill="#dc2626" opacity="0.7" />
+            {/* Popcorn puffs */}
+            {[[122,82],[126,80],[130,82],[124,78],[128,79]].map(([cx,cy],i) => (
+              <circle key={i} cx={cx} cy={cy} r="3" fill="#f5e8c0" opacity="0.8" />
+            ))}
+          </g>
+          {/* Soda cup */}
+          <g>
+            <polygon points="175,90 187,90 190,116 172,116" fill="#e0e8f0" stroke="#60a5fa" strokeWidth="1" />
+            <rect x="175" y="86" width="12" height="6" rx="1" fill="#2563eb" opacity="0.6" />
+            <circle cx="181" cy="86" r="4" fill="#dbeafe" opacity="0.6" />
+          </g>
+          {/* Candy bar */}
+          <g>
+            <rect x="220" y="100" width="32" height="16" rx="2" fill="#dc2626" opacity="0.8" stroke="#b91c1c" strokeWidth="0.5" />
+            <rect x="223" y="104" width="26" height="3" rx="0.5" fill="white" opacity="0.7" />
+          </g>
+          {/* Gummo spaghetti special — labeled */}
+          <g>
+            <ellipse cx="295" cy="108" rx="32" ry="10" fill="#f0e8d0" stroke="#c8a060" strokeWidth="1" />
+            <ellipse cx="295" cy="105" rx="28" ry="8" fill="#f5ede0" />
+            {[-10,-5,0,5,10].map((dx, i) => (
+              <path key={i}
+                d={`M ${282+dx} ${103+i*0.5} q 4 2 7 0 q 4 -2 7 0`}
+                stroke="#c88040" strokeWidth="0.8" fill="none" opacity="0.6" />
+            ))}
+            {/* Label */}
+            <rect x="269" y="115" width="52" height="12" rx="1" fill="#dc2626" opacity="0.8" />
+            <rect x="273" y="118" width="44" height="3" rx="0.5" fill="white" opacity="0.8" />
+          </g>
+
+          {/* Floor */}
+          <rect x="0" y="192" width="400" height="28" fill="url(#showroom-floor, #dcd4cc)" />
+          {[0,50,100,150,200,250,300,350,400].map((x, i) => (
+            <line key={i} x1={x} y1="192" x2={x} y2="220" stroke="#c8c0b8" strokeWidth="0.6" />
+          ))}
         </svg>
       );
 
     default:
       return (
         <svg viewBox="0 0 400 220" className="w-full h-full" aria-hidden="true">
-          <rect width="400" height="220" fill="#111" />
+          <rect width="400" height="220" fill="#e8e4e0" />
         </svg>
       );
   }
@@ -440,12 +670,14 @@ export default function VenueGallery() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-2">Venue</h2>
               <p className="text-[#9ca3af] font-sans text-sm max-w-lg">
-                Willow Pass retail corridor, Concord. Same building, two identities — mattress store by day, single-screen cinema after 8 PM.
+                On San Pablo Ave in Berkeley. Full-width retail storefront.
+                Mattress store by day — same floor, same beds — single-screen after 8 PM on selected nights.
               </p>
             </div>
             <div className="text-xs font-sans text-[#4b5563] text-right leading-relaxed">
-              2304 Willow Pass Road<br />
-              Concord, CA 94520
+              2397 San Pablo Ave<br />
+              Berkeley, CA 94702<br />
+              <span className="text-[#374151]">Retail storefront · street parking · accessible</span>
             </div>
           </div>
         </div>
@@ -458,7 +690,7 @@ export default function VenueGallery() {
           <div className="grid md:grid-cols-3 gap-4">
             {exteriorScenes.map((scene) => (
               <figure key={scene.id} className="m-0">
-                <div className="aspect-video bg-[#0a0a0a] border border-[#1f1f1f] rounded-lg overflow-hidden">
+                <div className="aspect-video bg-[#e8e4e0] border border-[#1f1f1f] rounded-lg overflow-hidden">
                   <SceneArt art={scene.art as ArtKey} />
                 </div>
                 <figcaption className="mt-2 px-0.5">
@@ -485,7 +717,7 @@ export default function VenueGallery() {
           <div className="grid md:grid-cols-3 gap-4">
             {interiorScenes.map((scene) => (
               <figure key={scene.id} className="m-0">
-                <div className="aspect-video bg-[#0a0a0a] border border-[#1f1f1f] rounded-lg overflow-hidden">
+                <div className="aspect-video bg-[#e8e4e0] border border-[#1f1f1f] rounded-lg overflow-hidden">
                   <SceneArt art={scene.art as ArtKey} />
                 </div>
                 <figcaption className="mt-2 px-0.5">
@@ -503,7 +735,7 @@ export default function VenueGallery() {
 
         {/* Note */}
         <p className="mt-8 text-xs font-sans text-[#2d2d2d] text-center">
-          Illustrated compositions based on the Willow Pass corridor and venue layout. No third-party map imagery used.
+          Illustrated placeholders for interior shots. Exterior storefront photography available on the About page.
         </p>
       </div>
     </section>

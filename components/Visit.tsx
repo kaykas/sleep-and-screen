@@ -69,8 +69,8 @@ export default function Visit() {
                 </div>
               </div>
               <div className="text-sm text-gray-500 leading-relaxed mb-4">
-                Willow Pass retail corridor, between Treat Blvd and Oak Grove Rd.
-                Strip center with the nail salon and the UPS Store. The mattress store is obvious.
+                On San Pablo Ave in Berkeley, between Alcatraz Ave and Ashby Ave.
+                Large storefront with the East Bay Mattress sign visible from the street.
               </div>
               <div className="pt-4 border-t border-gray-200">
                 <div className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">
@@ -78,9 +78,9 @@ export default function Visit() {
                 </div>
                 <ul className="space-y-2">
                   {[
-                    ["By car", "Parking lot, free, 40+ spaces"],
-                    ["By BART", "Concord Station, 1.4 miles, rideshare from platform"],
-                    ["By bus", "County Connection Route 4, Willow Pass stop"],
+                    ["By car", "Street parking on San Pablo Ave and side streets"],
+                    ["By BART", "Ashby or MacArthur Station, short bus or rideshare"],
+                    ["By bus", "AC Transit lines on San Pablo Ave, stop at storefront"],
                   ].map(([mode, detail]) => (
                     <li key={mode} className="flex gap-3 text-xs">
                       <span className="text-gray-900 font-bold w-16 flex-shrink-0">{mode}</span>

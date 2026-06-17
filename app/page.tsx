@@ -13,16 +13,10 @@ import VenueGallery from "@/components/VenueGallery";
 import Visit from "@/components/Visit";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
-import PromoModal from "@/components/PromoModal";
-import CookieBar from "@/components/CookieBar";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
-      {/* ── OVERLAYS ── */}
-      <PromoModal />
-      <CookieBar />
-
       {/* ── RETAIL FIRST ── */}
       <Nav />
       <Hero />
