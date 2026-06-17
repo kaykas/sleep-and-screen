@@ -31,7 +31,7 @@ export default function SplitHero() {
         <div className="grid lg:grid-cols-[1fr_440px] xl:grid-cols-[1fr_480px] min-h-[480px]">
 
           {/* ── LEFT: Mattress Sale Billboard ── */}
-          <div className="px-6 md:px-10 py-12 md:py-16 flex flex-col justify-center border-r border-gray-100 relative overflow-hidden">
+          <div className="px-6 md:px-10 lg:px-14 py-12 md:py-16 lg:py-20 flex flex-col justify-center border-r border-gray-100 relative overflow-hidden">
             {/* Background graphic — subtle mattress grid pattern */}
             <div
               className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -43,73 +43,83 @@ export default function SplitHero() {
               aria-hidden="true"
             />
 
-            <div className="relative">
-              {/* Event label */}
-              <div className="mb-5 flex items-center gap-3">
-                <span className="inline-block bg-[#dc2626] text-white text-[10px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded">
+            <div className="relative max-w-[560px]">
+              {/* Sale badge row */}
+              <div className="mb-6 flex items-center gap-3 flex-wrap">
+                <span className="inline-flex items-center bg-[#dc2626] text-white text-[11px] font-extrabold tracking-widest uppercase px-3.5 py-1.5 rounded-full shadow-sm">
                   Summer Mattress Event
                 </span>
-                <span className="text-sm text-gray-400">Ends Aug 31</span>
+                <span className="text-sm text-gray-400 font-medium">Ends Aug 31</span>
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight text-gray-900 leading-[1.02] mb-5">
+              <h1 className="text-[40px] md:text-[52px] lg:text-[58px] font-black tracking-tight text-gray-900 leading-[1.0] mb-5">
                 Up to{" "}
                 <span className="text-[#dc2626]">40% Off</span>
                 <br />
                 Every Mattress
                 <br />
-                <span className="text-[#1d4ed8]">on the Floor</span>
+                <span className="text-[#1d4ed8]">on the Floor.</span>
               </h1>
 
               {/* Sub */}
-              <p className="text-base text-gray-600 max-w-md leading-relaxed mb-6">
+              <p className="text-[15px] md:text-base text-gray-500 max-w-[440px] leading-relaxed mb-3">
                 Innerspring, memory foam, and hybrid — all on the showroom floor at{" "}
-                <strong className="text-gray-800">{SITE.address.street}</strong>. Walk in, no appointment.
-                Try any mattress. No pressure, no commission.
+                <strong className="text-gray-700 font-semibold">{SITE.address.street}</strong>.
+                Walk in, no appointment. Try any mattress. No pressure, no commission.
               </p>
 
-              {/* Trust micro-strip */}
-              <div className="flex flex-wrap gap-x-5 gap-y-1.5 mb-8 text-xs text-gray-500">
+              {/* Movie tie-in line */}
+              <p className="text-[13px] text-indigo-600 font-medium mb-8">
+                King purchase includes 1 year of{" "}
+                <a href="#evening-hours" className="underline underline-offset-2 hover:text-indigo-800 transition-colors">
+                  Evening Hours
+                </a>.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                <a
+                  href="#showroom"
+                  className="inline-flex items-center justify-center bg-[#dc2626] hover:bg-[#b91c1c] active:bg-[#991b1b] text-white font-extrabold px-8 py-4 rounded-full text-[15px] tracking-wide transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#dc2626] focus:ring-offset-2"
+                >
+                  Shop the Sale
+                </a>
+                <a
+                  href="#showroom"
+                  className="inline-flex items-center justify-center border-2 border-[#1d4ed8] text-[#1d4ed8] hover:bg-[#1d4ed8] hover:text-white font-bold px-7 py-4 rounded-full text-[15px] tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-[#1d4ed8] focus:ring-offset-2"
+                >
+                  View All Mattresses
+                </a>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap gap-x-4 gap-y-2.5 mb-8">
                 {[
                   "120-Night Free Trial",
                   "Free Delivery & Setup",
                   "0% Financing — 12 Mo",
                   "Price Match Guarantee",
                 ].map((t) => (
-                  <span key={t} className="flex items-center gap-1.5">
-                    <span className="text-green-600 font-extrabold">✓</span>
+                  <span key={t} className="flex items-center gap-1.5 text-[13px] text-gray-600 bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
+                    <svg className="w-3.5 h-3.5 text-green-500 flex-shrink-0" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.25" />
+                      <path d="M4.5 8.25l2.5 2.5 4-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                     {t}
                   </span>
                 ))}
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#showroom"
-                  className="bg-[#dc2626] hover:bg-red-700 text-white font-extrabold px-8 py-3.5 rounded text-sm transition-colors shadow-sm"
-                >
-                  Shop the Sale
-                </a>
-                <a
-                  href="#showroom"
-                  className="border border-gray-300 hover:border-[#1d4ed8] hover:text-[#1d4ed8] text-gray-700 font-semibold px-7 py-3.5 rounded text-sm transition-colors"
-                >
-                  View All Mattresses
-                </a>
-              </div>
-
               {/* Rating bar */}
-              <div className="mt-8 flex items-center gap-3 text-xs text-gray-400">
-                <span className="flex text-amber-400 gap-0.5 text-sm" aria-label="4.8 stars">
-                  {"★★★★★".split("").map((s, i) => (
-                    <span key={i}>{s}</span>
-                  ))}
+              <div className="flex items-center gap-2.5">
+                <span className="flex text-amber-400 gap-px text-base leading-none" aria-label="4.8 stars">
+                  ★★★★★
                 </span>
-                <span className="font-semibold text-gray-600">4.8 Google Reviews</span>
-                <span className="text-gray-300">·</span>
-                <span>12 models on the floor</span>
+                <span className="text-sm font-semibold text-gray-700">4.8</span>
+                <span className="text-[13px] text-gray-400">Google Reviews</span>
+                <span className="text-gray-300 mx-1">·</span>
+                <span className="text-[13px] text-gray-400">12 models on the floor</span>
               </div>
             </div>
           </div>
