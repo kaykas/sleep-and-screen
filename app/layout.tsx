@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "East Bay Mattress — Mattress Store + Evening Screenings | Concord, CA",
   description:
-    "Concord's mattress store by day. Evening Hours film programming after dark. Try the mattress. Stay for the movie. Open daily at 2475 Willow Pass Rd.",
+    "Concord's mattress store by day. Evening Hours film programming after dark. Try the mattress. Stay for the movie. Open daily at 2304 Willow Pass Road, Concord, CA 94520.",
   keywords: [
     "mattress store",
     "East Bay Mattress",

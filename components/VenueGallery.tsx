@@ -444,7 +444,7 @@ export default function VenueGallery() {
               </p>
             </div>
             <div className="text-xs font-sans text-[#4b5563] text-right leading-relaxed">
-              2475 Willow Pass Rd<br />
+              2304 Willow Pass Road<br />
               Concord, CA 94520
             </div>
           </div>

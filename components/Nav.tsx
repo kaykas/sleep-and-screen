@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { label: "Tonight", href: "#tonight" },
-  { label: "Programming", href: "#programming" },
-  { label: "Themes", href: "#theme-nights" },
-  { label: "Venue", href: "#venue" },
-  { label: "Concessions", href: "#concessions" },
   { label: "Showroom", href: "#showroom" },
+  { label: "Tonight", href: "#tonight" },
+  { label: "Evening Hours", href: "#evening-hours" },
+  { label: "Themes", href: "#theme-nights" },
+  { label: "Programming", href: "#programming" },
+  { label: "Concessions", href: "#concessions" },
   { label: "Visit", href: "#visit" },
 ];
 

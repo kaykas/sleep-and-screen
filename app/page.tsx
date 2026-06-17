@@ -1,11 +1,13 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import RetailBanner from "@/components/RetailBanner";
 import HowItWorks from "@/components/HowItWorks";
 import TonightScreenings from "@/components/TonightScreenings";
 import JointPicks from "@/components/JointPicks";
 import Showroom from "@/components/Showroom";
-import Programming from "@/components/Programming";
+import EveningHours from "@/components/EveningHours";
 import ThemeNights from "@/components/ThemeNights";
+import Programming from "@/components/Programming";
 import VenueGallery from "@/components/VenueGallery";
 import Concessions from "@/components/Concessions";
 import Visit from "@/components/Visit";
@@ -17,10 +19,12 @@ export default function Home() {
     <main className="min-h-screen bg-[#0a0a0a] text-[#f5f0e8]">
       <Nav />
       <Hero />
+      <RetailBanner />
       <HowItWorks />
       <TonightScreenings />
       <JointPicks />
       <Showroom />
+      <EveningHours />
       <ThemeNights />
       <Programming />
       <VenueGallery />
