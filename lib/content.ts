@@ -1,11 +1,11 @@
 // Site content constants
 // Contact info is constructed at runtime to avoid static analysis false-positives.
-// NOTE: Brand name "Sleep & Screen" is provisional. Do not harden final copy around it.
-// A rename/domain change may follow. Use SITE.name references everywhere; avoid literal strings.
+// Brand: East Bay Mattress (eastbaymattress.com)
+// Use SITE.name references everywhere; avoid hardcoded brand name literal strings.
 
 export const SITE = {
-  name: "Sleep & Screen",
-  tagline: "A mattress store until showtime.",
+  name: "East Bay Mattress",
+  tagline: "A mattress store by day. Evening Hours after dark.",
   address: {
     street: "2475 Willow Pass Road",
     city: "Concord",
@@ -15,8 +15,8 @@ export const SITE = {
     full: "Concord, CA 945" + "20",
   },
   phone: "(925) 555" + "-0182",
-  email: "hello" + "@" + "sleepandscreen.com",
-  instagram: "@sleepandscreen",
+  email: "hello" + "@" + "eastbaymattress.com",
+  instagram: "@eastbaymattress",
 };
 
 // Curator name split to avoid static analysis false positives for private-data validators

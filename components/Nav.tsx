@@ -33,10 +33,10 @@ export default function Nav() {
         {/* Logo */}
         <a href="#" className="flex flex-col leading-none group">
           <span className="text-lg font-bold tracking-tight font-sans text-[#f5f0e8]">
-            SLEEP & SCREEN
+            EAST BAY MATTRESS
           </span>
           <span className="text-xs text-[#a78bfa] tracking-widest font-sans uppercase">
-            Concord, CA
+            Evening Hours · Concord, CA
           </span>
         </a>
 

@@ -34,7 +34,7 @@ export default function Hero() {
         <p className="text-xl md:text-2xl text-[#9ca3af] max-w-xl mb-4 leading-relaxed">
           By day: a real mattress showroom in Concord.
           <br />
-          By night: a curated cinema where you watch from the beds.
+          After dark: Evening Hours — curated films watched from the beds.
         </p>
 
         <p className="text-base text-[#6b7280] max-w-lg mb-10 font-sans">

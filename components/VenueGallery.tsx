@@ -18,7 +18,7 @@ const exteriorScenes = [
   {
     id: "ext-3",
     label: "Storefront Detail · Day",
-    caption: "Mattress store by day. The marquee reads Sleep & Screen after 5 PM.",
+    caption: "Mattress store by day. Evening Hours marquee lit after 5 PM.",
     art: "storefront-day",
   },
 ];
@@ -85,7 +85,7 @@ function SceneArt({ art }: { art: ArtKey }) {
           <rect x="45" y="122" width="55" height="35" fill="#0d0d0d" stroke="#222" strokeWidth="1" />
           <rect x="50" y="127" width="22" height="14" fill="#1a1a0e" opacity="0.5" />
           <rect x="75" y="127" width="22" height="14" fill="#1a1a0e" opacity="0.4" />
-          {/* Sleep & Screen storefront — purple lit */}
+          {/* East Bay Mattress storefront — purple lit */}
           <rect x="150" y="115" width="100" height="55" fill="#100b1f" stroke="#7c3aed" strokeWidth="1.5" />
           {/* Purple glow behind sign */}
           <rect x="152" y="117" width="96" height="28" fill="#7c3aed" opacity="0.12" />

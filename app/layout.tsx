@@ -2,21 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Sleep & Screen — Mattress Store + Movie Theater | Concord, CA",
+  title: "East Bay Mattress — Mattress Store + Evening Screenings | Concord, CA",
   description:
-    "Concord's only mattress store that becomes a movie theater after dark. Try the mattress. Stay for the movie. Open daily at 2475 Willow Pass Rd.",
+    "Concord's mattress store by day. Evening Hours film programming after dark. Try the mattress. Stay for the movie. Open daily at 2475 Willow Pass Rd.",
   keywords: [
     "mattress store",
-    "movie theater",
+    "East Bay Mattress",
     "Concord CA",
+    "film screening",
     "cult films",
-    "midnight movies",
-    "Sleep and Screen",
+    "Evening Hours",
     "Willow Pass",
+    "East Bay",
   ],
   openGraph: {
-    title: "Sleep & Screen",
-    description: "A mattress store until showtime.",
+    title: "East Bay Mattress",
+    description: "A mattress store by day. Evening Hours after dark.",
     type: "website",
     locale: "en_US",
   },
