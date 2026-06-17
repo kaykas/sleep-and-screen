@@ -1,13 +1,44 @@
 "use client";
 import { useState } from "react";
 
+type SubmitState = "idle" | "submitting" | "success" | "error";
+
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [website, setWebsite] = useState("");
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (submitState === "submitting") return;
+
+    setSubmitState("submitting");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          website,
+          source: "homepage-newsletter",
+        }),
+      });
+
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok || !body.ok) {
+        throw new Error(body.error || "Could not subscribe right now");
+      }
+
+      setSubmitState("success");
+      setEmail("");
+      setWebsite("");
+    } catch (error) {
+      setSubmitState("error");
+      setMessage(error instanceof Error ? error.message : "Could not subscribe right now");
+    }
   };
 
   return (
@@ -24,29 +55,52 @@ export default function Newsletter() {
           No noise. Unsubscribe any time.
         </p>
 
-        {submitted ? (
+        {submitState === "success" ? (
           <div className="bg-white/10 border border-white/20 rounded-xl px-8 py-6 text-sm text-white">
             You&apos;re on the list. First email arrives Sunday.
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            className="max-w-md mx-auto"
           >
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              className="flex-1 bg-white text-gray-900 border border-transparent rounded-lg px-5 py-3.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white placeholder-gray-400"
-            />
-            <button
-              type="submit"
-              className="bg-[#dc2626] hover:bg-red-700 text-white font-extrabold px-7 py-3.5 rounded-lg text-sm transition-colors whitespace-nowrap"
-            >
-              Subscribe
-            </button>
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="newsletter-website">Website</label>
+              <input
+                id="newsletter-website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="flex-1 bg-white text-gray-900 border border-transparent rounded-lg px-5 py-3.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white placeholder-gray-400"
+                disabled={submitState === "submitting"}
+              />
+              <button
+                type="submit"
+                disabled={submitState === "submitting"}
+                className="bg-[#dc2626] hover:bg-red-700 disabled:bg-red-900 disabled:cursor-not-allowed text-white font-extrabold px-7 py-3.5 rounded-lg text-sm transition-colors whitespace-nowrap"
+              >
+                {submitState === "submitting" ? "Subscribing…" : "Subscribe"}
+              </button>
+            </div>
+
+            {submitState === "error" && (
+              <p className="mt-3 text-sm text-red-100 bg-red-950/30 border border-red-300/20 rounded-lg px-4 py-2">
+                {message}
+              </p>
+            )}
           </form>
         )}
 

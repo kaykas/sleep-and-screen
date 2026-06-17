@@ -1,44 +1,15 @@
 "use client";
 import { useState } from "react";
 import { SITE } from "@/lib/content";
+import { FAQ_CATEGORIES, ALL_FAQS } from "@/lib/faq-data";
 
-const faqs = [
-  {
-    q: "Do I need an appointment to visit the showroom?",
-    a: "No. Walk in any day 10 AM–6 PM. The floor is open. Staff are there if you want them.",
-  },
-  {
-    q: "Does free delivery include setup?",
-    a: "Yes. We carry it in, set up the frame, and remove all packaging. Old mattress removal is $40, scheduled at the same time.",
-  },
-  {
-    q: "What size is the 120-night trial?",
-    a: "All sizes on all models. If it isn't working after 120 nights, call us. We pick it up and refund the purchase price. No restocking fee.",
-  },
-  {
-    q: "How does the 0% financing work?",
-    a: "Synchrony Bank, applied in-store. On approved credit. On orders $599+. Minimum monthly payments required. No deferred interest — the rate is genuinely 0%.",
-  },
-  {
-    q: "Is the Evening Hours program free?",
-    a: "Mattress customers get priority reservation access and no cover. Walk-in screening reservations are $10–$15 suggested donation. Popcorn included.",
-  },
-  {
-    q: "Can I fall asleep at a screening?",
-    a: "Yes. That's part of the concept. You're on a mattress. We'll wake you gently when the film ends. This is not a hotel.",
-  },
-  {
-    q: "Do you do same-day delivery?",
-    a: "Sometimes. Depends on the model and the day. Ask in-store. If a model is in stock and the truck is available, we can usually schedule next-day.",
-  },
-  {
-    q: "What brands do you carry?",
-    a: "East Bay Mattress sells its own floor models — named for local landmarks. Every model on the floor is available to buy.",
-  },
-];
+const faqCategories = FAQ_CATEGORIES;
 
 export default function Visit() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("Store & Location");
+
+  const currentCategory = faqCategories.find((c) => c.label === activeCategory) ?? faqCategories[0];
 
   return (
     <section id="visit" className="py-14 bg-white border-t border-gray-200">
@@ -49,8 +20,11 @@ export default function Visit() {
             Visit Us
           </div>
           <h2 className="text-3xl font-extrabold text-gray-900">
-            Showroom &amp; Contact
+            Showroom &amp; FAQ
           </h2>
+          <p className="text-sm text-gray-500 mt-1 max-w-xl">
+            {ALL_FAQS.length} questions answered — store, products, delivery, trial, and the Evening Hours film program.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -150,9 +124,7 @@ export default function Visit() {
                 />
                 <div className="relative text-center">
                   <div className="text-blue-600 text-3xl mb-1">◉</div>
-                  <div className="text-xs text-gray-500 font-medium">
-                    {SITE.address.street}
-                  </div>
+                  <div className="text-xs text-gray-500 font-medium">{SITE.address.street}</div>
                   <div className="text-xs text-gray-400">{SITE.address.full}</div>
                 </div>
               </div>
@@ -171,35 +143,64 @@ export default function Visit() {
             </div>
           </div>
 
-          {/* Right: FAQ */}
+          {/* Right: categorized FAQ */}
           <div>
-            <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-5">
-              Frequently Asked
+            <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
+              Frequently Asked — {ALL_FAQS.length} Questions
             </div>
-            <div className="space-y-2">
-              {faqs.map((faq, i) => (
-                <div
-                  key={i}
-                  className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+
+            {/* Category tabs */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {faqCategories.map((cat) => (
+                <button
+                  key={cat.label}
+                  type="button"
+                  onClick={() => { setActiveCategory(cat.label); setOpenFaq(null); }}
+                  className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
+                    activeCategory === cat.label
+                      ? "bg-gray-900 text-white border-gray-900"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"
+                  }`}
                 >
-                  <button
-                    type="button"
-                    className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors"
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  >
-                    <span className="text-sm font-semibold text-gray-800 pr-4">{faq.q}</span>
-                    <span className={`text-gray-400 flex-shrink-0 text-lg transition-transform ${openFaq === i ? "rotate-45" : ""}`}>
-                      +
-                    </span>
-                  </button>
-                  {openFaq === i && (
-                    <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
+                  <span>{cat.emoji}</span>
+                  {cat.label}
+                </button>
               ))}
             </div>
+
+            {/* FAQ accordion for active category */}
+            <div className="space-y-2">
+              {currentCategory.questions.map((faq, i) => {
+                const key = `${activeCategory}-${i}`;
+                const isOpen = openFaq === key;
+                return (
+                  <div
+                    key={key}
+                    className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+                  >
+                    <button
+                      type="button"
+                      className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors"
+                      onClick={() => setOpenFaq(isOpen ? null : key)}
+                    >
+                      <span className="text-sm font-semibold text-gray-800 leading-snug pr-2">{faq.q}</span>
+                      <span className={`text-gray-400 flex-shrink-0 text-lg font-light transition-transform duration-150 ${isOpen ? "rotate-45" : ""}`}>
+                        +
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-3 text-sm text-gray-600 leading-relaxed border-t border-gray-100 bg-gray-50">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <p className="mt-4 text-xs text-gray-400">
+              More questions? Call {SITE.phone} or email {SITE.email}.
+            </p>
           </div>
         </div>
       </div>

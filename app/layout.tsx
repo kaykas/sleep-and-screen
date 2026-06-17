@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Suspense } from "react";
 import CookieBar from "@/components/CookieBar";
 import PromoModal from "@/components/PromoModal";
+import { ALL_FAQS } from "@/lib/faq-data";
 import "./globals.css";
 
 const inter = Inter({
@@ -77,6 +78,17 @@ export const metadata: Metadata = {
   },
 };
 
+// FAQPage structured data — powers AI Overview and People Also Ask results
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: ALL_FAQS.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 // LocalBusiness structured data for Google rich results
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -124,6 +136,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
         {children}
         <Suspense fallback={null}>
