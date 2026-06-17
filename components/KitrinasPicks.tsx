@@ -54,6 +54,9 @@ export default function KitrinasPicks() {
               <p>
                 This isn&apos;t a separate strand. It&apos;s the same program, with a second set of ears in the room. Some nights you&apos;ll see my name next to a title. Those are the nights I&apos;d stay.
               </p>
+              <p>
+                I tend to program the harder theme nights. Bad Date Night is mine. Insomnia Night is mostly mine. If you see Possession or Come and See on the calendar for a Friday, that was probably me.
+              </p>
             </div>
 
             <div className="flex items-center gap-4 pt-4 border-t border-[#1f1f1f]">

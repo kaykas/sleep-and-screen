@@ -49,10 +49,13 @@ export default function AlexandrasPicks() {
                 I grew up here. Concord. The long flat summers, the parking-lot heat, the BART that goes somewhere else. I watched a lot of movies.
               </p>
               <p>
-                Sleep &amp; Screen is my attempt to program a theater for people who aren&apos;t looking for a Disney release or a Marvel event. People who want to lie down in the dark and watch something that stays with them.
+                This place is my attempt to program a theater for people who aren&apos;t looking for a Disney release or a Marvel event. People who want to lie down in the dark and watch something that stays with them.
               </p>
               <p>
                 The mattress selection is real. The programming is personal. These are not films I recommend because they are important. They are films I have thought about on drives home from nowhere in particular.
+              </p>
+              <p>
+                Some nights have a theme. Breakup Night, Insomnia Night, Hometown. The occasion shapes what&apos;s on screen. The mattresses don&apos;t move either way.
               </p>
             </div>
 
