@@ -2,8 +2,8 @@ const FROM_EMAIL = process.env.SUBSCRIBE_FROM_EMAIL || "notify@eastbaymattress.c
 const FROM_NAME = process.env.SUBSCRIBE_FROM_NAME || "East Bay Mattress";
 
 const INTERNAL_RECIPIENTS = [
-  process.env.SUBSCRIBE_NOTIFY_JASCHA || "jascha@kaykas.com",
-  process.env.SUBSCRIBE_NOTIFY_ALEXANDRA || "alexandra@deareleanore.com",
+  process.env.SUBSCRIBE_NOTIFY_JASCHA,
+  process.env.SUBSCRIBE_NOTIFY_ALEXANDRA,
 ]
   .map((email) => email.trim())
   .filter(Boolean);
