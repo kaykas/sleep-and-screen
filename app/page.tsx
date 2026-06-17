@@ -6,6 +6,8 @@ import AlexandrasPicks from "@/components/AlexandrasPicks";
 import KitrinasPicks from "@/components/KitrinasPicks";
 import Showroom from "@/components/Showroom";
 import Programming from "@/components/Programming";
+import VenueGallery from "@/components/VenueGallery";
+import Concessions from "@/components/Concessions";
 import Visit from "@/components/Visit";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
@@ -21,6 +23,8 @@ export default function Home() {
       <KitrinasPicks />
       <Showroom />
       <Programming />
+      <VenueGallery />
+      <Concessions />
       <Visit />
       <Newsletter />
       <Footer />
