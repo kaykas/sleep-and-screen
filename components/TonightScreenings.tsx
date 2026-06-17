@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { CURATOR, SECOND_VOICE } from "@/lib/content";
+
+// TonightScreenings — Evening Hours current week. Subordinate to retail; factual, deadpan.
 
 const screenings = [
   {
@@ -14,10 +15,9 @@ const screenings = [
     series: "Looks Good on a Mattress",
     description:
       "Four college women rob a restaurant to fund spring break. James Franco plays a rapper named Alien. Korine shoots it like a music video that takes itself seriously. Genuinely unusual.",
-    note: `${CURATOR.firstName}'s Pick`,
+    note: "A+K Pick",
     seats: 5,
     maxSeats: 12,
-    tag: "visual",
   },
   {
     date: "Wed Jun 18",
@@ -33,7 +33,6 @@ const screenings = [
     note: null,
     seats: 9,
     maxSeats: 12,
-    tag: "action",
   },
   {
     date: "Thu Jun 19",
@@ -45,11 +44,10 @@ const screenings = [
     rating: "R",
     series: "John Waters Night",
     description:
-      "Kathleen Turner plays Beverly Sutphin: devoted suburban mother, mild-mannered neighbor, serial killer. Waters plays it completely straight. That's why it works.",
-    note: `${CURATOR.firstName}'s Pick`,
+      "Kathleen Turner plays Beverly Sutphin: devoted suburban mother, serial killer. Waters plays it completely straight.",
+    note: "A+K Pick",
     seats: 10,
     maxSeats: 12,
-    tag: "comedy",
   },
   {
     date: "Fri Jun 20",
@@ -61,11 +59,10 @@ const screenings = [
     rating: "R",
     series: "Double Features",
     description:
-      "Both films, one night. Intermission after T1. Counter stays open. T2 improves if you've just watched T1. Alexandra's been asking for this.",
-    note: `${CURATOR.firstName}'s Pick`,
+      "Both films, one night. Intermission after T1. Counter stays open.",
+    note: "A+K Pick",
     seats: 3,
     maxSeats: 12,
-    tag: "action",
   },
   {
     date: "Sat Jun 21",
@@ -77,11 +74,10 @@ const screenings = [
     rating: "PG-13",
     series: "Double Features",
     description:
-      "Both films back to back. The camera-looks are better than you remember. Garth holds up. The second one is underrated. Kitrina asked for this.",
-    note: `${SECOND_VOICE.firstName}'s Pick`,
+      "Both films back to back. The camera-looks are better than you remember.",
+    note: "A+K Pick",
     seats: 7,
     maxSeats: 12,
-    tag: "comedy",
   },
 ];
 
@@ -92,11 +88,6 @@ export default function TonightScreenings() {
   const [rsvpCount, setRsvpCount] = useState("2");
   const [submitted, setSubmitted] = useState<string | null>(null);
 
-  const handleRsvp = (film: string) => {
-    setRsvpFilm(film);
-    setSubmitted(null);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(rsvpFilm);
@@ -105,65 +96,58 @@ export default function TonightScreenings() {
     setRsvpEmail("");
   };
 
-  const tagColors: Record<string, string> = {
-    cult: "border-[#7c3aed]/40 text-[#a78bfa]",
-    midnight: "border-[#1d4ed8]/40 text-[#60a5fa]",
-    arthouse: "border-[#065f46]/40 text-[#34d399]",
-    action: "border-[#92400e]/40 text-[#fbbf24]",
-    "body horror": "border-[#7f1d1d]/40 text-[#f87171]",
-    visual: "border-[#7c3aed]/40 text-[#a78bfa]",
-    comedy: "border-[#065f46]/40 text-[#34d399]",
-  };
-
   return (
-    <section id="tonight" className="py-24 bg-[#0a0a0a]">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
+    <section id="tonight" className="py-10 bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header — clearly subordinate */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <div>
-            <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
-              This week
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Tonight &amp; Upcoming
+            <div className="text-xs font-bold tracking-widest uppercase text-indigo-600 mb-1">
+              Evening Hours — This Week
+            </div>
+            <h2 className="text-2xl font-extrabold text-gray-900">
+              Current Screenings
             </h2>
+            <p className="text-sm text-gray-500 mt-0.5">
+              Friday 8 PM. Showroom floor. 12 spots per night. Free with mattress purchase.
+            </p>
           </div>
           <a
-            href="#programming"
-            className="text-sm font-sans text-[#9ca3af] hover:text-[#f5f0e8] transition-colors"
+            href="#evening-hours"
+            className="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
           >
-            Full season schedule →
+            Full summer calendar →
           </a>
         </div>
 
         {/* RSVP confirmation */}
         {submitted && (
-          <div className="mb-8 bg-[#111] border border-[#7c3aed]/30 rounded-lg p-5 text-sm font-sans text-[#a78bfa]">
-            Reservation noted for <strong className="text-[#f5f0e8]">{submitted}</strong>. We&apos;ll send a confirmation to your email before 6 PM on the day of screening. Doors open at 7 PM.
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 text-sm text-green-800">
+            Reservation noted for <strong>{submitted}</strong>. Confirmation email arrives by 6 PM day-of. Doors open 7 PM.
           </div>
         )}
 
         {/* Screenings list */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {screenings.map((s, i) => (
             <div
               key={i}
-              className={`bg-[#111] border rounded-lg overflow-hidden transition-all ${
+              className={`bg-white border rounded-xl overflow-hidden transition-all ${
                 i === 0
-                  ? "border-[#7c3aed]/50 shadow-[0_0_30px_rgba(124,58,237,0.08)]"
-                  : "border-[#1f1f1f]"
+                  ? "border-indigo-300 shadow-sm"
+                  : "border-gray-200 hover:border-gray-300"
               }`}
             >
-              <div className="p-6 md:p-8">
-                <div className="flex flex-wrap items-start gap-6">
+              <div className="p-5 md:p-6">
+                <div className="flex flex-wrap items-start gap-5">
                   {/* Date block */}
-                  <div className="flex-shrink-0 w-16 text-center">
-                    <div className="text-xs font-sans font-bold tracking-widest uppercase text-[#6b7280]">
+                  <div className="flex-shrink-0 w-14 text-center">
+                    <div className="text-[10px] font-extrabold tracking-widest uppercase text-gray-400">
                       {s.dayLabel}
                     </div>
                     <div
-                      className={`text-sm font-sans font-semibold mt-1 ${
-                        i === 0 ? "text-[#a78bfa]" : "text-[#9ca3af]"
+                      className={`text-sm font-extrabold mt-0.5 ${
+                        i === 0 ? "text-indigo-600" : "text-gray-500"
                       }`}
                     >
                       {i === 0 ? "Tonight" : s.date.split(" ").slice(1).join(" ")}
@@ -172,55 +156,42 @@ export default function TonightScreenings() {
 
                   {/* Film info */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <h3 className="text-xl md:text-2xl font-bold">
-                        {s.film}
-                      </h3>
-                      <span className="text-[#6b7280] font-sans text-sm">
-                        {s.year}
-                      </span>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 className="text-base font-extrabold text-gray-900">{s.film}</h3>
+                      <span className="text-gray-400 text-sm">{s.year}</span>
                       {s.note && (
-                        <span className="text-xs font-sans bg-[#7c3aed]/20 text-[#a78bfa] px-2 py-0.5 rounded">
+                        <span className="text-[10px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded font-bold">
                           {s.note}
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-wrap items-center gap-4 mb-3 text-xs font-sans text-[#6b7280]">
+                    <div className="flex flex-wrap items-center gap-3 mb-2 text-xs text-gray-400">
                       <span>Dir. {s.director}</span>
                       <span>{s.runtime}</span>
                       <span>{s.rating}</span>
-                      <span
-                        className={`border px-2 py-0.5 rounded-full ${
-                          tagColors[s.tag] || "border-[#2d2d2d] text-[#6b7280]"
-                        }`}
-                      >
+                      <span className="bg-gray-100 text-gray-600 border border-gray-200 px-2 py-0.5 rounded">
                         {s.series}
                       </span>
                     </div>
-                    <p className="text-sm text-[#9ca3af] font-sans leading-relaxed max-w-2xl">
-                      {s.description}
-                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{s.description}</p>
                   </div>
 
                   {/* Seats + RSVP */}
-                  <div className="flex-shrink-0 flex flex-col items-end gap-3">
-                    <div className="text-xs font-sans text-[#6b7280] text-right">
-                      <span
-                        className={
-                          s.seats <= 3 ? "text-[#f87171]" : "text-[#34d399]"
-                        }
-                      >
+                  <div className="flex flex-col items-end gap-2 flex-shrink-0">
+                    <div className="text-xs text-right">
+                      <span className={s.seats <= 3 ? "text-red-600 font-bold" : "text-green-700 font-bold"}>
                         {s.seats} spots left
                       </span>
-                      <span className="text-[#2d2d2d] mx-1">·</span>
-                      <span>8 PM showtime</span>
+                      <span className="text-gray-300 mx-1">·</span>
+                      <span className="text-gray-400">8 PM</span>
                     </div>
-                    <button type="button"
-                      onClick={() => handleRsvp(s.film)}
+                    <button
+                      type="button"
+                      onClick={() => setRsvpFilm(s.film)}
                       disabled={s.seats === 0}
-                      className="text-sm font-sans bg-[#7c3aed] hover:bg-[#6d28d9] disabled:bg-[#1f1f1f] disabled:text-[#6b7280] text-white px-5 py-2.5 rounded transition-colors"
+                      className="text-sm font-bold bg-indigo-700 hover:bg-indigo-800 disabled:bg-gray-200 disabled:text-gray-400 text-white px-5 py-2 rounded transition-colors"
                     >
-                      {s.seats === 0 ? "Sold Out" : "Reserve a Spot"}
+                      {s.seats === 0 ? "Sold Out" : "Reserve"}
                     </button>
                   </div>
                 </div>
@@ -229,27 +200,28 @@ export default function TonightScreenings() {
           ))}
         </div>
 
-        {/* RSVP Modal overlay */}
+        {/* RSVP Modal */}
         {rsvpFilm && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-            <div className="bg-[#111] border border-[#2d2d2d] rounded-xl max-w-md w-full p-8">
-              <div className="flex items-start justify-between mb-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+            <div className="bg-white border border-gray-200 rounded-xl max-w-md w-full p-7 shadow-xl">
+              <div className="flex items-start justify-between mb-5">
                 <div>
-                  <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-1">
-                    Reservation
+                  <div className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-1">
+                    Reservation — Evening Hours
                   </div>
-                  <h3 className="text-xl font-bold">{rsvpFilm}</h3>
+                  <h3 className="text-lg font-extrabold text-gray-900">{rsvpFilm}</h3>
                 </div>
-                <button type="button"
+                <button
+                  type="button"
                   onClick={() => setRsvpFilm(null)}
-                  className="text-[#6b7280] hover:text-[#f5f0e8] text-xl ml-4"
+                  className="text-gray-400 hover:text-gray-700 text-2xl ml-4 leading-none"
                 >
                   ×
                 </button>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-sans text-[#6b7280] mb-1.5 tracking-wide uppercase">
+                  <label className="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">
                     Name
                   </label>
                   <input
@@ -257,12 +229,12 @@ export default function TonightScreenings() {
                     required
                     value={rsvpName}
                     onChange={(e) => setRsvpName(e.target.value)}
-                    className="w-full bg-[#0a0a0a] border border-[#2d2d2d] rounded px-4 py-3 text-sm font-sans text-[#f5f0e8] focus:outline-none focus:border-[#7c3aed] transition-colors"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-indigo-500 transition-colors"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-sans text-[#6b7280] mb-1.5 tracking-wide uppercase">
+                  <label className="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">
                     Email
                   </label>
                   <input
@@ -270,18 +242,18 @@ export default function TonightScreenings() {
                     required
                     value={rsvpEmail}
                     onChange={(e) => setRsvpEmail(e.target.value)}
-                    className="w-full bg-[#0a0a0a] border border-[#2d2d2d] rounded px-4 py-3 text-sm font-sans text-[#f5f0e8] focus:outline-none focus:border-[#7c3aed] transition-colors"
-                    placeholder="your email"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-indigo-500 transition-colors"
+                    placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-sans text-[#6b7280] mb-1.5 tracking-wide uppercase">
-                    Number of Spots
+                  <label className="block text-xs font-bold text-gray-600 mb-1.5 uppercase tracking-wide">
+                    Spots
                   </label>
                   <select
                     value={rsvpCount}
                     onChange={(e) => setRsvpCount(e.target.value)}
-                    className="w-full bg-[#0a0a0a] border border-[#2d2d2d] rounded px-4 py-3 text-sm font-sans text-[#f5f0e8] focus:outline-none focus:border-[#7c3aed] transition-colors"
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm text-gray-900 focus:outline-none focus:border-indigo-500 transition-colors"
                   >
                     {[1, 2, 3, 4].map((n) => (
                       <option key={n} value={n}>
@@ -290,11 +262,13 @@ export default function TonightScreenings() {
                     ))}
                   </select>
                 </div>
-                <div className="text-xs font-sans text-[#6b7280] leading-relaxed">
-                  No payment required. Confirmation email sent by 6 PM day-of. Doors open 7 PM. This is a concept/prototype venue — no real transactions occur.
-                </div>
-                <button type="submit"
-                  className="w-full bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-sans font-medium py-3.5 rounded text-sm transition-colors"
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  No payment required. Confirmation by 6 PM day-of. Doors 7 PM.
+                  Concept/prototype venue — no real transactions.
+                </p>
+                <button
+                  type="submit"
+                  className="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-extrabold py-3.5 rounded-lg text-sm transition-colors"
                 >
                   Confirm Reservation
                 </button>

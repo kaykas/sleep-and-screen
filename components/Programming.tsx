@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { CURATOR, SECOND_VOICE } from "@/lib/content";
 
 type Film = {
   title: string;
@@ -9,8 +8,7 @@ type Film = {
   runtime: string;
   rating: string;
   note?: string;
-  alexandras?: boolean;
-  kitrinas?: boolean;
+  sharedPick?: boolean;
 };
 
 type Series = {
@@ -29,8 +27,8 @@ const series: Series[] = [
       "Robots, cyborgs, systems. Films where the technology is practical and the stakes are real. Good for a Friday.",
     color: "text-[#60a5fa] border-[#1d4ed8]/40",
     films: [
-      { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", alexandras: true },
-      { title: "Terminator 2: Judgment Day", year: 1991, director: "James Cameron", runtime: "137 min", rating: "R", alexandras: true, note: "Double feature option" },
+      { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", sharedPick: true },
+      { title: "Terminator 2: Judgment Day", year: 1991, director: "James Cameron", runtime: "137 min", rating: "R", sharedPick: true, note: "Double feature option" },
       { title: "RoboCop", year: 1987, director: "Paul Verhoeven", runtime: "102 min", rating: "R" },
       { title: "Videodrome", year: 1983, director: "David Cronenberg", runtime: "87 min", rating: "R" },
       { title: "Hardware", year: 1990, director: "Richard Stanley", runtime: "94 min", rating: "R" },
@@ -44,10 +42,10 @@ const series: Series[] = [
       "Visually ambitious films that reward watching on a big screen lying down. Strong cinematography, strong soundtracks, things happening in the frame.",
     color: "text-[#a78bfa] border-[#7c3aed]/40",
     films: [
-      { title: "Holy Motors", year: 2012, director: "Leos Carax", runtime: "115 min", rating: "NR", kitrinas: true },
-      { title: "Under the Skin", year: 2013, director: "Jonathan Glazer", runtime: "108 min", rating: "R", kitrinas: true },
-      { title: "Spring Breakers", year: 2012, director: "Harmony Korine", runtime: "94 min", rating: "R", alexandras: true },
-      { title: "Daisies", year: 1966, director: "Věra Chytilová", runtime: "74 min", rating: "NR", kitrinas: true },
+      { title: "Holy Motors", year: 2012, director: "Leos Carax", runtime: "115 min", rating: "NR", sharedPick: true },
+      { title: "Under the Skin", year: 2013, director: "Jonathan Glazer", runtime: "108 min", rating: "R", sharedPick: true },
+      { title: "Spring Breakers", year: 2012, director: "Harmony Korine", runtime: "94 min", rating: "R", sharedPick: true },
+      { title: "Daisies", year: 1966, director: "Věra Chytilová", runtime: "74 min", rating: "NR", sharedPick: true },
       { title: "Daughters of Darkness", year: 1971, director: "Harry Kümel", runtime: "96 min", rating: "NR" },
       { title: "El Topo", year: 1970, director: "Alejandro Jodorowsky", runtime: "125 min", rating: "NR" },
     ],
@@ -59,10 +57,10 @@ const series: Series[] = [
       "Two films, one night. Announced together because they're better back to back. Short intermission. The counter stays open.",
     color: "text-[#fbbf24] border-[#92400e]/40",
     films: [
-      { title: "Wayne's World", year: 1992, director: "Penelope Spheeris", runtime: "95 min", rating: "PG-13", kitrinas: true, note: "Double feature with Wayne's World 2" },
-      { title: "Wayne's World 2", year: 1993, director: "Stephen Surjik", runtime: "95 min", rating: "PG-13", kitrinas: true, note: "Double feature — shown same night" },
+      { title: "Wayne's World", year: 1992, director: "Penelope Spheeris", runtime: "95 min", rating: "PG-13", sharedPick: true, note: "Double feature with Wayne's World 2" },
+      { title: "Wayne's World 2", year: 1993, director: "Stephen Surjik", runtime: "95 min", rating: "PG-13", sharedPick: true, note: "Double feature — shown same night" },
       { title: "Bill & Ted's Excellent Adventure", year: 1989, director: "Stephen Herek", runtime: "90 min", rating: "PG" },
-      { title: "Wet Hot American Summer", year: 2001, director: "David Wain", runtime: "97 min", rating: "R", kitrinas: true },
+      { title: "Wet Hot American Summer", year: 2001, director: "David Wain", runtime: "97 min", rating: "R", sharedPick: true },
       { title: "The Terminator", year: 1984, director: "James Cameron", runtime: "107 min", rating: "R", note: "T1+T2 double feature, select nights" },
       { title: "Repo Man", year: 1984, director: "Alex Cox", runtime: "92 min", rating: "R" },
     ],
@@ -74,7 +72,7 @@ const series: Series[] = [
       "John Waters is the only person who gets his own series. Serial Mom, Pink Flamingos, Polyester, Hairspray. One night per film. Crowd light on judgment.",
     color: "text-[#f9a8d4] border-[#9d174d]/40",
     films: [
-      { title: "Serial Mom", year: 1994, director: "John Waters", runtime: "95 min", rating: "R", alexandras: true },
+      { title: "Serial Mom", year: 1994, director: "John Waters", runtime: "95 min", rating: "R", sharedPick: true },
       { title: "Pink Flamingos", year: 1972, director: "John Waters", runtime: "93 min", rating: "NR", note: "Adults 18+ only" },
       { title: "Polyester", year: 1981, director: "John Waters", runtime: "86 min", rating: "R", note: "Odorama scratch card provided" },
       { title: "Hairspray", year: 1988, director: "John Waters", runtime: "92 min", rating: "PG" },
@@ -89,11 +87,11 @@ const series: Series[] = [
       "Films from the last ten years that are good and didn't get the run they deserved, or that people still haven't seen.",
     color: "text-[#34d399] border-[#065f46]/40",
     films: [
-      { title: "The Eyes of Tammy Faye", year: 2021, director: "Michael Showalter", runtime: "126 min", rating: "PG-13", kitrinas: true },
-      { title: "First Wives Club", year: 1996, director: "Hugh Wilson", runtime: "103 min", rating: "PG", alexandras: true },
+      { title: "The Eyes of Tammy Faye", year: 2021, director: "Michael Showalter", runtime: "126 min", rating: "PG-13", sharedPick: true },
+      { title: "First Wives Club", year: 1996, director: "Hugh Wilson", runtime: "103 min", rating: "PG", sharedPick: true },
       { title: "Near Dark", year: 1987, director: "Kathryn Bigelow", runtime: "94 min", rating: "R" },
       { title: "The House of Yes", year: 1997, director: "Mark Waters", runtime: "85 min", rating: "R" },
-      { title: "Smithereens", year: 1982, director: "Susan Seidelman", runtime: "93 min", rating: "R", alexandras: true },
+      { title: "Smithereens", year: 1982, director: "Susan Seidelman", runtime: "93 min", rating: "R", sharedPick: true },
       { title: "Over the Edge", year: 1979, director: "Jonathan Kaplan", runtime: "95 min", rating: "PG" },
     ],
   },
@@ -117,8 +115,8 @@ const series: Series[] = [
       "Films that ask more. Scheduled later in the week or at 10 PM on select nights. Not homework — just films that work better when you're willing to stay with them.",
     color: "text-[#f87171] border-[#7f1d1d]/40",
     films: [
-      { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR", kitrinas: true },
-      { title: "Come and See", year: 1985, director: "Elem Klimov", runtime: "142 min", rating: "NR", kitrinas: true },
+      { title: "Possession", year: 1981, director: "Andrzej Żuławski", runtime: "123 min", rating: "NR", sharedPick: true },
+      { title: "Come and See", year: 1985, director: "Elem Klimov", runtime: "142 min", rating: "NR", sharedPick: true },
       { title: "Eraserhead", year: 1977, director: "David Lynch", runtime: "89 min", rating: "NR" },
       { title: "Safe", year: 1995, director: "Todd Haynes", runtime: "119 min", rating: "R" },
       { title: "The Holy Mountain", year: 1973, director: "Alejandro Jodorowsky", runtime: "114 min", rating: "NR" },
@@ -200,14 +198,9 @@ export default function Programming() {
                       {film.title}
                     </span>
                     <span className="text-[#6b7280] font-sans text-sm">{film.year}</span>
-                    {film.alexandras && (
-                      <span className="text-[10px] font-sans bg-[#7c3aed]/15 text-[#a78bfa] border border-[#7c3aed]/20 px-1.5 py-0.5 rounded">
-                        {CURATOR.firstName}&apos;s Pick
-                      </span>
-                    )}
-                    {film.kitrinas && (
-                      <span className="text-[10px] font-sans bg-[#d97706]/15 text-[#f59e0b] border border-[#d97706]/20 px-1.5 py-0.5 rounded">
-                        {SECOND_VOICE.firstName}&apos;s Pick
+                    {film.sharedPick && (
+                      <span className="text-[10px] font-sans bg-[#7c3aed]/15 text-[#c4b5fd] border border-[#7c3aed]/20 px-1.5 py-0.5 rounded">
+                        A+K Pick
                       </span>
                     )}
                     {film.note && (
@@ -239,14 +232,9 @@ export default function Programming() {
         {/* Footer note */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-sans text-[#4b5563]">
           <span className="text-[#a78bfa] bg-[#7c3aed]/10 px-1.5 py-0.5 rounded">
-            {CURATOR.firstName}&apos;s Pick
+            A+K Pick
           </span>
-          <span className="text-[#9ca3af]">= {CURATOR.firstName} asked for it</span>
-          <span className="mx-2 text-[#2d2d2d]">|</span>
-          <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded">
-            {SECOND_VOICE.firstName}&apos;s Pick
-          </span>
-          <span className="text-[#9ca3af]">= {SECOND_VOICE.firstName} asked for it</span>
+          <span className="text-[#9ca3af]">= Alexandra and Kitrina programmed it together</span>
         </div>
         <p className="mt-4 text-xs font-sans text-[#4b5563] text-center">
           Programming subject to change. All screenings are for cultural purposes. This is a concept venue; no licensed screenings are implied.

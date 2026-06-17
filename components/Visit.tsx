@@ -4,36 +4,36 @@ import { SITE } from "@/lib/content";
 
 const faqs = [
   {
-    q: "Do I have to buy a mattress to attend a screening?",
-    a: "No. Screenings are open to anyone with a reservation. You don't need to purchase anything. But if you end up liking the mattress, staff are available during the day.",
+    q: "Do I need an appointment to visit the showroom?",
+    a: "No. Walk in any day 10 AM–6 PM. The floor is open. Staff are there if you want them.",
   },
   {
-    q: "Can I arrive just for the mattress showroom?",
-    a: "Yes. The showroom is open 10 AM–6 PM daily, walk-in, no appointment. You won't be shown films or asked about the cinema unless you ask.",
+    q: "Does free delivery include setup?",
+    a: "Yes. We carry it in, set up the frame, and remove all packaging. Old mattress removal is $40, scheduled at the same time.",
   },
   {
-    q: "What do screenings cost?",
-    a: "Admission is currently by donation. We suggest $10–$15 per person. Popcorn is included. Drinks are $4. We're figuring out the business model.",
+    q: "What size is the 120-night trial?",
+    a: "All sizes on all models. If it isn't working after 120 nights, call us. We pick it up and refund the purchase price. No restocking fee.",
   },
   {
-    q: "Can I fall asleep during the film?",
-    a: "Yes. That is part of the concept. You're on a mattress. If you fall asleep, we'll wake you gently when the film ends. This is not a hotel.",
+    q: "How does the 0% financing work?",
+    a: "Synchrony Bank, applied in-store. On approved credit. On orders $599+. Minimum monthly payments required. No deferred interest — the rate is genuinely 0%.",
   },
   {
-    q: "Is there assigned seating?",
-    a: "Reservations are tied to a specific mattress. You choose when you book. If you have no preference, we'll assign one.",
+    q: "Is the Evening Hours program free?",
+    a: "Mattress customers get priority reservation access and no cover. Walk-in screening reservations are $10–$15 suggested donation. Popcorn included.",
   },
   {
-    q: "What if I need to leave during the film?",
-    a: "Quietly. We don't have an intermission policy. The exits are marked.",
+    q: "Can I fall asleep at a screening?",
+    a: "Yes. That's part of the concept. You're on a mattress. We'll wake you gently when the film ends. This is not a hotel.",
   },
   {
-    q: "Are the films subtitled?",
-    a: "English-language films are not subtitled. Foreign-language films screen with English subtitles.",
+    q: "Do you do same-day delivery?",
+    a: "Sometimes. Depends on the model and the day. Ask in-store. If a model is in stock and the truck is available, we can usually schedule next-day.",
   },
   {
-    q: "Can I come with a group?",
-    a: "Up to 4 reservations per booking. For groups larger than 4, email us to coordinate.",
+    q: "What brands do you carry?",
+    a: "East Bay Mattress sells its own floor models — named for local landmarks. Every model on the floor is available to buy.",
   },
 ];
 
@@ -41,48 +41,50 @@ export default function Visit() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section id="visit" className="py-24 bg-[#0a0a0a]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="visit" className="py-14 bg-white border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="mb-16">
-          <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
-            Get here
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold">Visit</h2>
+        <div className="mb-10">
+          <div className="text-xs font-bold tracking-widest uppercase text-blue-700 mb-2">
+            Visit Us
+          </div>
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Showroom &amp; Contact
+          </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left column: location + hours */}
-          <div className="space-y-8">
-            {/* Address */}
-            <div className="bg-[#111] border border-[#1f1f1f] rounded-lg p-6">
-              <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-4">
+        <div className="grid lg:grid-cols-2 gap-10">
+          {/* Left: location + hours + contact */}
+          <div className="space-y-5">
+            {/* Address card */}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
                 Location
               </div>
-              <div className="space-y-2 mb-4">
-                <div className="text-xl font-bold">{SITE.name}</div>
-                <div className="text-sm font-sans text-[#9ca3af]">
-                  {SITE.address.street}
-                </div>
-                <div className="text-sm font-sans text-[#9ca3af]">
+              <div className="space-y-1 mb-4">
+                <div className="text-xl font-extrabold text-gray-900">{SITE.name}</div>
+                <div className="text-sm text-gray-600">{SITE.address.street}</div>
+                <div className="text-sm text-gray-600">
                   {SITE.address.city}, {SITE.address.state} {SITE.address.zip}
                 </div>
               </div>
-              <div className="text-xs font-sans text-[#6b7280] leading-relaxed">
+              <div className="text-sm text-gray-500 leading-relaxed mb-4">
                 Willow Pass retail corridor, between Treat Blvd and Oak Grove Rd.
-                In the strip center with the nail salon and the UPS store. The mattress store is obvious. Look for the purple sign at night.
+                Strip center with the nail salon and the UPS Store. The mattress store is obvious.
               </div>
-              <div className="mt-4 pt-4 border-t border-[#1a1a1a]">
-                <div className="text-xs font-sans text-[#6b7280] mb-2">Getting here:</div>
-                <ul className="space-y-1.5">
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-2">
+                  Getting Here
+                </div>
+                <ul className="space-y-2">
                   {[
-                    ["By car", "Parking lot, free, 40 spaces, surface"],
+                    ["By car", "Parking lot, free, 40+ spaces"],
                     ["By BART", "Concord Station, 1.4 miles, rideshare from platform"],
                     ["By bus", "County Connection Route 4, Willow Pass stop"],
                   ].map(([mode, detail]) => (
-                    <li key={mode} className="flex gap-3 text-xs font-sans">
-                      <span className="text-[#f5f0e8] w-16 flex-shrink-0 font-medium">{mode}</span>
-                      <span className="text-[#6b7280]">{detail}</span>
+                    <li key={mode} className="flex gap-3 text-xs">
+                      <span className="text-gray-900 font-bold w-16 flex-shrink-0">{mode}</span>
+                      <span className="text-gray-500">{detail}</span>
                     </li>
                   ))}
                 </ul>
@@ -90,112 +92,113 @@ export default function Visit() {
             </div>
 
             {/* Hours */}
-            <div className="bg-[#111] border border-[#1f1f1f] rounded-lg p-6">
-              <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
                 Hours
               </div>
               <div className="space-y-2">
                 {[
-                  ["Mon–Fri", "10 AM – 10 PM", "Showroom 10–6, Screenings nightly"],
-                  ["Sat–Sun", "10 AM – 10 PM", "Showroom 10–6, Screenings nightly"],
-                  ["Showtime", "8 PM sharp", "Doors 7 PM, seats fill fast"],
-                  ["Holidays", "Check schedule", "We close Christmas and July 4"],
+                  ["Mon–Fri", "10 AM – 6 PM", "Showroom"],
+                  ["Sat–Sun", "10 AM – 6 PM", "Showroom"],
+                  ["Fri evenings", "Doors 7 PM · Film 8 PM", "Evening Hours screenings"],
+                  ["Holidays", "Check schedule", "Closed Christmas, July 4"],
                 ].map(([day, time, note]) => (
-                  <div key={day} className="flex items-start gap-4 py-2 border-b border-[#131313] last:border-b-0">
-                    <span className="text-sm font-sans text-[#f5f0e8] w-20 flex-shrink-0 font-medium">{day}</span>
-                    <span className="text-sm font-sans text-[#9ca3af] w-32 flex-shrink-0">{time}</span>
-                    <span className="text-xs font-sans text-[#6b7280]">{note}</span>
+                  <div
+                    key={day}
+                    className="flex items-start gap-4 py-2.5 border-b border-gray-200 last:border-b-0"
+                  >
+                    <span className="text-sm font-bold text-gray-900 w-24 flex-shrink-0">{day}</span>
+                    <span className="text-sm text-gray-600 w-36 flex-shrink-0">{time}</span>
+                    <span className="text-xs text-gray-400">{note}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Contact */}
-            <div className="bg-[#111] border border-[#1f1f1f] rounded-lg p-6">
-              <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-4">
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+              <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-4">
                 Contact
               </div>
               <div className="space-y-3">
                 {[
-                  ["Email", SITE.email],
                   ["Phone", SITE.phone],
+                  ["Email", SITE.email],
                   ["Instagram", SITE.instagram],
                 ].map(([label, value]) => (
-                  <div key={label} className="flex gap-4 text-sm font-sans">
-                    <span className="text-[#6b7280] w-20 flex-shrink-0">{label}</span>
-                    <span className="text-[#9ca3af]">{value}</span>
+                  <div key={label} className="flex gap-4 text-sm">
+                    <span className="text-gray-500 w-20 flex-shrink-0">{label}</span>
+                    <span className="font-semibold text-gray-800">{value}</span>
                   </div>
                 ))}
               </div>
-              <div className="mt-4 pt-4 border-t border-[#1a1a1a] text-xs font-sans text-[#6b7280] leading-relaxed">
-                For group reservations, press inquiries, or mattress delivery questions, email is faster.
+              <div className="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-400 leading-relaxed">
+                For group reservations, press, or mattress delivery questions — email is faster.
+              </div>
+            </div>
+
+            {/* Map placeholder */}
+            <div className="bg-gray-50 border border-gray-200 rounded-xl overflow-hidden">
+              <div className="h-36 flex items-center justify-center bg-gray-100 relative">
+                <div
+                  className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px)",
+                    backgroundSize: "24px 24px",
+                  }}
+                />
+                <div className="relative text-center">
+                  <div className="text-blue-600 text-3xl mb-1">◉</div>
+                  <div className="text-xs text-gray-500 font-medium">
+                    {SITE.address.street}
+                  </div>
+                  <div className="text-xs text-gray-400">{SITE.address.full}</div>
+                </div>
+              </div>
+              <div className="px-5 py-3 border-t border-gray-200">
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(
+                    SITE.address.street + " " + SITE.address.full
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-blue-700 hover:text-blue-800 transition-colors"
+                >
+                  Open in Google Maps →
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Right column: FAQ */}
+          {/* Right: FAQ */}
           <div>
-            <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-6">
-              Frequently asked
+            <div className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-5">
+              Frequently Asked
             </div>
             <div className="space-y-2">
               {faqs.map((faq, i) => (
                 <div
                   key={i}
-                  className="border border-[#1f1f1f] rounded-lg overflow-hidden"
+                  className="border border-gray-200 rounded-xl overflow-hidden bg-white"
                 >
-                  <button type="button"
-                    className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-[#111] transition-colors"
+                  <button
+                    type="button"
+                    className="w-full text-left px-6 py-4 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   >
-                    <span className="text-sm font-sans text-[#f5f0e8] pr-4">
-                      {faq.q}
-                    </span>
-                    <span
-                      className={`text-[#6b7280] flex-shrink-0 transition-transform ${
-                        openFaq === i ? "rotate-45" : ""
-                      }`}
-                    >
+                    <span className="text-sm font-semibold text-gray-800 pr-4">{faq.q}</span>
+                    <span className={`text-gray-400 flex-shrink-0 text-lg transition-transform ${openFaq === i ? "rotate-45" : ""}`}>
                       +
                     </span>
                   </button>
                   {openFaq === i && (
-                    <div className="px-6 pb-5 text-sm font-sans text-[#9ca3af] leading-relaxed border-t border-[#131313] pt-4 bg-[#0d0d0d]">
+                    <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50">
                       {faq.a}
                     </div>
                   )}
                 </div>
               ))}
-            </div>
-
-            {/* Map placeholder */}
-            <div className="mt-8 bg-[#111] border border-[#1f1f1f] rounded-lg overflow-hidden">
-              <div className="h-40 flex items-center justify-center bg-[#0d0d0d] relative">
-                <div
-                  className="absolute inset-0 opacity-[0.06]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(#f5f0e8 1px, transparent 1px), linear-gradient(90deg, #f5f0e8 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
-                />
-                <div className="relative text-center">
-                  <div className="text-[#a78bfa] text-2xl mb-2">◉</div>
-                  <div className="text-xs font-sans text-[#6b7280]">
-                    {SITE.address.street}, {SITE.address.full}
-                  </div>
-                </div>
-              </div>
-              <div className="px-5 py-3 border-t border-[#1a1a1a]">
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(SITE.address.street + " " + SITE.address.full)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-sans text-[#6b7280] hover:text-[#a78bfa] transition-colors"
-                >
-                  Open in Google Maps →
-                </a>
-              </div>
             </div>
           </div>
         </div>

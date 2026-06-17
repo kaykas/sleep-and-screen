@@ -1,10 +1,11 @@
-import { SECOND_VOICE } from "@/lib/content";
+import { CURATOR, SECOND_VOICE, JOINT_PICKS } from "@/lib/content";
 
+// Picks are shared — both curators together. No individual per-film attribution.
 const picks = [
   {
     film: "Daisies",
     year: 1966,
-    note: "Vĕra Chytilová. Two women decide that since the world is spoiled, they will be too. I have watched it every year since I was twenty-two.",
+    note: "Vĕra Chytilová. Two women decide that since the world is spoiled, they will be too. Watched it together for the first time and didn't say anything for a while after.",
   },
   {
     film: "In My Room",
@@ -19,7 +20,7 @@ const picks = [
   {
     film: "Come and See",
     year: 1985,
-    note: "Elem Klimov. WWII, Belarus. The boy's face changes over the course of the film. It is the best anti-war film ever made and I never want to see it again.",
+    note: "Elem Klimov. WWII, Belarus. The boy's face changes over the course of the film. It is the best anti-war film ever made and neither of us wants to see it again.",
   },
   {
     film: "Daughters of Darkness",
@@ -36,39 +37,51 @@ export default function KitrinasPicks() {
           {/* Left: Voice intro */}
           <div>
             <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
-              Contributing programmer
+              Shared picks
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {SECOND_VOICE.firstName}&apos;s
+              {JOINT_PICKS.curatorsLabel}
               <br />
-              <span className="text-[#f59e0b]">Picks</span>
+              <span className="text-[#f59e0b]">Esoteric Picks</span>
             </h2>
 
             <div className="mb-8 space-y-4 text-[#9ca3af] font-sans text-sm leading-relaxed">
               <p>
-                I met Alexandra at a screening of Possession at the Roxie in 2019. We didn&apos;t agree about it. We still don&apos;t. That disagreement is why she asked me to help program.
+                These are the films from the harder end of the calendar — the ones that reach for
+                something they can&apos;t fully articulate and are better for the attempt.
               </p>
               <p>
-                My instincts run toward the esoteric end. Art-house, cult, the emotionally sharp. Films that reach for something they can&apos;t fully articulate and are better for the attempt.
+                Art-house, cult, the emotionally sharp. Films with a charge to them — something
+                left unresolved, something the director couldn&apos;t resolve because the world
+                won&apos;t cooperate with tidy answers.
               </p>
               <p>
-                This isn&apos;t a separate strand. It&apos;s the same program, with a second set of ears in the room. Some nights you&apos;ll see my name next to a title. Those are the nights I&apos;d stay.
+                This isn&apos;t a separate strand. It&apos;s the same program, with the harder nights
+                pulled out so you know what you&apos;re walking into. Some nights you&apos;ll see
+                this framing next to a title. Those are the nights worth staying for.
               </p>
               <p>
-                I tend to program the harder theme nights. Bad Date Night is mine. Insomnia Night is mostly mine. If you see Possession or Come and See on the calendar for a Friday, that was probably me.
+                The harder theme nights live here: Bad Date Night, Insomnia Night. If you see
+                Possession or Come and See on the calendar, this is the context.
               </p>
             </div>
 
+            {/* Shared curator card */}
             <div className="flex items-center gap-4 pt-4 border-t border-[#1f1f1f]">
-              <div className="w-10 h-10 rounded-full bg-[#d97706]/20 border border-[#d97706]/30 flex items-center justify-center text-[#f59e0b] font-bold text-lg">
-                {SECOND_VOICE.initial}
+              <div className="flex -space-x-2">
+                <div className="w-10 h-10 rounded-full bg-[#7c3aed]/20 border-2 border-[#0a0a0a] flex items-center justify-center text-[#a78bfa] font-bold text-lg z-10">
+                  {CURATOR.initial}
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#d97706]/20 border-2 border-[#0a0a0a] flex items-center justify-center text-[#f59e0b] font-bold text-lg">
+                  {SECOND_VOICE.initial}
+                </div>
               </div>
               <div>
                 <div className="text-sm font-medium text-[#f5f0e8] font-sans">
-                  {SECOND_VOICE.firstName}
+                  {JOINT_PICKS.curatorsLabel}
                 </div>
                 <div className="text-xs text-[#6b7280] font-sans">
-                  {SECOND_VOICE.role}
+                  Co-curators &amp; programmers
                 </div>
               </div>
             </div>
@@ -78,7 +91,9 @@ export default function KitrinasPicks() {
                 Programming ethos
               </div>
               <p className="text-sm text-[#9ca3af] font-sans leading-relaxed">
-                &ldquo;I want films that have a charge to them — something left unresolved, something the director couldn&apos;t resolve because the world won&apos;t cooperate with tidy answers. That&apos;s what I&apos;m looking for.&rdquo;
+                &ldquo;We want films that have a charge to them — something left unresolved, something the
+                director couldn&apos;t resolve because the world won&apos;t cooperate with tidy answers.
+                That&apos;s what we&apos;re looking for.&rdquo;
               </p>
             </div>
           </div>
@@ -86,7 +101,7 @@ export default function KitrinasPicks() {
           {/* Right: Picks list */}
           <div>
             <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-6">
-              5 films {SECOND_VOICE.firstName} keeps returning to
+              5 films they keep returning to
             </div>
             <div className="space-y-4">
               {picks.map((pick, i) => (
@@ -115,9 +130,9 @@ export default function KitrinasPicks() {
             <div className="mt-6 text-sm font-sans text-[#6b7280]">
               Films marked{" "}
               <span className="text-[#f59e0b] bg-[#d97706]/10 px-1.5 py-0.5 rounded text-xs">
-                {SECOND_VOICE.firstName}&apos;s Pick
+                {JOINT_PICKS.curatorPickLabel}
               </span>{" "}
-              in the schedule are personally selected by {SECOND_VOICE.firstName}.
+              in the schedule are personally selected by {JOINT_PICKS.curatorsLabel} together.
             </div>
           </div>
         </div>

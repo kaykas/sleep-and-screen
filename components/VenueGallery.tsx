@@ -5,8 +5,8 @@
 const exteriorScenes = [
   {
     id: "ext-1",
-    label: "Exterior · Willow Pass Road",
-    caption: "Strip center, east side. Purple sign visible from the road at night.",
+    label: "Strip Mall Exterior · Willow Pass Road",
+    caption: "Suburban strip mall bay with plate-glass windows, stucco sign band, and asphalt parking out front.",
     art: "exterior-night",
   },
   {
@@ -18,7 +18,7 @@ const exteriorScenes = [
   {
     id: "ext-3",
     label: "Storefront Detail · Day",
-    caption: "Mattress store by day. Evening Hours marquee lit after 5 PM.",
+    caption: "Plain strip-mall mattress store by day. Same retail bay, same windows, small Evening Hours sign after 5 PM.",
     art: "storefront-day",
   },
 ];

@@ -32,6 +32,9 @@ export const CURATOR = {
 export const JOINT_PICKS = {
   sectionLabel: "Alexandra & " + "Kitrina's Picks",
   shortLabel: "The Picks",
+  // Shared curator badge label — never attribute a pick to one person alone
+  curatorPickLabel: "Curator Pick",
+  curatorsLabel: "Alexandra & " + "Kitrina",
 };
 
 // Theme nights — the emotional calendar
@@ -229,10 +232,10 @@ export const EVENING_HOURS_SUMMER_2026 = [
   },
   {
     month: "August 2026",
-    theme: "Kitrina's Picks + Horror Closer",
+    theme: "Alexandra & " + "Kitrina's Picks + Horror Closer",
     tagline: "Summer ends in Texas. Or in Colorado. Your choice.",
     description:
-      "August anchors on horror — Texas Chain Saw Massacre and The Shining — and closes summer with " + "Kit" + "rina" + "'s double picks: Terminator 1+2, RoboCop, Wet Hot American Summer, Bill & Ted.",
+      "August anchors on horror — Texas Chain Saw Massacre and The Shining — and closes summer with Alexandra & " + "Kit" + "rina" + "'s double picks: Terminator 1+2, RoboCop, Wet Hot American Summer, Bill & Ted.",
     nights: [
       {
         slug: "aug-tcm",
@@ -262,10 +265,10 @@ export const EVENING_HOURS_SUMMER_2026 = [
         director: "James Cameron",
         runtime: "244 min total",
         rating: "R",
-        note: "" + "Kit" + "rina" + "'s Pick. Double feature. Starts at 7:30 PM.",
+        note: "Alexandra & " + "Kit" + "rina" + "'s Pick. Double feature. Starts at 7:30 PM.",
         isDouble: true,
         films: ["The Terminator (1984)", "Terminator 2: Judgment Day (1991)"],
-        kitrinas: true,
+        sharedPick: true,
       },
       {
         slug: "aug-robocop",
@@ -275,8 +278,8 @@ export const EVENING_HOURS_SUMMER_2026 = [
         director: "Paul Verhoeven",
         runtime: "102 min",
         rating: "R",
-        note: "" + "Kit" + "rina" + "'s Pick",
-        kitrinas: true,
+        note: "Alexandra & " + "Kit" + "rina" + "'s Pick",
+        sharedPick: true,
       },
       {
         slug: "aug-summer-closer",
@@ -289,7 +292,7 @@ export const EVENING_HOURS_SUMMER_2026 = [
         note: "Summer closer double. Counter open all night.",
         isDouble: true,
         films: ["Wet Hot American Summer (2001)", "Bill & Ted's Excellent Adventure (1989)"],
-        kitrinas: true,
+        sharedPick: true,
       },
     ],
   },

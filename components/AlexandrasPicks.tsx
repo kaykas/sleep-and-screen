@@ -1,5 +1,6 @@
-import { CURATOR } from "@/lib/content";
+import { CURATOR, SECOND_VOICE, JOINT_PICKS } from "@/lib/content";
 
+// Picks are shared — both curators together. No individual attribution per film.
 const picks = [
   {
     film: "Gummo",
@@ -36,39 +37,53 @@ export default function AlexandrasPicks() {
           {/* Left: Curator intro */}
           <div>
             <span className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-3 block">
-              The curator
+              The curators
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              {CURATOR.firstName}&apos;s
+              {JOINT_PICKS.curatorsLabel}
               <br />
               <span className="text-[#a78bfa]">Picks</span>
             </h2>
 
             <div className="mb-8 space-y-4 text-[#9ca3af] font-sans text-sm leading-relaxed">
               <p>
-                I grew up here. Concord. The long flat summers, the parking-lot heat, the BART that goes somewhere else. I watched a lot of movies.
+                Two people program this place. One grew up in Concord — the long flat summers,
+                the parking-lot heat, the BART that goes somewhere else.
+                The other met her at a Roxie screening and disagreed about the film.
+                They still do.
               </p>
               <p>
-                This place is my attempt to program a theater for people who aren&apos;t looking for a Disney release or a Marvel event. People who want to lie down in the dark and watch something that stays with them.
+                Together they built a program for people who aren&apos;t looking for a Disney
+                release or a Marvel event. People who want to lie down in the dark and watch
+                something that stays with them.
               </p>
               <p>
-                The mattress selection is real. The programming is personal. These are not films I recommend because they are important. They are films I have thought about on drives home from nowhere in particular.
+                The mattress selection is real. The programming is personal. These are not films
+                recommended because they are important. They are films that stayed with both
+                of them on drives home from nowhere in particular.
               </p>
               <p>
-                Some nights have a theme. Breakup Night, Insomnia Night, Hometown. The occasion shapes what&apos;s on screen. The mattresses don&apos;t move either way.
+                Some nights have a theme. Breakup Night, Insomnia Night, Hometown. The occasion
+                shapes what&apos;s on screen. The mattresses don&apos;t move either way.
               </p>
             </div>
 
+            {/* Shared curator card */}
             <div className="flex items-center gap-4 pt-4 border-t border-[#1f1f1f]">
-              <div className="w-10 h-10 rounded-full bg-[#7c3aed]/20 border border-[#7c3aed]/30 flex items-center justify-center text-[#a78bfa] font-bold text-lg">
-                {CURATOR.initial}
+              <div className="flex -space-x-2">
+                <div className="w-10 h-10 rounded-full bg-[#7c3aed]/20 border-2 border-[#0d0d0d] flex items-center justify-center text-[#a78bfa] font-bold text-lg z-10">
+                  {CURATOR.initial}
+                </div>
+                <div className="w-10 h-10 rounded-full bg-[#d97706]/20 border-2 border-[#0d0d0d] flex items-center justify-center text-[#f59e0b] font-bold text-lg">
+                  {SECOND_VOICE.initial}
+                </div>
               </div>
               <div>
                 <div className="text-sm font-medium text-[#f5f0e8] font-sans">
-                  {CURATOR.firstName}
+                  {JOINT_PICKS.curatorsLabel}
                 </div>
                 <div className="text-xs text-[#6b7280] font-sans">
-                  {CURATOR.role}
+                  Co-curators &amp; programmers
                 </div>
               </div>
             </div>
@@ -78,7 +93,8 @@ export default function AlexandrasPicks() {
                 Programming ethos
               </div>
               <p className="text-sm text-[#9ca3af] font-sans leading-relaxed">
-                &ldquo;My poles are Gummo and The Terminator. Everything in the schedule lives somewhere on that spectrum. Not everything is extreme. But nothing is comfortable.&rdquo;
+                &ldquo;Our poles are Gummo and The Terminator. Everything in the schedule lives somewhere
+                on that spectrum. Not everything is extreme. But nothing is just comfortable.&rdquo;
               </p>
             </div>
           </div>
@@ -86,7 +102,7 @@ export default function AlexandrasPicks() {
           {/* Right: Picks list */}
           <div>
             <div className="text-xs font-sans tracking-widest uppercase text-[#6b7280] mb-6">
-              5 films {CURATOR.firstName} has watched more than once
+              5 films they keep returning to
             </div>
             <div className="space-y-4">
               {picks.map((pick, i) => (
@@ -115,10 +131,10 @@ export default function AlexandrasPicks() {
             <div className="mt-6 text-sm font-sans text-[#6b7280]">
               Films marked{" "}
               <span className="text-[#a78bfa] bg-[#7c3aed]/10 px-1.5 py-0.5 rounded text-xs">
-                {CURATOR.firstName}&apos;s Pick
+                {JOINT_PICKS.curatorPickLabel}
               </span>{" "}
-              in the schedule are personally selected by {CURATOR.firstName} and appear at
-              least once per season.
+              in the schedule are ones {JOINT_PICKS.curatorsLabel} specifically requested together
+              and appear at least once per season.
             </div>
           </div>
         </div>
