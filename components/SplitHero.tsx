@@ -25,96 +25,106 @@ const tonightFeature = {
 
 export default function SplitHero() {
   return (
-    <section className="bg-white border-b border-gray-200">
+    <section className="bg-gray-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_460px] min-h-[480px]">
+        <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] min-h-[500px]">
 
           {/* ── LEFT: Mattress Sale Billboard ── */}
-          <div className="px-6 md:px-10 py-12 md:py-16 flex flex-col justify-center border-r border-gray-100 relative overflow-hidden">
+          <div className="px-6 md:px-10 lg:px-12 py-10 md:py-14 flex flex-col justify-center border-r border-gray-200 relative overflow-hidden">
+            {/* Subtle background pattern */}
             <div
-              className="absolute inset-0 opacity-[0.025] pointer-events-none"
+              className="absolute inset-0 opacity-[0.018] pointer-events-none"
               style={{
                 backgroundImage:
                   "repeating-linear-gradient(0deg, #1d4ed8 0, #1d4ed8 1px, transparent 0, transparent 50%), repeating-linear-gradient(90deg, #1d4ed8 0, #1d4ed8 1px, transparent 0, transparent 50%)",
-                backgroundSize: "48px 48px",
+                backgroundSize: "56px 56px",
               }}
               aria-hidden="true"
             />
+            {/* Warm wash behind promo card */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50/40 pointer-events-none" aria-hidden="true" />
 
-            <div className="relative">
-              <div className="mb-5 flex items-center gap-3">
-                <span className="inline-block bg-[#dc2626] text-white text-[10px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded">
+            <div className="relative max-w-xl">
+              {/* Event badge row */}
+              <div className="mb-4 flex items-center gap-2.5 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 bg-[#dc2626] text-white text-[10px] font-extrabold tracking-widest uppercase px-3 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 bg-white/70 rounded-full" aria-hidden="true" />
                   Summer Mattress Event
                 </span>
-                <span className="text-sm text-gray-400">Ends Aug 31</span>
+                <span className="text-xs text-gray-400 font-medium">Ends Aug 31</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-[52px] font-black tracking-tight text-gray-900 leading-[1.02] mb-5">
+              {/* Headline — controlled size, deliberate composition */}
+              <h1 className="text-3xl md:text-[38px] lg:text-[42px] font-black tracking-tight text-gray-900 leading-[1.05] mb-4">
                 Up to{" "}
                 <span className="text-[#dc2626]">40% Off</span>
+                {" "}Every Mattress
                 <br />
-                Every Mattress
-                <br />
-                <span className="text-[#1d4ed8]">on the Floor</span>
+                <span className="text-[#1d4ed8] text-2xl md:text-3xl lg:text-[34px] font-bold">on the Showroom Floor</span>
               </h1>
 
-              <p className="text-base text-gray-600 max-w-md leading-relaxed mb-6">
-                Innerspring, memory foam, and hybrid — all on the showroom floor at{" "}
+              <p className="text-[15px] text-gray-600 max-w-sm leading-relaxed mb-6">
+                Innerspring, memory foam, and hybrid — all on the floor at{" "}
                 <strong className="text-gray-800">{SITE.address.street}</strong>. Walk in, no
-                appointment. Try any mattress. No pressure, no commission.
+                appointment. No pressure, no commission.
               </p>
 
-              <div className="flex flex-wrap gap-x-5 gap-y-1.5 mb-8 text-xs text-gray-500">
-                {[
-                  "120-Night Free Trial",
-                  "Free Delivery & Setup",
-                  "0% Financing — 12 Mo",
-                  "Price Match Guarantee",
-                ].map((t) => (
-                  <span key={t} className="flex items-center gap-1.5">
-                    <span className="text-green-600 font-extrabold">✓</span>
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3">
+              {/* CTA buttons */}
+              <div className="flex flex-wrap gap-3 mb-7">
                 <a
                   href="#showroom"
-                  className="bg-[#dc2626] hover:bg-red-700 text-white font-extrabold px-8 py-3.5 rounded text-sm transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-red-700 active:bg-red-800 text-white font-extrabold px-7 py-3.5 rounded-full text-sm transition-colors shadow-md"
                 >
                   Shop the Sale
+                  <span aria-hidden="true">→</span>
                 </a>
                 <a
                   href="#showroom"
-                  className="border border-gray-300 hover:border-[#1d4ed8] hover:text-[#1d4ed8] text-gray-700 font-semibold px-7 py-3.5 rounded text-sm transition-colors"
+                  className="inline-flex items-center gap-2 border-2 border-[#1d4ed8] text-[#1d4ed8] hover:bg-blue-50 font-bold px-6 py-3.5 rounded-full text-sm transition-colors"
                 >
                   View All Mattresses
                 </a>
               </div>
 
-              <div className="mt-8 flex items-center gap-3 text-xs text-gray-400">
-                <span className="flex text-amber-400 gap-0.5 text-sm" aria-label="4.8 stars">
+              {/* Trust badges — clean grid */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2 mb-6">
+                {[
+                  { icon: "✓", label: "120-Night Free Trial" },
+                  { icon: "✓", label: "Free Delivery & Setup" },
+                  { icon: "✓", label: "0% Financing — 12 Mo" },
+                  { icon: "✓", label: "Price Match Guarantee" },
+                ].map((t) => (
+                  <span key={t.label} className="flex items-center gap-1.5 text-xs text-gray-600 font-medium">
+                    <span className="text-green-600 font-extrabold text-sm">{t.icon}</span>
+                    {t.label}
+                  </span>
+                ))}
+              </div>
+
+              {/* Review row */}
+              <div className="flex items-center gap-2.5 pt-5 border-t border-gray-200">
+                <span className="flex text-amber-400 gap-0.5" aria-label="4.8 stars">
                   ★★★★★
                 </span>
-                <span className="font-semibold text-gray-600">4.8 Google Reviews</span>
+                <span className="text-sm font-semibold text-gray-700">4.8 · Google Reviews</span>
                 <span className="text-gray-300">·</span>
-                <span>12 models on the floor</span>
+                <span className="text-xs text-gray-400">12 models on the floor</span>
               </div>
             </div>
           </div>
 
           {/* ── RIGHT: Tonight's Feature ── */}
-          {/* Dark slate — not pure black — for readable contrast */}
+          {/* Dark slate card — intentional cinema poster aesthetic */}
           <div className="bg-[#1c1a2e] text-white flex flex-col">
 
             {/* ── TOP HEADER BAR ── */}
-            <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-white/10">
+            <div className="flex items-center justify-between px-6 pt-5 pb-3.5 border-b border-white/10">
               <div className="flex items-center gap-2">
                 {/* Live indicator dot */}
                 <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" aria-hidden="true" />
                 <span className="text-xs font-extrabold tracking-widest uppercase text-indigo-300">
                   Evening Hours
+
                 </span>
               </div>
               <a
@@ -201,42 +211,43 @@ export default function SplitHero() {
             <div className="flex-1" />
 
             {/* ── SHOWTIME + AVAILABILITY + CTAs ── */}
-            <div className="px-6 pb-6 pt-4">
-              {/* Showtime row */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="text-sm text-gray-300">
+            <div className="px-6 pb-7 pt-5 border-t border-white/10">
+              {/* Showtime + availability row */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="text-sm">
                   <span className="font-bold text-white">{tonightFeature.date}</span>
-                  {" · "}
+                  <span className="text-gray-400"> · </span>
                   <span className="font-bold text-white">{tonightFeature.time}</span>
-                  <span className="text-gray-400 text-xs ml-2">Doors {tonightFeature.doorsOpen}</span>
+                  <span className="text-gray-500 text-xs ml-2">Doors {tonightFeature.doorsOpen}</span>
                 </div>
-                {/* Availability badge — prominent, not buried */}
-                <span className="inline-flex items-center gap-1 bg-red-500/20 border border-red-400/40 text-red-300 font-bold text-xs px-2.5 py-1 rounded-full">
+                {/* Availability badge */}
+                <span className="inline-flex items-center gap-1.5 bg-red-500/20 border border-red-400/40 text-red-300 font-bold text-xs px-2.5 py-1 rounded-full flex-shrink-0">
                   <span className="w-1.5 h-1.5 bg-red-400 rounded-full" aria-hidden="true" />
                   {tonightFeature.seats} spots left
                 </span>
               </div>
 
-              {/* Primary CTA — full width, high contrast */}
+              {/* Primary CTA */}
               <a
                 href="#tonight"
-                className="block w-full text-center bg-indigo-500 hover:bg-indigo-400 active:bg-indigo-600 text-white font-extrabold py-3.5 rounded-lg text-[15px] tracking-wide transition-colors shadow-md mb-2"
+                className="flex items-center justify-center gap-2 w-full bg-indigo-500 hover:bg-indigo-400 active:bg-indigo-600 text-white font-extrabold py-3.5 rounded-xl text-[15px] tracking-wide transition-colors shadow-lg mb-2.5"
               >
-                Reserve a Mattress Seat →
+                Reserve a Mattress Seat
+                <span aria-hidden="true">→</span>
               </a>
 
               {/* Secondary CTA */}
               <a
                 href="#evening-hours"
-                className="block w-full text-center border border-white/20 hover:border-white/40 text-gray-300 hover:text-white font-semibold py-2.5 rounded-lg text-sm transition-colors"
+                className="flex items-center justify-center w-full border border-white/20 hover:border-indigo-400/50 text-gray-300 hover:text-white font-semibold py-2.5 rounded-xl text-sm transition-colors"
               >
-                View Showtimes
+                View Full Showtimes
               </a>
 
-              {/* Pricing note — readable, not buried */}
-              <p className="mt-3 text-center text-xs text-gray-400">
-                Free with mattress purchase.{" "}
-                <span className="text-gray-500">$10–15 suggested donation otherwise.</span>
+              {/* Pricing note */}
+              <p className="mt-3 text-center text-[11px] text-gray-500">
+                Free with mattress purchase ·
+                <span className="text-gray-600"> $10–15 suggested donation</span>
               </p>
             </div>
 

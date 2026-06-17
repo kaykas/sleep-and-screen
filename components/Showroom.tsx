@@ -167,7 +167,7 @@ function MattressTile({ type, onSale }: { type: string; onSale: boolean }) {
 
 export default function Showroom() {
   return (
-    <section id="showroom" className="py-14 bg-gray-50">
+    <section id="showroom" className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
