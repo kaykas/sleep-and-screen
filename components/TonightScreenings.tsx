@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 
-// TonightScreenings — Evening Hours current week. Subordinate to retail; factual, deadpan.
-// Poster thumbnails + IMDb-style metadata for each card.
+// TonightScreenings — Current week screenings. Cinema showtimes module.
+// Always-visible Reserve CTAs. Responsive rows that don't clip at right edge.
 
 const screenings = [
   {
@@ -102,42 +102,37 @@ const screenings = [
   },
 ];
 
-// Minimal poster thumbnail — abstract cinema card, 2:3 ratio
+// Minimal poster graphic — abstract cinema card
 function MiniPoster({ film, year, isTonight }: { film: string; year: number; isTonight: boolean }) {
   const label = film.split(" ").slice(0, 2).join(" ");
   const accentColor = isTonight ? "#6366f1" : "#4b5563";
   const glowColor = isTonight ? "#6366f1" : "#374151";
+  const uid = `${year}-${film.replace(/\s+/g, "")}`;
 
   return (
     <svg viewBox="0 0 52 78" className="w-full h-full block" aria-hidden="true">
       <defs>
-        <linearGradient id={`mp-bg-${year}`} x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={`mp-bg-${uid}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#1e1a14" />
           <stop offset="100%" stopColor="#0d0b08" />
         </linearGradient>
-        <linearGradient id={`mp-shadow-${year}`} x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={`mp-sh-${uid}`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#000" stopOpacity="0" />
           <stop offset="100%" stopColor="#000" stopOpacity="0.65" />
         </linearGradient>
       </defs>
-      <rect width="52" height="78" fill={`url(#mp-bg-${year})`} />
-      {/* Accent glow top */}
+      <rect width="52" height="78" fill={`url(#mp-bg-${uid})`} />
       <rect x="0" y="0" width="52" height="30" fill={glowColor} opacity="0.07" />
-      {/* Silhouette suggestion */}
       <ellipse cx="26" cy="28" rx="7" ry="8" fill={accentColor} opacity="0.12" />
       <rect x="20" y="35" width="12" height="14" rx="1.5" fill={accentColor} opacity="0.09" />
-      {/* Divider */}
       <line x1="5" y1="52" x2="47" y2="52" stroke="#3a3020" strokeWidth="0.4" opacity="0.6" />
-      {/* Bottom shadow */}
-      <rect x="0" y="50" width="52" height="28" fill={`url(#mp-shadow-${year})`} />
-      {/* Title */}
+      <rect x="0" y="50" width="52" height="28" fill={`url(#mp-sh-${uid})`} />
       <text x="26" y="63" textAnchor="middle" fill="#e8e0cc" fontSize="5.5" fontFamily="Georgia, serif" fontWeight="bold">
         {label}
       </text>
       <text x="26" y="71" textAnchor="middle" fill="#5a4e30" fontSize="4.5" fontFamily="monospace" letterSpacing="0.8">
         {year}
       </text>
-      {/* Top "NOW" stripe */}
       {isTonight && (
         <>
           <rect x="0" y="0" width="52" height="10" fill={accentColor} opacity="0.25" />
@@ -147,6 +142,22 @@ function MiniPoster({ film, year, isTonight }: { film: string; year: number; isT
         </>
       )}
     </svg>
+  );
+}
+
+// Seat availability bar
+function SeatBar({ seats, max }: { seats: number; max: number }) {
+  const pct = Math.round((seats / max) * 100);
+  const barColor = seats <= 3 ? "bg-red-500" : seats <= 6 ? "bg-amber-400" : "bg-green-500";
+  return (
+    <div className="flex items-center gap-2">
+      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+        <div className={`h-full rounded-full transition-all ${barColor}`} style={{ width: `${pct}%` }} />
+      </div>
+      <span className={`text-xs font-bold whitespace-nowrap ${seats <= 3 ? "text-red-600" : seats <= 6 ? "text-amber-600" : "text-green-700"}`}>
+        {seats} left
+      </span>
+    </div>
   );
 }
 
@@ -166,133 +177,156 @@ export default function TonightScreenings() {
   };
 
   return (
-    <section id="tonight" className="py-10 bg-gray-50 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header — clearly subordinate */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+    <section id="tonight" className="py-16 md:py-20 bg-gray-50 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+
+        {/* ── Header ── */}
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
           <div>
-            <div className="text-xs font-bold tracking-widest uppercase text-indigo-600 mb-1">
+            <div className="text-xs font-bold tracking-widest uppercase text-indigo-600 mb-2">
               Evening Hours — This Week
             </div>
-            <h2 className="text-2xl font-extrabold text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
               Current Screenings
             </h2>
-            <p className="text-sm text-gray-500 mt-0.5">
-              8 PM nightly. Showroom floor. 12 spots per night. Free with mattress purchase.
+            <p className="text-[15px] text-gray-500 mt-1.5">
+              8 PM nightly · Showroom floor · 12 spots per night · Free with mattress purchase
             </p>
           </div>
           <a
             href="#evening-hours"
-            className="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#1d4ed8] border-2 border-[#1d4ed8] hover:bg-blue-50 px-4 py-2 rounded-full transition-colors whitespace-nowrap flex-shrink-0"
           >
             Full summer calendar →
           </a>
         </div>
 
-        {/* RSVP confirmation */}
+        {/* ── RSVP confirmation ── */}
         {submitted && (
-          <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4 text-sm text-green-800">
-            Reservation noted for <strong>{submitted}</strong>. Confirmation email arrives by 6 PM day-of. Doors open 7 PM.
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-xl p-4 text-sm text-green-800 flex items-center gap-3">
+            <span className="text-lg">✓</span>
+            <span>
+              Reservation noted for <strong>{submitted}</strong>.
+              Confirmation email by 6 PM day-of. Doors open 7 PM.
+            </span>
           </div>
         )}
 
-        {/* Screenings list */}
-        <div className="space-y-2">
-          {screenings.map((s, i) => (
-            <div
-              key={i}
-              className={`bg-white border rounded-xl overflow-hidden transition-all ${
-                i === 0
-                  ? "border-indigo-300 shadow-sm"
-                  : "border-gray-200 hover:border-gray-300"
-              }`}
-            >
-              <div className="p-4 md:p-5">
-                <div className="flex items-start gap-4">
+        {/* ── Screenings list ── */}
+        <div className="space-y-3">
+          {screenings.map((s, i) => {
+            const isTonight = i === 0;
+            return (
+              <div
+                key={i}
+                className={`bg-white rounded-xl overflow-hidden transition-all ${
+                  isTonight
+                    ? "border-2 border-indigo-400 shadow-md"
+                    : "border border-gray-200 hover:border-gray-300 hover:shadow-sm"
+                }`}
+              >
+                {/* Tonight label bar */}
+                {isTonight && (
+                  <div className="bg-indigo-600 text-white text-[11px] font-extrabold uppercase tracking-widest px-5 py-1.5 flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-200 animate-pulse" aria-hidden="true" />
+                    Tonight · {s.time}
+                  </div>
+                )}
 
-                  {/* Poster thumbnail */}
-                  <div className="flex-shrink-0 w-[52px] h-[78px] rounded overflow-hidden border border-gray-200">
-                    <MiniPoster film={s.film} year={s.year} isTonight={i === 0} />
+                <div className="flex flex-col sm:flex-row items-stretch gap-0">
+
+                  {/* Poster — left strip */}
+                  <div className="sm:flex-shrink-0 sm:w-[68px] w-full flex sm:flex-col items-center justify-center sm:py-5 sm:border-r border-b sm:border-b-0 border-gray-100 bg-gray-50 py-4 px-4 sm:px-0">
+                    <div className="w-[52px] h-[78px] rounded overflow-hidden border border-gray-200 flex-shrink-0">
+                      <MiniPoster film={s.film} year={s.year} isTonight={isTonight} />
+                    </div>
                   </div>
 
                   {/* Main content */}
-                  <div className="flex-1 min-w-0">
-                    {/* Date + series row */}
-                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className={`text-[10px] font-extrabold tracking-wider uppercase ${i === 0 ? "text-indigo-600" : "text-gray-400"}`}>
-                        {i === 0 ? "Tonight" : s.date} · {s.time}
-                      </span>
-                      <span className="text-[10px] bg-gray-100 text-gray-500 border border-gray-200 px-2 py-0.5 rounded">
+                  <div className="flex-1 min-w-0 px-5 py-4">
+
+                    {/* Date + series */}
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      {!isTonight && (
+                        <span className="text-xs font-bold text-gray-500">{s.date} · {s.time}</span>
+                      )}
+                      <span className="text-[11px] bg-gray-100 text-gray-500 border border-gray-200 px-2.5 py-0.5 rounded-full font-medium">
                         {s.series}
                       </span>
                     </div>
 
                     {/* Title + year + A+K badge */}
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <h3 className="text-base font-extrabold text-gray-900">{s.film}</h3>
-                      <span className="text-gray-400 text-sm">{s.year}</span>
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <h3 className="text-lg font-extrabold text-gray-900 leading-tight">{s.film}</h3>
+                      <span className="text-sm text-gray-400">{s.year}</span>
                       {s.note && (
-                        <span className="text-[10px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded font-bold">
+                        <span className="text-[10px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full font-bold">
                           {s.note}
                         </span>
                       )}
                     </div>
 
-                    {/* IMDb-style metadata row */}
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      {/* Star score */}
+                    {/* Metadata row */}
+                    <div className="flex flex-wrap items-center gap-2.5 mb-2.5">
                       <div className="flex items-center gap-1 bg-amber-50 border border-amber-200 rounded px-1.5 py-0.5">
                         <span className="text-amber-500 text-xs leading-none">★</span>
                         <span className="text-gray-800 font-extrabold text-[11px] leading-none">{s.imdbScore}</span>
                         <span className="text-gray-400 text-[10px] leading-none">/10</span>
                       </div>
-                      {/* MPAA */}
                       <span className="text-[10px] border border-gray-300 text-gray-500 px-1.5 py-0.5 rounded font-bold">{s.rating}</span>
-                      {/* Runtime */}
                       <span className="text-xs text-gray-400">{s.runtime}</span>
-                      {/* Genre */}
-                      <span className="text-[10px] text-gray-400 italic">{s.genre}</span>
-                      {/* Director */}
+                      <span className="text-xs text-gray-400 italic">{s.genre}</span>
                       <span className="text-xs text-gray-400">Dir. {s.director}</span>
                     </div>
 
                     {/* Description */}
                     <p className="text-sm text-gray-600 leading-relaxed">{s.description}</p>
 
-                    {/* Pairing/concession note */}
+                    {/* Pairing note */}
                     {s.pairingNote && (
-                      <p className="text-[11px] text-indigo-600 italic mt-1.5">{s.pairingNote}</p>
+                      <p className="text-xs text-indigo-600 italic mt-2">{s.pairingNote}</p>
                     )}
                   </div>
 
-                  {/* Right column: seats + RSVP */}
-                  <div className="flex flex-col items-end gap-2 flex-shrink-0 ml-2">
-                    <div className="text-xs text-right">
-                      <span className={s.seats <= 3 ? "text-red-600 font-bold" : "text-green-700 font-bold"}>
-                        {s.seats} spots left
-                      </span>
+                  {/* Right column — seats + CTA: always visible, never clipped */}
+                  <div className="sm:flex-shrink-0 sm:w-40 flex sm:flex-col flex-row items-center sm:items-end justify-between sm:justify-center gap-3 px-5 py-4 sm:border-l border-t sm:border-t-0 border-gray-100 bg-gray-50/50">
+                    <div className="flex-1 sm:flex-none sm:w-full">
+                      <SeatBar seats={s.seats} max={s.maxSeats} />
                     </div>
                     <button
                       type="button"
                       onClick={() => setRsvpFilm(s.film)}
                       disabled={s.seats === 0}
-                      className="text-sm font-bold bg-indigo-700 hover:bg-indigo-800 disabled:bg-gray-200 disabled:text-gray-400 text-white px-4 py-2 rounded transition-colors whitespace-nowrap"
+                      className={`flex-shrink-0 sm:w-full font-extrabold px-5 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap ${
+                        s.seats === 0
+                          ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                          : isTonight
+                          ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm"
+                          : "bg-[#1d4ed8] hover:bg-blue-800 text-white"
+                      }`}
                     >
                       {s.seats === 0 ? "Sold Out" : "Reserve →"}
                     </button>
-                    <div className="text-[10px] text-gray-400 text-right">View Showtimes</div>
                   </div>
 
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* RSVP Modal */}
+        {/* ── Footer note ── */}
+        <p className="mt-6 text-xs text-gray-400 text-center">
+          Concept/prototype schedule. No real transactions.
+        </p>
+
+        {/* ── RSVP Modal ── */}
         {rsvpFilm && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-            <div className="bg-white border border-gray-200 rounded-xl max-w-md w-full p-7 shadow-xl">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+            onClick={(e) => { if (e.target === e.currentTarget) setRsvpFilm(null); }}
+          >
+            <div className="bg-white border border-gray-200 rounded-2xl max-w-md w-full p-7 shadow-2xl">
               <div className="flex items-start justify-between mb-5">
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wide text-gray-400 mb-1">
@@ -303,7 +337,8 @@ export default function TonightScreenings() {
                 <button
                   type="button"
                   onClick={() => setRsvpFilm(null)}
-                  className="text-gray-400 hover:text-gray-700 text-2xl ml-4 leading-none"
+                  className="text-gray-400 hover:text-gray-700 text-2xl ml-4 leading-none flex-shrink-0"
+                  aria-label="Close"
                 >
                   ×
                 </button>
@@ -357,7 +392,7 @@ export default function TonightScreenings() {
                 </p>
                 <button
                   type="submit"
-                  className="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-extrabold py-3.5 rounded-lg text-sm transition-colors"
+                  className="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-extrabold py-3.5 rounded-xl text-sm transition-colors"
                 >
                   Confirm Reservation
                 </button>
