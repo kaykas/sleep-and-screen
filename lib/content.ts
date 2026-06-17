@@ -77,6 +77,16 @@ export const THEME_NIGHTS = [
     scheduledNote: "Quarterly series, always a Saturday",
     concessionNote: "Gummo Spaghetti available on Gummo nights only.",
   },
+  {
+    slug: "bad-decisions",
+    name: "Bad Decisions Week",
+    tagline: "No one in these films is making great choices. You're watching from a mattress. It's fine.",
+    description:
+      "A week-long series anchored by films about people who absolutely know better and do it anyway. Spring Breakers, Uncut Gems, and — depending on your tolerance for a three-hour Jordan Belfort impression — The Wolf of Wall Street. We are not passing judgment. The mattresses are comfortable. The decisions on screen are not.",
+    films: ["Spring Breakers", "Uncut Gems", "The Wolf of Wall Street"],
+    scheduledNote: "Annual, typically late summer. Exact dates announced four weeks out.",
+    concessionNote: "Energy drinks available. We regret nothing.",
+  },
 ];
 
 // Second programming voice — fictional persona

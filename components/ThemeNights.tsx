@@ -7,6 +7,7 @@ const icons: Record<string, string> = {
   insomnia: "◉",
   "bad-date": "◈",
   hometown: "◎",
+  "bad-decisions": "⚡",
 };
 
 const accentColors: Record<string, { border: string; text: string; tag: string; tagBg: string }> = {
@@ -33,6 +34,12 @@ const accentColors: Record<string, { border: string; text: string; tag: string; 
     text: "text-[#34d399]",
     tag: "text-[#34d399]",
     tagBg: "bg-[#34d399]/10 border-[#34d399]/20",
+  },
+  "bad-decisions": {
+    border: "border-[#fb923c]/25",
+    text: "text-[#fb923c]",
+    tag: "text-[#fb923c]",
+    tagBg: "bg-[#fb923c]/10 border-[#fb923c]/20",
   },
 };
 
