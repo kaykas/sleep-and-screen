@@ -174,6 +174,12 @@ export default function JointPicks() {
             Films marked with their name in the schedule are ones they specifically requested.
             Most of the programming is just what seemed good for a given week.
           </p>
+          <p className="mt-3 text-xs font-sans text-[#4b5563] max-w-lg">
+            Programming note: we are not trying to pick films that seem impressive. The calendar isn’t
+            chasing prestige or anything that could be described as a bold arthouse choice. If something
+            is on here, it’s because it’s good on a Friday night or someone genuinely wanted to watch it.
+            That’s the whole bar.
+          </p>
         </div>
       </div>
     </section>

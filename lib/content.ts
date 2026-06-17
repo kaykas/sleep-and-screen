@@ -87,6 +87,25 @@ export const THEME_NIGHTS = [
     scheduledNote: "Annual, typically late summer. Exact dates announced four weeks out.",
     concessionNote: "Energy drinks available. We regret nothing.",
   },
+  {
+    slug: "divorce-dad",
+    name: "Divorce Dad Week",
+    tagline: "All eight Fast and the Furious movies. Yes, all eight.",
+    description:
+      "A franchise about muscle cars, improbable family bonds, speeches about family delivered at full volume, and the belief that any situation can be resolved if you drive fast enough. Eight films. One week. We are not here to relitigate anything. The mattresses are wide. The decisions are on screen.",
+    films: [
+      "The Fast and the Furious",
+      "2 Fast 2 Furious",
+      "The Fast and the Furious: Tokyo Drift",
+      "Fast & Furious",
+      "Fast Five",
+      "Fast & Furious 6",
+      "Furious 7",
+      "The Fate of the Furious",
+    ],
+    scheduledNote: "Annual. One film per night. Announced separately from the main calendar.",
+    concessionNote: "Nos Energy on the counter all week. Corona available Friday and Saturday only.",
+  },
 ];
 
 // Second programming voice — fictional persona

@@ -8,6 +8,7 @@ const icons: Record<string, string> = {
   "bad-date": "◈",
   hometown: "◎",
   "bad-decisions": "⚡",
+  "divorce-dad": "🚗",
 };
 
 const accentColors: Record<string, { border: string; text: string; tag: string; tagBg: string }> = {
@@ -40,6 +41,12 @@ const accentColors: Record<string, { border: string; text: string; tag: string; 
     text: "text-[#fb923c]",
     tag: "text-[#fb923c]",
     tagBg: "bg-[#fb923c]/10 border-[#fb923c]/20",
+  },
+  "divorce-dad": {
+    border: "border-[#38bdf8]/25",
+    text: "text-[#38bdf8]",
+    tag: "text-[#38bdf8]",
+    tagBg: "bg-[#0ea5e9]/10 border-[#0ea5e9]/20",
   },
 };
 
